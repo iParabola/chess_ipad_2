@@ -1,0 +1,16 @@
+{
+    "id": "mosowe-menus",
+    "name": "mosowe-menus",
+    "displayName": "mosowe-menus",
+    "version": "1.2.1",
+    "description": "多级菜单组件，管理系统端使用，主要用于hbuilder创建的uniapp项目中使用，一般vue项目的管理系统可使用element等UI组件库",
+    "keywords": [
+        "多级菜单"
+    ],
+    "dcloudext": {
+        "category": [
+            "前端组件",
+            "通用组件"
+        ]
+    }
+}

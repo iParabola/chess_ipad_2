@@ -1,0 +1,18 @@
+{
+  "usingComponents": {
+    "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup",
+    "uni-table": "/uni_modules/uni-table/components/uni-table/uni-table",
+    "uni-tr": "/uni_modules/uni-table/components/uni-tr/uni-tr",
+    "uni-th": "/uni_modules/uni-table/components/uni-th/uni-th",
+    "uni-td": "/uni_modules/uni-table/components/uni-td/uni-td",
+    "uv-upload": "/uni_modules/uv-upload/components/uv-upload/uv-upload",
+    "uv-image": "/uni_modules/uv-image/components/uv-image/uv-image",
+    "judge-fire-attack-table": "/uni_modules/judge-fire-attack-table/components/judge-fire-attack-table/judge-fire-attack-table",
+    "judge-action-table": "/uni_modules/judge-action-table/components/judge-action-table/judge-action-table",
+    "judge-investigate-table": "/uni_modules/judge-investigate-table/components/judge-investigate-table/judge-investigate-table",
+    "judge-communication-table": "/uni_modules/judge-communication-table/components/judge-communication-table/judge-communication-table",
+    "judge-reactance-table": "/uni_modules/judge-reactance-table/components/judge-reactance-table/judge-reactance-table",
+    "judge-command-control-table": "/uni_modules/judge-command-control-table/components/judge-command-control-table/judge-command-control-table"
+  },
+  "component": true
+}

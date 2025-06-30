@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "创建房间",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "xinyi-nav-bar": "/uni_modules/xinyi-nav-bar/components/xinyi-nav-bar/xinyi-nav-bar",
+    "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select"
+  }
+}

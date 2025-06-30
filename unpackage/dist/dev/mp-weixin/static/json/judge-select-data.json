@@ -1,0 +1,210 @@
+{
+	"canUseRange":[{
+			"value": "堪用",
+			"text": "堪用"
+		},
+		{
+			"value": "损坏",
+			"text": "损坏"
+		}
+	],
+	"visibleDetermineRange" : [{
+			"value": "通视",
+			"text": "通视"
+		},
+		{
+			"value": "不通视",
+			"text": "不通视"
+		}
+	],
+	"visibleDistanceRange" : [{
+			"value": "进入通信距离",
+			"text": "进入通信距离"
+		},
+		{
+			"value": "超出通信范围",
+			"text": "超出通信范围"
+		}
+	],
+	"intelligenceStatusRange" : [{
+			"value": "已获取情报",
+			"text": "已获取情报"
+		},
+		{
+			"value": "未获取情报",
+			"text": "未获取情报"
+		}
+	],
+	"discoveryStatusRange" : [{
+			"value": "已发现",
+			"text": "已发现"
+		},
+		{
+			"value": "未发现",
+			"text": "未发现"
+		}
+	],
+	"taskStatusRange" : [{
+			"value": "业务成功",
+			"text": "业务成功"
+		},
+		{
+			"value": "业务失败",
+			"text": "业务失败"
+		}
+	],
+	"ccEquipmentRange" : [{
+			"value": "通用指挥车",
+			"text": "通用指挥车"
+		},
+		{
+			"value": "轻型指挥车",
+			"text": "轻型指挥车"
+		},
+		{
+			"value": "125W短波电台",
+			"text": "125W短波电台"
+		},
+		{
+			"value": "400W短波电台",
+			"text": "400W短波电台"
+		},
+		{
+			"value": "干线节点车",
+			"text": "干线节点车"
+		},
+		{
+			"value": "开设式指挥信息系统",
+			"text": "开设式指挥信息系统"
+		},
+		{
+			"value": "无综车",
+			"text": "无综车"
+		},
+		{
+			"value": "天线",
+			"text": "天线"
+		},
+		{
+			"value": "2.4米Ka/Ku双频段卫星通信车",
+			"text": "2.4米Ka/Ku双频段卫星通信车"
+		}
+	],
+	"equipmentRange": [
+		{ "value": "侦察排", "text": "侦察排" },
+		{ "value": "坦克排", "text": "坦克排" },
+		{ "value": "防控营", "text": "防控营" },
+		{ "value": "运输排", "text": "运输排" },
+		{ "value": "机步排", "text": "机步排" },
+		{ "value": "装甲排", "text": "装甲排" },
+		{ "value": "无人机", "text": "无人机" },
+		{ "value": "蓝军装甲排", "text": "蓝军装甲排" },
+		{ "value": "蓝军武侦排", "text": "蓝军武侦排" },
+		{ "value": "通用指挥车", "text": "通用指挥车" },
+		{ "value": "综合接入节点车", "text": "综合接入节点车" },
+		{ "value": "125W短波电台车", "text": "125W短波电台车" },
+		{ "value": "400W短波电台车", "text": "400W短波电台车" },
+		{ "value": "2.4米Ka/Ku双频卫星通信车载站", "text": "2.4米Ka/Ku双频卫星通信车载站" },
+		{ "value": "干线节点车", "text": "干线节点车" },
+		{ "value": "开设式指挥信息系统", "text": "开设式指挥信息系统" }
+	],
+	"rangeRange": [
+		{ "value": "范围内", "text": "范围内" },
+		{ "value": "范围外", "text": "范围外" }
+	],
+	"yesOrNoRange": [
+		{ "value": "是", "text": "是" },
+		{ "value": "否", "text": "否" }
+	],
+	"finalDamageRange": [
+		{ "value": "无毁伤", "text": "无毁伤" },
+		{ "value": "轻损", "text": "轻损" },
+		{ "value": "中损", "text": "中损" },
+		{ "value": "重损", "text": "重损" }
+	],
+	"attackEquipmentRange": [
+		{ "value": "合成营（红）", "text": "合成营（红）" },
+		{ "value": "猛士突击车", "text": "猛士突击车" },
+		{ "value": "EA-18G电子战机", "text": "EA-18G电子战机" },
+		{ "value": "中翔-2C无人机", "text": "中翔-2C无人机" },
+		{ "value": "弹簧刀-600", "text": "弹簧刀-600" },
+		{ "value": "弹簧刀-300", "text": "弹簧刀-300" },
+		{ "value": "“剑翔”反辐射无人攻击机", "text": "“剑翔”反辐射无人攻击机" },
+		{ "value": "“红雀-2”无人侦察机", "text": "“红雀-2”无人侦察机" },
+		{ "value": "合成营（蓝）", "text": "合成营（蓝）" },
+		{ "value": "巡飞弹", "text": "巡飞弹" }
+	],
+	"targetEquipmentRange": [
+		{ "value": "通用指挥车", "text": "通用指挥车" },
+		{ "value": "轻型指挥车", "text": "轻型指挥车" },
+		{ "value": "125W短波电台", "text": "125W短波电台" },
+		{ "value": "400W短波电台", "text": "400W短波电台" },
+		{ "value": "干线节点车", "text": "干线节点车" },
+		{ "value": "开设式指挥信息系统", "text": "开设式指挥信息系统" },
+		{ "value": "无综车", "text": "无综车" },
+		{ "value": "天线", "text": "天线" },
+		{ "value": "2.4米Ka/Ku双频段卫星通信车", "text": "2.4米Ka/Ku双频段卫星通信车" },
+		{ "value": "合成营（红）", "text": "合成营（红）" },
+		{ "value": "WZ-141", "text": "WZ-141" },
+		{ "value": "猛士突击车", "text": "猛士突击车" },
+		{ "value": "BZK-008无人机", "text": "BZK-008无人机" },
+		{ "value": "电子干扰站美式AN/TLQ-17型车式", "text": "电子干扰站美式AN/TLQ-17型车式" },
+		{ "value": "RQ-11", "text": "RQ-11" },
+		{ "value": "EC-130H电子干扰飞机", "text": "EC-130H电子干扰飞机" },
+		{ "value": "EA-18G电子战机", "text": "EA-18G电子战机" },
+		{ "value": "中翔-2C无人机", "text": "中翔-2C无人机" },
+		{ "value": "弹簧刀-600", "text": "弹簧刀-600" },
+		{ "value": "弹簧刀-300", "text": "弹簧刀-300" },
+		{ "value": "“剑翔”反辐射无人攻击机", "text": "“剑翔”反辐射无人攻击机" },
+		{ "value": "“红雀-2”无人侦察机", "text": "“红雀-2”无人侦察机" },
+		{ "value": "合成营（蓝）", "text": "合成营（蓝）" }
+	],
+	"investigateEquipmentRange": [
+		{ "value": "合成营（红）", "text": "合成营（红）" },
+		{ "value": "WZ-141", "text": "WZ-141" },
+		{ "value": "猛士突击车", "text": "猛士突击车" },
+		{ "value": "BZK-008无人机", "text": "BZK-008无人机" },
+		{ "value": "电子干扰站美式AN/TLQ-17型车式", "text": "电子干扰站美式AN/TLQ-17型车式" },
+		{ "value": "RQ-11", "text": "RQ-11" },
+		{ "value": "EC-130H电子干扰飞机", "text": "EC-130H电子干扰飞机" },
+		{ "value": "EA-18G电子战机", "text": "EA-18G电子战机" },
+		{ "value": "中翔-2C无人机", "text": "中翔-2C无人机" },
+		{ "value": "弹簧刀-600", "text": "弹簧刀-600" },
+		{ "value": "弹簧刀-300", "text": "弹簧刀-300" },
+		{ "value": "“剑翔”反辐射无人攻击机", "text": "“剑翔”反辐射无人攻击机" },
+		{ "value": "“红雀-2”无人侦察机", "text": "“红雀-2”无人侦察机" },
+		{ "value": "合成营（蓝）", "text": "合成营（蓝）" }
+	],
+	"investigateWayRange" : [
+		{ "value": "目视侦察", "text": "目视侦察" },
+		{ "value": "光电侦察", "text": "光电侦察" },
+		{ "value": "雷达侦察", "text": "雷达侦察" },
+		{ "value": "抵近侦察", "text": "抵近侦察" },
+		{ "value": "对空搜索侦察", "text": "对空搜索侦察" },
+		{ "value": "无线电侦察", "text": "无线电侦察" }
+	],
+	"depthLevelRange" : [
+		{ "value": "未发现", "text": "未发现" },
+		{ "value": "1级情报深度", "text": "1级情报深度" },
+		{ "value": "2级情报深度", "text": "2级情报深度" },
+		{ "value": "3级情报深度", "text": "3级情报深度" }
+	],
+	"depthRange" : [
+		{ "value": "未发现", "text": "未发现" },
+		{ "value": "发现", "text": "发现" },
+		{ "value": "识别", "text": "识别" },
+		{ "value": "确认", "text": "确认" }
+	],
+	"communicationEquipmenRange": [
+		{ "value": "5G微波热力机", "text": "5G微波热力机" },
+		{ "value": "卫星通信（0.9米箱式）", "text": "卫星通信（0.9米箱式）" },
+		{ "value": "卫星通信Ku/Ka（2.4米车载）", "text": "卫星通信Ku/Ka（2.4米车载）" },
+		{ "value": "卫星通信（0.5米背负）", "text": "卫星通信（0.5米背负）" },
+		{ "value": "区域宽带（中心与车载）", "text": "区域宽带（中心与车载）" },
+		{ "value": "区域宽带（中心与手持）", "text": "区域宽带（中心与手持）" },
+		{ "value": "区域宽带自组网DTD模式", "text": "区域宽带自组网DTD模式" },
+		{ "value": "171/173系列高速数据电台", "text": "171/173系列高速数据电台" },
+		{ "value": "超短波电台（车载）", "text": "超短波电台（车载）" },
+		{ "value": "短波电台", "text": "短波电台" }
+	]
+}

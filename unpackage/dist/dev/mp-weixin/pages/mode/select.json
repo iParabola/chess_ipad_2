@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "模式选择",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "xinyi-nav-bar": "/uni_modules/xinyi-nav-bar/components/xinyi-nav-bar/xinyi-nav-bar",
+    "uv-modal": "/uni_modules/uv-modal/components/uv-modal/uv-modal",
+    "uni-easyinput": "/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput",
+    "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select"
+  }
+}

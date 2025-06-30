@@ -1,0 +1,258 @@
+{
+	"baseCcLevel": [
+		[
+			{"text": "基础指控等级","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 11,"dataFlag": false}
+		],
+		[
+			{"text": "指控等级","type": "row-col-header","row": 2,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "通信等级（kbps)","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 10,"dataFlag": false}
+		],
+		[
+			{"text": "0-0.0024","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0.0024-0.0048","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0.0048-0.0096","type": "row-header","row": 2,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0.0096-0.0192","type": "row-header","row": 2,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0.0192-0.0384","type": "row-header","row": 2,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0.0384-0.512","type": "row-header","row": 2,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0.512-1","type": "row-header","row": 2,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1-2","type": "row-header","row": 2,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "2-10","type": "row-header","row": 2,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10-622","type": "row-header","row": 2,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "话音通","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 3,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 3,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 3,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 3,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 3,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 3,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 3,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "警报通","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "态势通","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 5,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 5,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 5,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 5,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 5,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "数据通","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 6,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 6,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 6,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 6,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 6,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 6,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "文电通","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 7,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 7,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 7,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 7,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","value": 1,"type": "data","row": 7,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "指控能力等级","type": "col-header","row": 8,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "2","value": 2,"type": "data","row": 8,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "2","value": 2,"type": "data","row": 8,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "3","value": 3,"type": "data","row": 8,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "5","value": 5,"type": "data","row": 8,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "5","value": 5,"type": "data","row": 8,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "5","value": 5,"type": "data","row": 8,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "5","value": 5,"type": "data","row": 8,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "5","value": 5,"type": "data","row": 8,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 9,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "通用指控装备在特定通信等级条件下，能够支持“五通”中的某一业务时，其指控能力等级定义为1，支持多种业务则将其指控能力等级进行累加，指控能力最高为5","type": "remark","row": 9,"col": 2,"rowspan": 1,"colspan": 10,"dataFlag": false}
+		]
+	],
+	"ccEffectProbability": [
+		[
+			{"text": "指控效果概率","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 6,"dataFlag": false}
+		],
+		[
+			{"text": "裁决结果\\指控等级","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "2","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "3","type": "row-header","row": 2,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "4","type": "row-header","row": 2,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "5","type": "row-header","row": 2,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "业务成功通联","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "95","value": 95,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "90","value": 90,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "85","value": 85,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "80","value": 80,"type": "data","row": 3,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "75","value": 75,"type": "data","row": 3,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "业务失败","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "5","value": 5,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "10","value": 10,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "15","value": 15,"type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "20","value": 20,"type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "25","value": 25,"type": "data","row": 4,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "概率（%）","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "95","value": 95,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "90","value": 90,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "85","value": 85,"type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "80","value": 80,"type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "75","value": 75,"type": "data","row": 5,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "模拟指控平台不同业务通情况下通联结果概率","type": "remark","row": 6,"col": 2,"rowspan": 1,"colspan": 5,"dataFlag": false}
+		]
+	],
+	"trainingLevel": [
+		[
+			{"text": "训练水平修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 6,"dataFlag": false}
+		],
+		[
+			{"text": "训练水平\\指控等级","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "2","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "3","type": "row-header","row": 2,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "4","type": "row-header","row": 2,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "5","type": "row-header","row": 2,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "优秀","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "良好","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "中等","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "合格","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 6,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 6,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "不合格","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 7,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 7,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 8,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "本修正是对指控效果概率的修正","type": "remark","row": 8,"col": 2,"rowspan": 1,"colspan": 5,"dataFlag": false}
+		]
+	],
+	"safetyProtectionLevel": [
+		[{"text": "安全防护等级修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 6,"dataFlag": false}],
+		[
+			{"text": "训练水平\\指控等级","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "2","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "3","type": "row-header","row": 2,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "4","type": "row-header","row": 2,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "5","type": "row-header","row": 2,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "优秀","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "良好","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "中等","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "合格","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 6,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 6,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "不合格","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 7,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 7,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 8,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "本修正是对指控效果概率的修正","type": "remark","row": 8,"col": 2,"rowspan": 1,"colspan": 5,"dataFlag": false}
+		]
+	]
+}

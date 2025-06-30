@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "棋子选择",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "xinyi-nav-bar": "/uni_modules/xinyi-nav-bar/components/xinyi-nav-bar/xinyi-nav-bar",
+    "uv-vtabs": "/uni_modules/uv-vtabs/components/uv-vtabs/uv-vtabs",
+    "uv-vtabs-item": "/uni_modules/uv-vtabs/components/uv-vtabs-item/uv-vtabs-item",
+    "uv-image": "/uni_modules/uv-image/components/uv-image/uv-image",
+    "xinyi-data-checkbox": "/uni_modules/xinyi-data-checkbox/components/xinyi-data-checkbox/xinyi-data-checkbox"
+  }
+}

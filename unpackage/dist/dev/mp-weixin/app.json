@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/login/register",
+    "pages/mode/select",
+    "pages/product/list",
+    "pages/product/detail",
+    "pages/chess-pieces/select",
+    "pages/verdict/record",
+    "pages/room/create",
+    "pages/wargame/index",
+    "pages/verdict/detail",
+    "pages/wargame/index-v2",
+    "pages/verdict/detail-v2"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarBackgroundColor": "#215E21",
+    "backgroundColor": "#215E21",
+    "pageOrientation": "landscape",
+    "dynamicRpx": true,
+    "rpxCalcMaxDeviceWidth": 4096
+  },
+  "usingComponents": {
+    "vdr": "/node-modules/vue-draggable-resizable-gorkys/dist/VueDraggableResizable.umd.min"
+  }
+}

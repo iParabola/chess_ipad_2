@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "兵棋详情",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "xinyi-nav-bar": "/uni_modules/xinyi-nav-bar/components/xinyi-nav-bar/xinyi-nav-bar",
+    "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup",
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons"
+  }
+}

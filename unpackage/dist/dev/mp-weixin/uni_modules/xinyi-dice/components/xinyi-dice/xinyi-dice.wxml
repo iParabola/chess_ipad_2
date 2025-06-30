@@ -1,0 +1,1 @@
+<view class="dice-wrap"><block wx:if="{{isDicing}}"><image class="dice-icon" src="{{diceAnimationImages[aniIndex]}}"></image></block><block wx:else><image class="dice-icon" src="{{diceImages[currentPoint]}}"></image></block></view>

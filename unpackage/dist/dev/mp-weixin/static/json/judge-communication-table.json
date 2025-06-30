@@ -1,0 +1,485 @@
+{
+	"baseLevel": [
+		[
+			{"text": "战互网装备有/无线通信等级评价表（标准）","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 24,"dataFlag": false}
+		],
+		[
+			{"text": "距离（公里）","type": "row-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false,"width":"120"}, 
+			{"text": "0.2","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0.4","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0.6","type": "row-header","row": 2,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0.8","type": "row-header","row": 2,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1","type": "row-header","row": 2,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1.2","type": "row-header","row": 2,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1.4","type": "row-header","row": 2,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1.6","type": "row-header","row": 2,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1.8","type": "row-header","row": 2,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "2","type": "row-header","row": 2,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "2.6","type": "row-header","row": 2,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "3","type": "row-header","row": 2,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "4","type": "row-header","row": 2,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","type": "row-header","row": 2,"col": 15,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "6","type": "row-header","row": 2,"col": 16,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "8","type": "row-header","row": 2,"col": 17,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10","type": "row-header","row": 2,"col": 18,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "15","type": "row-header","row": 2,"col": 19,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "20","type": "row-header","row": 2,"col": 20,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "25","type": "row-header","row": 2,"col": 21,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "50","type": "row-header","row": 2,"col": 22,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "100","type": "row-header","row": 2,"col": 23,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "500","type": "row-header","row": 2,"col": 24,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "距离（六角格数）","type": "row-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","type": "row-header","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "2","type": "row-header","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "3","type": "row-header","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "4","type": "row-header","row": 3,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","type": "row-header","row": 3,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "6","type": "row-header","row": 3,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "7","type": "row-header","row": 3,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "8","type": "row-header","row": 3,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "9","type": "row-header","row": 3,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10","type": "row-header","row": 3,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "11-13","type": "row-header","row": 3,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "14-15","type": "row-header","row": 3,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "16-20","type": "row-header","row": 3,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "21-25","type": "row-header","row": 3,"col": 15,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "26-30","type": "row-header","row": 3,"col": 16,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "31-40","type": "row-header","row": 3,"col": 17,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "41-50","type": "row-header","row": 3,"col": 18,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "51-75","type": "row-header","row": 3,"col": 19,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "76-100","type": "row-header","row": 3,"col": 20,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "101-125","type": "row-header","row": 3,"col": 21,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "126-200","type": "row-header","row": 3,"col": 22,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "201-500","type": "row-header","row": 3,"col": 23,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "501-2500","type": "row-header","row": 3,"col": 24,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "开设式指挥信息系统","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 15,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 16,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 17,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 18,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 19,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 20,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 21,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 22,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 23,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 24,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "干线节点车","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 15,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 16,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 17,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 18,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 19,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 20,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 21,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 22,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 23,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 24,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "无综车","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 15,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 16,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 17,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 18,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 19,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 20,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 21,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 22,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 23,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 24,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "2.4米Ka/Ku双频段卫星通信车","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 15,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 16,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 17,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 18,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 19,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 20,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 21,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 22,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 23,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4/8","value": 0.5,"type": "data","row": 7,"col": 24,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "通用指挥车","type": "col-header","row": 8,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 15,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 16,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 17,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 8,"col": 18,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 19,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 20,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 21,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 22,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 23,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 24,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "轻型指挥车","type": "col-header","row": 9,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 15,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 16,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 17,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 9,"col": 18,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 9,"col": 19,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 9,"col": 20,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 9,"col": 21,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 9,"col": 22,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 9,"col": 23,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 9,"col": 24,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "125W短波电台","type": "col-header","row": 10,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 15,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 16,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 17,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.04","value": 0.04,"type": "data","row": 10,"col": 18,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 10,"col": 19,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 10,"col": 20,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 10,"col": 21,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 10,"col": 22,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 10,"col": 23,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 10,"col": 24,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "400W短波电台","type": "col-header","row": 11,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 15,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 16,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 17,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 18,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 19,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 20,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 21,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 22,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 23,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0.002","value": 0.002,"type": "data","row": 11,"col": 24,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 12,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1.干扰等级普通，视距条件下，信噪比为60dB,传输速率为1M/s时，通信力为1\n2.2.4米卫星通信车载站，卫星通信TDMA模式：Ku频段最高4096kbps，Ka频段8192kbps\n3.TBR172B-L等型号双频段电台的通信裁决，可以依据使用短波和超短波的类型来判定\n4.超短波电台一般在12KM以下，可以实现通信\n5.网络双绞线的通信距离一般为100米以内\n6.区域宽带自组网的通信带宽需要实战化数据进行校正","type": "remark","row": 12,"col": 1,"rowspan": 1,"colspan": 23,"dataFlag": false}
+		]
+	],
+	"terrain": [
+		[
+			{"text": "地形修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 3,"dataFlag": false}
+		],
+		[
+			{"text": "地貌特征","type": "row-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "本算子修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "目标算子修正","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "城镇","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-1","value": -1,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "-1","value": -1,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "丛林地","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-1","value": -1,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "-1","value": -1,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "丘陵/山地","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-1","value": -1,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "-2","value": -2,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1.遮蔽点为通信等级修正；其他为随机数修正；\n2.遮蔽点的修正，主要针对微波和超短波通信；\n3.机动、行军与地形修正，主要针对微波和超短波通信\n4.话音、态势、数据、文电四种通信业务，代字分别为HY、TS、SJ、WD; \n5.支持全部通信业务为Q；无法通联，代字为N。","type": "remark","row": 6,"col": 2,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		]
+	],
+	"unitStatus": [
+		[
+			{"text": "状态修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 3,"dataFlag": false}
+		],
+		[
+			{"text": "状态名称","type": "row-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "本算子修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "目标算子修正","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "机动","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-1","value": -1,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "-1","value": -1,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "掩蔽","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "行军","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-1","value": -1,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "-1","value": -1,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "同频段堆叠","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-1","value": -1,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "-1","value": -1,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1.遮蔽点为通信等级修正；其他为随机数修正；\n2.遮蔽点的修正，主要针对微波和超短波通信；\n3.机动、行军与地形修正，主要针对微波和超短波通信\n4.话音、态势、数据、文电四种通信业务，代字分别为HY、TS、SJ、WD; \n5.支持全部通信业务为Q；无法通联，代字为N。","type": "remark","row": 7,"col": 2,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		]
+	],
+	"coverPoint": [
+		[
+			{"text": "遮蔽点数据修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "1","type": "col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-0.1","value": -0.1,"type": "data","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "2","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-0.2","value": -0.2,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "3","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-0.3","value": -0.3,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "4","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-0.5","value": -0.5,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "5及以上","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-0.8","value": -0.8,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1.遮蔽点为通信等级修正；其他为随机数修正；\n2.遮蔽点的修正，主要针对微波和超短波通信；\n3.机动、行军与地形修正，主要针对微波和超短波通信\n4.话音、态势、数据、文电四种通信业务，代字分别为HY、TS、SJ、WD; \n5.支持全部通信业务为Q；无法通联，代字为N。","type": "remark","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		]
+	],
+	"interfereLevel": [
+		[
+			{"text": "干扰等级","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "轻度/中度","type": "col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","value": 0,"type": "data","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "强烈","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "-1","value": -1,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1.遮蔽点为通信等级修正；其他为随机数修正；\n2.遮蔽点的修正，主要针对微波和超短波通信；\n3.机动、行军与地形修正，主要针对微波和超短波通信\n4.话音、态势、数据、文电四种通信业务，代字分别为HY、TS、SJ、WD; \n5.支持全部通信业务为Q；无法通联，代字为N。","type": "remark","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		]
+	],
+	"connectEffect": [
+		[
+			{"text": "通联裁决表","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 6,"dataFlag": false}
+		],
+		[
+			{"text": "随机数\\通信等级","type": "row-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0.002","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0.04","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0.5","type": "row-header","row": 2,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "2","type": "row-header","row": 2,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "8","type": "row-header","row": 2,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "2","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "N","value": "N","type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "N","value": "N","type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "N","value": "N","type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "N","value": "N","type": "data","row": 3,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 3,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "3","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "N","value": "N","type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "N","value": "N","type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 4,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "4","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "HY","value": "HY","type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "HY/SJ","value": "HY/SJ","type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 5,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "5","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "HY","value": "HY","type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "HY/SJ","value": "HY/SJ","type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 6,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 6,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 6,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "6","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "HY","value": "HY","type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "HY/SJ","value": "HY/SJ","type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 7,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 7,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 7,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "7","type": "col-header","row": 8,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "HY","value": "HY","type": "data","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "HY/SJ","value": "HY/SJ","type": "data","row": 8,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 8,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 8,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 8,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "8","type": "col-header","row": 9,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "HY","value": "HY","type": "data","row": 9,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "HY/SJ","value": "HY/SJ","type": "data","row": 9,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 9,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 9,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 9,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "9","type": "col-header","row": 10,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "HY","value": "HY","type": "data","row": 10,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "HY/SJ","value": "HY/SJ","type": "data","row": 10,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 10,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 10,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 10,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "10","type": "col-header","row": 11,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "HY","value": "HY","type": "data","row": 11,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "HY/SJ","value": "HY/SJ","type": "data","row": 11,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 11,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 11,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 11,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "11","type": "col-header","row": 12,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "N","value": "N","type": "data","row": 12,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "N","value": "N","type": "data","row": 12,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 12,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 12,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 12,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "12","type": "col-header","row": 13,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "N","value": "N","type": "data","row": 13,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "N","value": "N","type": "data","row": 13,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 13,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 13,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "Q","value": "Q","type": "data","row": 13,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 14,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1.话音、态势、数据、文电四种通信业务，代字分别为HY、TS、SJ、WD\n2.支持全部通信业务为Q；无法通联，代字为N","type": "remark","row": 14,"col": 2,"rowspan": 1,"colspan": 5,"dataFlag": false}
+		]
+	]
+}

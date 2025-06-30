@@ -1,0 +1,20 @@
+{
+	"name": "new-wargame-uniapp",
+	"version": "1.0.0",
+	"description": "兵棋客户端",
+	"main": "main.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "xinyi",
+	"license": "ISC",
+	"dependencies": {
+		"bignumber.js": "^9.1.2",
+		"js-astar": "0.0.2",
+		"luch-request": "^3.1.1",
+		"ol": "^9.0.0",
+		"ol-ext": "^4.0.16",
+		"ol-games": "^2.0.0",
+		"vue-draggable-resizable-gorkys": "^2.4.8"
+	}
+}

@@ -1,0 +1,114 @@
+.uni-popup {
+	z-index: 1080;
+}
+.table--border {
+	border: #000000 1px solid;
+}
+.uni-table-td {
+	padding: 4px;
+}
+input {
+	border: #b3b3b3 1px solid;
+}
+/deep/.uni-input-input {
+	text-align: center;
+}
+.row-header {
+	background-color: #fdf0ca;
+	color: #000000;
+	text-align: center;
+}
+.col-header {
+	background-color: #bdebee;
+	color: #000000;
+	text-align: center;
+}
+.row-col-header {
+	background-color: #fdf0ca;
+	color: #000000;
+	text-align: center;
+}
+.data {
+	background-color: #ffffff;
+	color: #000000;
+	text-align: center;
+	min-width: 50px;
+}
+.title {
+	background-color: #ffffff;
+	color: #000000;
+	text-align: center;
+}
+.remark {
+	white-space: pre-wrap;
+}
+.random {
+	background-color: #ffffff;
+	color: #000000;
+	font-size: 28px;
+	text-align: center;
+}
+/deep/.uni-select__selector-scroll {
+	height: 70px !important;
+}
+/deep/.uni-select__input-box {
+	max-width: 150px;
+}
+
+.color-light-pink {
+	background-color: #fce4d6;
+	color: #000000;
+	text-align: center;
+}
+.color-light-yellow {
+	background-color: #fdf0ca;
+	color: #000000;
+	text-align: center;
+}
+.color-light-blue {
+	background-color: #d9fff2;
+	color: #000000;
+	text-align: center;
+}
+.color-light-blue-2 {
+	background-color: #bdebee;
+	color: #000000;
+	text-align: center;
+}
+.color-light-green {
+	background-color: #e2efda;
+	color: #000000;
+	text-align: center;
+}
+
+.color-red {
+	background-color: #f56c6c;
+	color: #000000;
+	text-align: center;
+}
+
+.color-blue {
+	background-color: #409eff;
+	color: #000000;
+	text-align: center;
+}
+
+.color-orange {
+	background-color: #ffe9cf;
+	color: #000000;
+	text-align: center;
+	min-width: 60px;
+}
+
+.color-white {
+	background-color: #ffffff;
+	color: #000000;
+	text-align: center;
+	min-width: 60px;
+}
+
+.color-gray {
+	background-color: #b3b3b3;
+	color: #000000;
+	text-align: center;
+}

@@ -1,0 +1,149 @@
+{
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "登录",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/login/register",
+      "style": {
+        "navigationBarTitleText": "注册",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/mode/select",
+      "style": {
+        "navigationBarTitleText": "模式选择",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/product/list",
+      "style": {
+        "navigationBarTitleText": "兵棋列表",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/product/detail",
+      "style": {
+        "navigationBarTitleText": "兵棋详情",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/chess-pieces/select",
+      "style": {
+        "navigationBarTitleText": "棋子选择",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/chess-pieces/scenario",
+      "style": {
+        "navigationBarTitleText": "想定创建",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/chess-pieces/scenarioEdit",
+      "style": {
+        "navigationBarTitleText": "想定创建修改",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/verdict/record",
+      "style": {
+        "navigationBarTitleText": "裁决记录",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/room/create",
+      "style": {
+        "navigationBarTitleText": "创建房间",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/wargame/index",
+      "style": {
+        "navigationBarTitleText": "兵棋对战",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/verdict/detail",
+      "style": {
+        "navigationBarTitleText": "裁决详情",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/wargame/index-v2",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/verdict/detail-v2",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/verdict/list",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+
+    {
+      "path": "pages/tables/index_v2",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+
+    {
+      "path": "pages/tables/index",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/mode/join",
+      "style": {
+        "navigationBarTitleText": "立即推演",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/wargame/ScenarioGame",
+      "style": {
+        "navigationBarTitleText": "想定编辑",
+        "enablePullDownRefresh": false
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationStyle": "custom",
+    "navigationBarBackgroundColor": "#215E21",
+    "backgroundColor": "#215E21",
+    "pageOrientation": "landscape",
+    "dynamicRpx": true,
+    "rpxCalcMaxDeviceWidth": 4096
+  },
+  "uniIdRouter": {}
+}

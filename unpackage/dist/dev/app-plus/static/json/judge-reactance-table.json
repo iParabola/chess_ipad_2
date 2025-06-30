@@ -1,0 +1,388 @@
+{
+	"unitStatus": [
+		[
+			{"text": "单位状态修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "单位损伤状态","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "干扰等级修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "单位完好","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "单位受损（轻度）","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-1","value": -1,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "单位受损（中度）","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-2","value": -2,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "单位受损（重度）","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-3","value": -3,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+	],
+	"targetAction": [
+		[
+			{"text": "目标行动修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "行动类型","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "干扰等级修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "机动","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "2","value": 2,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "火力打击","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "近战攻击","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "3","value": 3,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "开路/破坏","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","value": 1,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "救护","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","value": 1,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "通信缄默","type": "col-header","row": 8,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-10","value": -10,"type": "data","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "电子干扰","type": "col-header","row": 9,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "2","value": 2,"type": "data","row": 9,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "心理干扰","type": "col-header","row": 10,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","value": 1,"type": "data","row": 10,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "支援","type": "col-header","row": 11,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","value": 1,"type": "data","row": 11,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "其他","type": "col-header","row": 12,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 12,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+		
+	],
+	"range": [
+		[
+			{"text": "作用范围修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "角度缩小比例","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "干扰等级修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "＜50%","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "3","value": 3,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "50%-75%","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "2","value": 2,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "＞70%","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","value": 1,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+		
+	],
+	"style": [
+		[
+			{"text": "抗干扰样式修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "干扰样式","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "干扰等级修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "跳频协同智能级","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-3","value": -3,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "人机协作智能级","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-1","value": -1,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "群体协同智能级","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-2","value": -2,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "多任务自主智能级","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-4","value": -4,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "通用智能级","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-4","value": -4,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "其他","type": "col-header","row": 8,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "扩频协同智能级","type": "col-header","row": 9,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-3","value": -3,"type": "data","row": 9,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "自学习体系协同智能级","type": "col-header","row": 10,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-3","value": -3,"type": "data","row": 10,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+		
+	],
+	"weather": [
+		[
+			{"text": "气象修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "装备代数","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "干扰等级修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "一般","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "小雨","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-1","value": -1,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "小雨/小雪/雾","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-2","value": -2,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "大雨/中雪","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-3","value": -3,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "大雪","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-4","value": -4,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+		
+	],
+	"train": [
+		[
+			{"text": "训练水平修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "训练水平","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "干扰等级修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "优秀","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "良好","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-1","value": -1,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "合格","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-2","value": -2,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+		
+	],
+	"terrain": [
+		[
+			{"text": "地物修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "地形","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "干扰等级修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "平坦","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "树林","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-1","value": -1,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "山地","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-2","value": -2,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "城镇","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-3","value": -3,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+		
+	],
+	"distance": [
+		[
+			{"text": "干扰距离修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 11,"dataFlag": false}
+		],
+		[
+			{"text": "最大干扰距离%","type": "row-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "10","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "20","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "30","type": "row-header","row": 2,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "40","type": "row-header","row": 2,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "50","type": "row-header","row": 2,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "60","type": "row-header","row": 2,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "70","type": "row-header","row": 2,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "80","type": "row-header","row": 2,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "90","type": "row-header","row": 2,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "100","type": "row-header","row": 2,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "5代","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "10+","value": 11,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "10+","value": 11,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "9+","value": 10,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "9+","value": 10,"type": "data","row": 3,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8+","value": 9,"type": "data","row": 3,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8+","value": 9,"type": "data","row": 3,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "7+","value": 8,"type": "data","row": 3,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "7+","value": 8,"type": "data","row": 3,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "6+","value": 7,"type": "data","row": 3,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "6+","value": 7,"type": "data","row": 3,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true} 
+		],
+		[
+			{"text": "4代","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "10","value": 10,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "10","value": 10,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "9","value": 9,"type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "9","value": 9,"type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 4,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "7","value": 7,"type": "data","row": 4,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "7","value": 7,"type": "data","row": 4,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "6","value": 6,"type": "data","row": 4,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "6","value": 6,"type": "data","row": 4,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true} 
+		],
+		[
+			{"text": "3代","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "9","value": 9,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "9","value": 9,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "8","value": 8,"type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "7","value": 7,"type": "data","row": 5,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "7","value": 7,"type": "data","row": 5,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "6","value": 6,"type": "data","row": 5,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "6","value": 6,"type": "data","row": 5,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "5","value": 5,"type": "data","row": 5,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "5","value": 5,"type": "data","row": 5,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true} 
+		],
+		[
+			{"text": "2代","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "6","value": 6,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "6","value": 6,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "5","value": 5,"type": "data","row": 6,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "5","value": 5,"type": "data","row": 6,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4","value": 4,"type": "data","row": 6,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4","value": 4,"type": "data","row": 6,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 6,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 6,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true} 
+		],
+		[
+			{"text": "1代","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "4","value": 4,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4","value": 4,"type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 7,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 7,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 7,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 7,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 7,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 7,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true} 
+		]
+		
+	],
+	"finalLevel": [
+		[
+			{"text": "干扰裁决表","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 14,"dataFlag": false}
+		],
+		[
+			{"text": "裁决结果\\干扰等级","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0-","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "2","type": "row-header","row": 2,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "3","type": "row-header","row": 2,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "4","type": "row-header","row": 2,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","type": "row-header","row": 2,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "6","type": "row-header","row": 2,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "7","type": "row-header","row": 2,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "8","type": "row-header","row": 2,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "9","type": "row-header","row": 2,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10","type": "row-header","row": 2,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "11","type": "row-header","row": 2,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "12+","type": "row-header","row": 2,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "严重","value": "严重","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","value": 5,"type": "data","row": 3,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10","value": 10,"type": "data","row": 3,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "15","value": 15,"type": "data","row": 3,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "20","value": 20,"type": "data","row": 3,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "40","value": 40,"type": "data","row": 3,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "50","value": 50,"type": "data","row": 3,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "60","value": 60,"type": "data","row": 3,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "70","value": 70,"type": "data","row": 3,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false} 
+		],
+		[
+			{"text": "中度","value": "中度","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "3","value": 3,"type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","value": 5,"type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10","value": 10,"type": "data","row": 4,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "15","value": 15,"type": "data","row": 4,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "20","value": 20,"type": "data","row": 4,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "25","value": 25,"type": "data","row": 4,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "30","value": 30,"type": "data","row": 4,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "50","value": 50,"type": "data","row": 4,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false} ,
+			{"text": "45","value": 45,"type": "data","row": 4,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false} ,
+			{"text": "35","value": 35,"type": "data","row": 4,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false} ,
+			{"text": "25","value": 25,"type": "data","row": 4,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false} 
+		],
+		[
+			{"text": "轻微","value": "轻微","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "2","value": 2,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","value": 5,"type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "45","value": 45,"type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "55","value": 55,"type": "data","row": 5,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "60","value": 60,"type": "data","row": 5,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "55","value": 55,"type": "data","row": 5,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "55","value": 55,"type": "data","row": 5,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "50","value": 50,"type": "data","row": 5,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10","value": 10,"type": "data","row": 5,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false} ,
+			{"text": "5","value": 5,"type": "data","row": 5,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false} ,
+			{"text": "5","value": 5,"type": "data","row": 5,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false} ,
+			{"text": "5","value": 5,"type": "data","row": 5,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false} 
+		],
+		[
+			{"text": "无效","value": "无效","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "100","value": 100,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "98","value": 98,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "92","value": 92,"type": "data","row": 6,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "50","value": 50,"type": "data","row": 6,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "35","value": 35,"type": "data","row": 6,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "20","value": 20,"type": "data","row": 6,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "15","value": 15,"type": "data","row": 6,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","value": 5,"type": "data","row": 6,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false} ,
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false} ,
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false} ,
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false} 
+		]
+	]
+}

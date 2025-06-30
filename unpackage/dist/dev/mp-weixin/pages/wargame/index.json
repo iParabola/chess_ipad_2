@@ -1,0 +1,26 @@
+{
+  "navigationBarTitleText": "兵棋对战",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "uv-text": "/uni_modules/uv-text/components/uv-text/uv-text",
+    "uv-modal": "/uni_modules/uv-modal/components/uv-modal/uv-modal",
+    "uv-image": "/uni_modules/uv-image/components/uv-image/uv-image",
+    "xinyi-steps": "/uni_modules/xinyi-steps/components/xinyi-steps/xinyi-steps",
+    "uv-avatar": "/uni_modules/uv-avatar/components/uv-avatar/uv-avatar",
+    "uni-drawer": "/uni_modules/uni-drawer/components/uni-drawer/uni-drawer",
+    "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+    "uni-table": "/uni_modules/uni-table/components/uni-table/uni-table",
+    "uni-tr": "/uni_modules/uni-table/components/uni-tr/uni-tr",
+    "uni-td": "/uni_modules/uni-table/components/uni-td/uni-td",
+    "final-summary": "/uni_modules/final-summary/components/final-summary/final-summary",
+    "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup",
+    "xinyi-dice": "/uni_modules/xinyi-dice/components/xinyi-dice/xinyi-dice",
+    "rule-table": "/uni_modules/rule-table/components/rule-table/rule-table",
+    "blow-effect-table": "/uni_modules/blow-effect-table/components/blow-effect-table/blow-effect-table",
+    "rule-result": "/uni_modules/rule-result/components/rule-result/rule-result",
+    "score-table": "/uni_modules/score-table/components/score-table/score-table",
+    "score-table-final": "/uni_modules/score-table-final/components/score-table-final/score-table-final",
+    "judge-table": "/uni_modules/judge-table/components/judge-table/judge-table",
+    "vue-draggable-resizable": "/node-modules/vue-draggable-resizable-gorkys/dist/VueDraggableResizable.umd.min"
+  }
+}

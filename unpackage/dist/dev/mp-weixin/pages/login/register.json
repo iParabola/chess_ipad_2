@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "注册",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "xinyi-nav-bar": "/uni_modules/xinyi-nav-bar/components/xinyi-nav-bar/xinyi-nav-bar",
+    "uni-forms": "/uni_modules/uni-forms/components/uni-forms/uni-forms",
+    "uni-forms-item": "/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item",
+    "uni-easyinput": "/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput"
+  }
+}

@@ -1,0 +1,37 @@
+{
+	"terrain": [
+		[{"text": "地形道路修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}],
+		[
+			{"text": "地貌特征","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "消耗机动值修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "平坦地/城镇","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "树林","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "道路","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-0.5","value": -0.5,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "铁路","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "-0.75","value": -0.75,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "桥梁","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "河流","type": "col-header","row": 8,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","value": 1,"type": "data","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 9,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "轮式、履带式无法通过所有树林地形，只能走道路、公路等。","type": "remark","row": 9,"col": 2,"rowspan": 1,"colspan": 10,"dataFlag": false}
+		]
+	]
+}

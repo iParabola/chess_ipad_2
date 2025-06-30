@@ -1,0 +1,1 @@
+# judge-fire-attack-table

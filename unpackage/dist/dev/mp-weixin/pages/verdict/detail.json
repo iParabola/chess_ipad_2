@@ -1,0 +1,20 @@
+{
+  "navigationBarTitleText": "裁决详情",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "uv-modal": "/uni_modules/uv-modal/components/uv-modal/uv-modal",
+    "xinyi-steps": "/uni_modules/xinyi-steps/components/xinyi-steps/xinyi-steps",
+    "uni-drawer": "/uni_modules/uni-drawer/components/uni-drawer/uni-drawer",
+    "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+    "uni-table": "/uni_modules/uni-table/components/uni-table/uni-table",
+    "uni-tr": "/uni_modules/uni-table/components/uni-tr/uni-tr",
+    "uni-td": "/uni_modules/uni-table/components/uni-td/uni-td",
+    "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup",
+    "xinyi-dice": "/uni_modules/xinyi-dice/components/xinyi-dice/xinyi-dice",
+    "rule-table": "/uni_modules/rule-table/components/rule-table/rule-table",
+    "blow-effect-table": "/uni_modules/blow-effect-table/components/blow-effect-table/blow-effect-table",
+    "rule-result": "/uni_modules/rule-result/components/rule-result/rule-result",
+    "final-summary": "/uni_modules/final-summary/components/final-summary/final-summary",
+    "vue-draggable-resizable": "/node-modules/vue-draggable-resizable-gorkys/dist/VueDraggableResizable.umd.min"
+  }
+}

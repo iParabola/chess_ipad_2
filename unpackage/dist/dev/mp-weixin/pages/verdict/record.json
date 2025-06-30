@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "裁决记录",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "xinyi-nav-bar": "/uni_modules/xinyi-nav-bar/components/xinyi-nav-bar/xinyi-nav-bar",
+    "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+    "uni-pagination": "/uni_modules/uni-pagination/components/uni-pagination/uni-pagination"
+  }
+}

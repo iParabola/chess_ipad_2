@@ -1,0 +1,255 @@
+{
+	"unitStatus": [
+		[
+			{"text": "单位状态对侦察影响修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 3,"dataFlag": false}
+		],
+		[
+			{"text": "状态名称","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "侦察单位状态修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "目标单位状态修正","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "压制","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1.2","value": 1.2,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "受击","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1.1","value": 1.1,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "集火","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1.3","value": 1.3,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "轻损","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1.2","value": 1.2,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "中损","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1.5","value": 1.5,"type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "重损","type": "col-header","row": 8,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.1","value": 0.1,"type": "data","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×2","value": 2,"type": "data","row": 8,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "正常","type": "col-header","row": 9,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×1","value": 1,"type": "data","row": 9,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1","value": 1,"type": "data","row": 9,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+	],
+	"terrain": [
+		[
+			{"text": "目标单位地形修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "地貌特征","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "修正系数","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "平坦地/城镇","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "树林","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.85","value": 0.85,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+	],
+	"weather": [
+		[
+			{"text": "气象对侦察等级影响修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "气象特征","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "修正系数","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "晴/阴/轻雾","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "小雨/小雪/浓雾","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "中雨/中雪/霾","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "大雨/大雪/重霾","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "暴雨/暴雪","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.6","value": 0.6,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+	],
+	"distance": [
+		[
+			{"text": "侦察距离对侦察等级影响修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 11,"dataFlag": false}
+		],
+		[
+			{"text": "侦察距离（%）","type": "row-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "10","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "20","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "30","type": "row-header","row": 2,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "40","type": "row-header","row": 2,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "50","type": "row-header","row": 2,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "60","type": "row-header","row": 2,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "70","type": "row-header","row": 2,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "80","type": "row-header","row": 2,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "90","type": "row-header","row": 2,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "100","type": "row-header","row": 2,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "等级修正","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×1.2","value": 1.2,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1.1","value": 1.1,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.9","value": 0.9,"type": "data","row": 3,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.8","value": 0.8,"type": "data","row": 3,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.7","value": 0.7,"type": "data","row": 3,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.6","value": 0.6,"type": "data","row": 3,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+	],
+	"action": [
+		[{"text": "目标单位行动对侦察等级影响修正","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 3,"dataFlag": false}],
+		[
+			{"text": "基本类型","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "具体类型","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "等级修正","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "机动","type": "row-col-header","row": 3,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "陆上机动","type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1.3","value": 1.3,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "空中机动","type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1.1","value": 1.1,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "攻击","type": "row-col-header","row": 5,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "发起攻击","type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1.3","value": 1.3,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "近战攻击","type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1.3","value": 1.3,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "侦察/干扰","type": "row-col-header","row": 7,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "地面侦察/干扰","type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1","value": 1,"type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "空中侦察/干扰","type": "data","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1.1","value": 1.1,"type": "data","row": 8,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "通信/静止","type": "row-col-header","row": 9,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "通信缄默/隐蔽","type": "data","row": 9,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×0.9","value": 0.9,"type": "data","row": 9,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "通信开启/无掩体","type": "data","row": 10,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1","value": 1,"type": "data","row": 10,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+	],
+	"depthLevel": [
+		[{"text": "侦察发现裁决表","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 14,"dataFlag": false}],
+		[
+			{"text": "裁决结果\\侦察能力","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "0","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "2","type": "row-header","row": 2,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "3","type": "row-header","row": 2,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "4","type": "row-header","row": 2,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","type": "row-header","row": 2,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "6","type": "row-header","row": 2,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "7","type": "row-header","row": 2,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "8","type": "row-header","row": 2,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "9","type": "row-header","row": 2,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10","type": "row-header","row": 2,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "11","type": "row-header","row": 2,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "12+","type": "row-header","row": 2,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "未发现","value": "未发现","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "99","type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "95","type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "90","type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "80","type": "data","row": 3,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "50","type": "data","row": 3,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "30","type": "data","row": 3,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "20","type": "data","row": 3,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10","type": "data","row": 3,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","type": "data","row": 3,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "2","type": "data","row": 3,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1","type": "data","row": 3,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","type": "data","row": 3,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","type": "data","row": 3,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "1级情报深度","value": "1级情报深度","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "1","type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10","type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "19","type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "46","type": "data","row": 4,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "64","type": "data","row": 4,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "67","type": "data","row": 4,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "65","type": "data","row": 4,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "72","type": "data","row": 4,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "63","type": "data","row": 4,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "29","type": "data","row": 4,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "8","type": "data","row": 4,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","type": "data","row": 4,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "2级情报深度","value": "2级情报深度","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1","type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "4","type": "data","row": 5,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","type": "data","row": 5,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10","type": "data","row": 5,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "20","type": "data","row": 5,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "13","type": "data","row": 5,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "15","type": "data","row": 5,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "40","type": "data","row": 5,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "42","type": "data","row": 5,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "15","type": "data","row": 5,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "3级情报深度","value": "3级情报深度","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": true}, 
+			{"text": "0","type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","type": "data","row": 6,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","type": "data","row": 6,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "0","type": "data","row": 6,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "1","type": "data","row": 6,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "3","type": "data","row": 6,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "5","type": "data","row": 6,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "10","type": "data","row": 6,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "20","type": "data","row": 6,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "30","type": "data","row": 6,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "50","type": "data","row": 6,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "80","type": "data","row": 6,"col": 14,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "以侦察能力5为例，骰子数为0-30则未发现；30-94为1级；94-99为2级；99-100为3级","type": "remark","row": 7,"col": 2,"rowspan": 1,"colspan": 13,"dataFlag": false}
+		]
+	]
+}

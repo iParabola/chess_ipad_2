@@ -1,0 +1,441 @@
+{
+	"hitRate": [
+		[
+			{"text": "打击命中率","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 13,"dataFlag": false}
+		],
+		[
+			{"text": "射击距离/最大射程","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}, 
+			{"text": "0-10%","type": "row-header","row": 2,"col": 3,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "10%","type": "row-header","row": 2,"col": 4,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "20%","type": "row-header","row": 2,"col": 5,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "30%","type": "row-header","row": 2,"col": 6,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "40%","type": "row-header","row": 2,"col": 7,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "50%","type": "row-header","row": 2,"col": 8,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "60%","type": "row-header","row": 2,"col": 9,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "70%","type": "row-header","row": 2,"col": 10,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "80%","type": "row-header","row": 2,"col": 11,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "90%","type": "row-header","row": 2,"col": 12,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "100%","type": "row-header","row": 2,"col": 13,"rowspan": 2,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "系统火控","type": "row-col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 2,"dataFlag": false}
+		],
+		[
+			{"text": "反坦克导弹","type": "col-header","row": 4,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "4代火控","type": "col-header","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "100","value": 100,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value":100,"type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 4,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 4,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 4,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 4,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 4,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 4,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 4,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 4,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "3代火控","type": "col-header","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "100","value": 100,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value":100,"type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 5,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 5,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 5,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 5,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 5,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 5,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 5,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 5,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "火箭炮","type": "col-header","row": 6,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "4代火控","type": "col-header","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "100","value": 100,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value":100,"type": "data","row": 6,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 6,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 6,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 6,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 6,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 6,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 6,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "80","value": 80,"type": "data","row": 6,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "80","value": 80,"type": "data","row": 6,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "70","value": 70,"type": "data","row": 6,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "3代火控","type": "col-header","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "90","value": 90,"type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value":90,"type": "data","row": 7,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 7,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 7,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 7,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 7,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "80","value": 80,"type": "data","row": 7,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "80","value": 80,"type": "data","row": 7,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "70","value": 70,"type": "data","row": 7,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "70","value": 70,"type": "data","row": 7,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "60","value": 60,"type": "data","row": 7,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "榴弹炮","type": "col-header","row": 8,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "4代火控","type": "col-header","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "100","value": 100,"type": "data","row": 8,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value":100,"type": "data","row": 8,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 8,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 8,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 8,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "100","value": 100,"type": "data","row": 8,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 8,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 8,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "80","value": 80,"type": "data","row": 8,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "80","value": 80,"type": "data","row": 8,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "70","value": 70,"type": "data","row": 8,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "3代火控","type": "col-header","row": 9,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "95","value": 95,"type": "data","row": 9,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "95","value":95,"type": "data","row": 9,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "95","value": 95,"type": "data","row": 9,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "95","value": 95,"type": "data","row": 9,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 9,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "90","value": 90,"type": "data","row": 9,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "80","value": 80,"type": "data","row": 9,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "80","value": 80,"type": "data","row": 9,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "70","value": 70,"type": "data","row": 9,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "70","value": 70,"type": "data","row": 9,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "60","value": 60,"type": "data","row": 9,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+	],
+	"unitStatus": [
+		[{"text": "单位状态命中修正表","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 3,"dataFlag": false}],
+		[
+			{"text": "状态名称","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "打击单位状态修正","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "目标单位状态修正","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "压制","type": "col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1.2","value": 1.2,"type": "data","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "受击","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1.1","value": 1.1,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "集火","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.7","value": 0.7,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1.3","value": 1.3,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "轻损","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1.2","value": 1.2,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "中损","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.5","value": 0.5,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1.5","value": 1.5,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "重损","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.1","value": 0.1,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×2","value": 2,"type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "正常","type": "col-header","row": 8,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×1","value": 1,"type": "data","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×1","value": 1,"type": "data","row": 8,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+	],
+	"moveLevel": [
+		[{"text": "射击目标行动修正表","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 3,"dataFlag": false}],
+		[
+			{"text": "基本类型","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "具体类型","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "等级修正","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "机动","type": "row-col-header","row": 3,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "陆上机动","type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×0.7","value": 0.7,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "空中机动","type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×0.9","value": 0.9,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "攻击","type": "row-col-header","row": 5,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "发起攻击","type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1.3","value": 1.3,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "近战攻击","type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1.3","value": 1.3,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "侦察/干扰","type": "row-col-header","row": 7,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "地面侦察/干扰","type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1","value": 1,"type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "空中侦察/干扰","type": "data","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1.1","value": 1.1,"type": "data","row": 8,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "通信/静止","type": "row-col-header","row": 9,"col": 1,"rowspan": 2,"colspan": 1,"dataFlag": false}, 
+			{"text": "通信缄默/隐蔽","type": "data","row": 9,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1","value": 1,"type": "data","row": 9,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "通信开启/无掩体","type": "data","row": 10,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "×1","value": 1,"type": "data","row": 10,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+	],
+	"terrain": [
+		[{"text": "地形修正表","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 5,"dataFlag": false}],
+		[
+			{"text": "射击单位地形\\目标单位地形","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "平坦地/城镇（100米以下）","type": "row-header","row": 2,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "丘陵/树林（100米至180米）","type": "row-header","row": 2,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "高山阴坡/树林（180米至260米）","type": "row-header","row": 2,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": false},
+			{"text": "高山荒漠/树林（260米以上）","type": "row-header","row": 2,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "平坦地/城镇（100米以下）","type": "col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×1","value": 1,"type": "data","row": 3,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.85","value": 0.85,"type": "data","row": 3,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.9","value": 0.9,"type": "data","row": 3,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.95","value": 0.95,"type": "data","row": 3,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "丘陵/树林（100米至180米）","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.85","value": 0.85,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.7","value": 0.7,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.75","value": 0.75,"type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.7","value": 0.7,"type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "高山阴坡/树林（180米至260米）","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.9","value": 0.9,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.75","value": 0.75,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.8","value": 0.8,"type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.85","value": 0.85,"type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "高山荒漠/树林（260米以上）","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "×0.95","value": 0.95,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.7","value": 0.7,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.85","value": 0.85,"type": "data","row": 6,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "×0.85","value": 0.85,"type": "data","row": 6,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		]
+	],
+	"damageEffect": [
+		[{"text": "生命值毁伤效果裁决表","type": "title","row": 1,"col": 1,"rowspan": 1,"colspan": 13,"dataFlag": false}],
+		[
+			{"text": "目标防御值","type": "row-col-header","row": 2,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","type": "row-header","row": 2,"col": 2,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "2","type": "row-header","row": 2,"col": 3,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "3","type": "row-header","row": 2,"col": 4,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "4","type": "row-header","row": 2,"col": 5,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "5","type": "row-header","row": 2,"col": 6,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "6","type": "row-header","row": 2,"col": 7,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "7","type": "row-header","row": 2,"col": 8,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "8","type": "row-header","row": 2,"col": 9,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "9","type": "row-header","row": 2,"col": 10,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "10","type": "row-header","row": 2,"col": 11,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "11","type": "row-header","row": 2,"col": 12,"rowspan": 2,"colspan": 1,"dataFlag": false},
+			{"text": "12+","type": "row-header","row": 2,"col": 13,"rowspan": 2,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "单位攻击力","type": "row-col-header","row": 3,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}
+		],
+		[
+			{"text": "1","type": "col-header","row": 4,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","value": 1,"type": "data","row": 4,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 4,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "2","type": "col-header","row": 5,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1","value": 1,"type": "data","row": 5,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 5,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 5,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "3","type": "col-header","row": 6,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "2","value": 2,"type": "data","row": 6,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 6,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 6,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 6,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "4","type": "col-header","row": 7,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "2","value": 2,"type": "data","row": 7,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 7,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 7,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 7,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 7,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "5","type": "col-header","row": 8,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "3","value": 3,"type": "data","row": 8,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 8,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 8,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 8,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 8,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 8,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "6","type": "col-header","row": 9,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "3","value": 3,"type": "data","row": 9,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 9,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 9,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 9,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 9,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 9,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 9,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 9,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 9,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 9,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 9,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 9,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "7","type": "col-header","row": 10,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "3","value": 3,"type": "data","row": 10,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 10,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 10,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 10,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 10,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 10,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 10,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 10,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 10,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 10,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 10,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 10,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "8","type": "col-header","row": 11,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "4","value": 4,"type": "data","row": 11,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 11,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 11,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 11,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 11,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 11,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 11,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 11,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 11,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 11,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 11,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "0","value": 0,"type": "data","row": 11,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "9","type": "col-header","row": 12,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "4","value": 4,"type": "data","row": 12,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 12,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 12,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 12,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 12,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 12,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 12,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 12,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 12,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 12,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 12,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 12,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "10","type": "col-header","row": 13,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "4","value": 4,"type": "data","row": 13,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4","value": 4,"type": "data","row": 13,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 13,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 13,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 13,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 13,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 13,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 13,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 13,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 13,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 13,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 13,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "11","type": "col-header","row": 14,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "4","value": 4,"type": "data","row": 14,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4","value": 4,"type": "data","row": 14,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4","value": 4,"type": "data","row": 14,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 14,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 14,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 14,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 14,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 14,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 14,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 14,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 14,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "1","value": 1,"type": "data","row": 14,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "12+","type": "col-header","row": 15,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "4","value": 4,"type": "data","row": 15,"col": 2,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4","value": 4,"type": "data","row": 15,"col": 3,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4","value": 4,"type": "data","row": 15,"col": 4,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "4","value": 4,"type": "data","row": 15,"col": 5,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 15,"col": 6,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 15,"col": 7,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "3","value": 3,"type": "data","row": 15,"col": 8,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 15,"col": 9,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 15,"col": 10,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 15,"col": 11,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 15,"col": 12,"rowspan": 1,"colspan": 1,"dataFlag": true},
+			{"text": "2","value": 2,"type": "data","row": 15,"col": 13,"rowspan": 1,"colspan": 1,"dataFlag": true}
+		],
+		[
+			{"text": "备注：","type": "remark","row": 16,"col": 1,"rowspan": 1,"colspan": 1,"dataFlag": false}, 
+			{"text": "1.“生命值-毁伤效果”为棋子“当前生命值”，“当前生命值/初始生命值”0~50%为轻损，当前生命值/初始生命值51~75%为中损，当前生命值/初始生命值76~100%为重损\n2.对防御力值为1或12+、攻击力值为1或12+，不进行骰子修正","type": "remark","row": 16,"col": 2,"rowspan": 2,"colspan": 12,"dataFlag": false}
+		]
+	]
+}
