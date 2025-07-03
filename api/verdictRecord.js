@@ -272,7 +272,13 @@ export const saveRoundCover = (data) => {
         data: data
     });
 }
-
+export const saveTextInstruction = (data) => {
+    return http.request({
+        url: 'armory/saveTextInstruction',
+        method: 'POST',
+        data: data
+    });
+}
 export const getHistoryTreeByRound = (data) => {
     return http.request({
         url: 'armory/getHistoryTreeByRound',

@@ -213,6 +213,10 @@
                         @delete="deletePic"
                         :customStyle="uploadCustomStyle"
                     ></uv-upload>
+                    <view class="save-ins">
+                      <input type="text" placeholder="请输入指令" v-model="instructionText" />
+<!--                      <button @click="submitInstruct">保存指令</button>-->
+                    </view>
                   </td>
                 </tr>
               </table>
@@ -417,6 +421,7 @@
                         <td v-if="eindex === 0" :rowspan="item.historyVoList.length" align="center"
                             style="width: 10% ; background-color: transparent ;color: white">
                           <uv-image @click="imageClick(item.coverUrl)" :src="item.coverUrl"></uv-image>
+                          <div style="color: white; font-size: 30px; word-break: break-all; text-align: center; line-height: 1.2; max-width: 80px;">{{ item.textIns }}</div>
                         </td>
                         <td align="center" style="color: white ;width: 10%">{{ eitem.chessPiecesNumber }}</td>
                         <td align="center" style="color: white ;width: 24%">{{ eitem.actionDesc }}</td>
@@ -740,7 +745,7 @@
 
 <script>
 import {baseURL, getUserTokenStorage} from '@/api/http.js';
-import {saveRoundCover, getHistoryTreeByRound, confirmJudge} from '@/api/verdictRecord.js';
+import {saveRoundCover, getHistoryTreeByRound, confirmJudge,saveTextInstruction} from '@/api/verdictRecord.js';
 
 export default {
   name: 'judge-table',
@@ -755,7 +760,8 @@ export default {
           roundPeriod: 0,
           roundPeriodName: '',
           verdictRecordId: undefined,
-          campId: undefined
+          campId: undefined,
+          textIns: '',
         };
       }
     },
@@ -797,7 +803,7 @@ export default {
       eindex: -1,
       judge_result: '',
       judge_score: '',
-
+      instructionText: '',
       toastMessage: '',
       showToast: false,
     };
@@ -938,9 +944,9 @@ export default {
     async getRoundTree(item) {
       let res = await getHistoryTreeByRound(item);
       let resArray = res.data.data;
-
+      // resArray = resArray.filter((item) => item.historyVoList.length > 0);
       resArray = resArray.filter((item) => {
-        item.historyVoList = item.historyVoList.filter((eitem) => eitem.actionDesc);
+        item.historyVoList = item.historyVoList.filter((item) => item.actionDesc);
         return item.historyVoList.length > 0;
       });
       if (resArray.length === 0) {
@@ -1041,16 +1047,57 @@ export default {
       });
     },
     async submitInstruct() {
-      if (this.fileList.length === 0) {
+      // 检查是否同时没有图片和文本
+      if ((!this.instructionText || !this.instructionText.trim()) && this.fileList.length === 0) {
         return uni.showToast({
-          title: '请上传指令图片',
+          title: '请至少上传图片或输入文本',
           icon: 'none',
           duration: 2500
         });
       }
-      this.showInfo.coverUrl = this.fileList[0].url;
-      let res = await saveRoundCover(this.showInfo);
-      if (res.data.code === 200) {
+
+      let textSaved = false;
+      let imageSaved = false;
+      let hasError = false;
+
+      // 如果有文本则保存文字指令
+      if (this.instructionText && this.instructionText.trim()) {
+        this.showInfo.textIns = this.instructionText;
+        try {
+          let resText = await saveTextInstruction(this.showInfo);
+          if (resText.data && resText.data.code === 200) {
+            textSaved = true;
+          } else {
+            hasError = true;
+          }
+        } catch (error) {
+          hasError = true;
+        }
+      }
+
+      // 如果有图片则保存图片
+      if (this.fileList.length !== 0) {
+        this.showInfo.coverUrl = this.fileList[0].url;
+        try {
+          let resCover = await saveRoundCover(this.showInfo);
+          if (resCover.data && resCover.data.code === 200) {
+            imageSaved = true;
+          } else {
+            hasError = true;
+          }
+        } catch (error) {
+          hasError = true;
+        }
+      }
+
+      // 根据保存结果显示相应提示
+      if (hasError) {
+        uni.showToast({
+          title: '保存失败',
+          icon: 'none',
+          duration: 2500
+        });
+      } else if (textSaved || imageSaved) {
         uni.showToast({
           title: '保存成功',
           icon: 'none',
@@ -1058,12 +1105,6 @@ export default {
         });
         this.fileList = [];
         this.$refs.popup.close();
-      } else {
-        uni.showToast({
-          title: '保存失败',
-          icon: 'none',
-          duration: 2500
-        });
       }
     },
     confirmJudge(notJudgeNumber) {
@@ -1081,6 +1122,9 @@ export default {
 
 <style lang="scss" scoped>
 @import url('@/common/css/judge-table.scss');
+
+
+
 .custom-button {
   width: 100%;
   height: 100%;

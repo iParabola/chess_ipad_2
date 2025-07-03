@@ -2210,6 +2210,7 @@ export default {
       this.judgeTableShowInfo = {
         type: 'input',
         verdictRecordId: this.verdictRecordId,
+        campId: this.campId,
         chessRound: this.roundActive,
         roundPeriod: this.stageActive + 1,
         roundPeriodName: this.stageOptions[this.stageActive].title

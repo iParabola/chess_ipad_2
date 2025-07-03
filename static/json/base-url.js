@@ -3,7 +3,7 @@ let currentUrl = window.location.hostname;
 let baseIpPort = currentUrl +":8083";
 // 文件存储
 // let fileIp = "localhost";
-let fileIp = currentUrl
+let fileIp = "47.116.162.173"
 let baseOssIpPort = "http://" + fileIp +":9000/wargame/";
 
 export {
