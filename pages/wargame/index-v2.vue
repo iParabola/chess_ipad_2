@@ -18,7 +18,7 @@
 		<view class="rightBtn" v-if="initType !== 'watch'">
 <!--			<view class="btnView" @click="showActionDescFunc">记录明细</view>-->
 <!--			<view class="btnView" @click="getRealTimeScore">实时得分</view>-->
-			<view v-if="userType === 'commander'" class="btnView" @click="getJudgeTable">指令录入</view>
+			<view v-if="userType === 'user'" class="btnView" @click="getJudgeTable">指令录入</view>
 			<view class="btnView" @click="getJudgeResult">裁决结果</view>
       <view v-if="game.status === 50 && userType === 'user'" class="btnView" @click="getScore">最后得分</view>
 <!--			<view v-if="userType === 'admin'" class="btnView" @click="getTableScoreFinal">推演得分</view>-->

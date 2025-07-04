@@ -1002,19 +1002,42 @@ export default {
 			}
 			this.$refs.judgeTable.open();
 		},
+    async getScoreAndJudgeTable() {
+      this.judgeTableShowInfo = {
+        type: 'scoreAndJudge', // 新增类型，表示同时支持打分和裁决
+        verdictRecordId: this.verdictRecordId,
+        campId: this.campId,
+        chessRound: this.roundActive,
+        roundPeriod: this.stageActive + 1,
+        roundPeriodName: this.stageOptions[this.stageActive].title,
+        userType: this.userType
+      };
+
+      if (this.userType === 'user' || this.userType === 'judge') {
+        this.judgeTableShowInfo.campId = this.campId;
+      }
+
+      // 同时获取历史打分结果和裁决数据
+      if (this.campListItem) {
+        let queryScoreData = {
+          verdictRecordId: this.campListItem.verdictRecordId,
+          campId: this.campListItem.campId,
+          chessRound: this.campListItem.chessRound
+        };
+        let scoreListResult = await queryScoreList(queryScoreData);
+        this.scoreList = scoreListResult.data.data;
+        this.judgeTableShowInfo.scoreList = this.scoreList;
+      }
+
+      this.$refs.judgeTable.open();
+    },
 		async scoreTableShow(item, index) {
-			item.chessRound = index;
-			this.campListItem = item;
-			//查询历史打分结果
-			let queryScoreData = {
-				verdictRecordId: item.verdictRecordId,
-				campId: item.campId,
-				chessRound: index
-			};
-			let scoreListResult = await queryScoreList(queryScoreData);
-			this.scoreList = scoreListResult.data.data;
-			this.$refs.scoreTable.open();
-			this.showScoreButtonInfo.visible = false;
+      item.chessRound = index;
+      this.campListItem = item;
+
+      // 直接调用合并后的功能
+      await this.getScoreAndJudgeTable();
+      this.showScoreButtonInfo.visible = false;
 		},
 		getJudgeResult() {
 			this.judgeTableShowInfo = {
@@ -1223,38 +1246,36 @@ export default {
 			);
 		},
 		async judge() {
-			this.judgeTableShowInfo = {
-				type: 'judge',
-				verdictRecordId: this.verdictRecordId,
-				campId: this.campId,
-				chessRound: this.roundActive,
-				roundPeriod: this.stageActive + 1
-			};
-			this.$refs.judgeTable.open();
-			// let data = {
-			// 	verdictRecordId: this.verdictRecordId,
-			// 	chessRound: this.roundActive,
-			// 	roundPeriod: this.stageActive + 1
-			// };
-			// let res = await judge(data);
-			// let resultData = res.data.data;
-			// console.log('resultData: ', resultData.length);
-			// if (resultData.length > 0) {
-			// 	sendMsg(
-			// 		JSON.stringify({
-			// 			action: 'judge',
-			// 			verdictRecordId: this.verdictRecordId,
-			// 			data: resultData
-			// 		})
-			// 	);
-			// } else {
-			// 	sendMsg(
-			// 		JSON.stringify({
-			// 			action: 'takeAction',
-			// 			verdictRecordId: this.verdictRecordId
-			// 		})
-			// 	);
-			// }
+      if (this.userType === 'admin') {
+        this.judgeTableShowInfo = {
+          userType: this.userType,
+          type: 'scoreAndJudge', // 使用合并后的类型
+          verdictRecordId: this.verdictRecordId,
+        };
+      } else {
+        this.judgeTableShowInfo = {
+          userType: this.userType,
+          type: 'scoreAndJudge', // 使用合并后的类型
+          verdictRecordId: this.verdictRecordId,
+          campId: this.campId,
+          chessRound: this.roundActive,
+          roundPeriod: this.stageActive + 1
+        };
+      }
+
+      // 获取打分数据
+      if (this.campListItem) {
+        let queryScoreData = {
+          verdictRecordId: this.verdictRecordId,
+          campId: this.campId,
+          chessRound: this.roundActive
+        };
+        let scoreListResult = await queryScoreList(queryScoreData);
+        this.scoreList = scoreListResult.data.data;
+        this.judgeTableShowInfo.scoreList = this.scoreList;
+      }
+
+      this.$refs.judgeTable.open();
 		},
 		async submitScore(scoreList) {
 			for (let i in scoreList) {
