@@ -194,6 +194,16 @@ export default {
     console.log(this.campData)
   },
 	methods: {
+		hexToRgba(hex, alpha = 0.85) {
+			const shorthand = /^#([a-f\d])([a-f\d])([a-f\d])$/i;
+			hex = hex.replace(shorthand, (m, r, g, b) => '#' + r + r + g + g + b + b);
+			const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+			if (!result) return `rgba(0,0,0,${alpha})`;
+			const r = parseInt(result[1], 16);
+			const g = parseInt(result[2], 16);
+			const b = parseInt(result[3], 16);
+			return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+		},
 		change(e, index) {
 			if (this.canClick) {
 				if (this.clickType === 'round') {
@@ -222,35 +232,23 @@ export default {
 			this.$forceUpdate();
 		},
 		setStyleBackgroud(item, index, active) {
-			let styles = {};
-			let activeColor = this.activeColor ? this.activeColor : '#2979ff';
-			if (parseInt(index) === parseInt(active)) {
-				styles['background-color'] = '#2979FF';
-			} else if (parseInt(index) < parseInt(active)) {
-				styles['background-color'] = '#FF0000';
-			} else {
-				styles['background-color'] = '#B7BDC6';
-			}
-			let classles = '';
-			for (let i in styles) {
-				classles += `${i}:${styles[i]};`;
-			}
+			const activeHex = '#00AA00';
+			const activedHex = '#FF0000';
+			const deactiveHex = '#B7BDC6';
+			let bg = deactiveHex;
+			if (parseInt(index) === parseInt(active)) bg = activeHex;
+			else if (parseInt(index) < parseInt(active)) bg = activedHex;
+			const classles = `background-color:${this.hexToRgba(bg, 0.85)};`;
 			return classles;
 		},
 		setStatusBackground(i, index) {
-			let styles = {};
-			if (parseInt(index)  === parseInt(i)) {
-				styles['background-color'] = '#2979FF';
-			} else if (parseInt(index) > parseInt(i)) {
-				styles['background-color'] = '#FF0000';
-			} else {
-				styles['background-color'] = '#B7BDC6';
-			}
-			let classles = '';
-			for (let i in styles) {
-				classles += `${i}:${styles[i]};`;
-			}
-			return classles;
+			const activeHex = '#00AA00';
+			const activedHex = '#FF0000';
+			const deactiveHex = '#B7BDC6';
+			let bg = deactiveHex;
+			if (parseInt(index) === parseInt(i)) bg = activeHex;
+			else if (parseInt(index) > parseInt(i)) bg = activedHex;
+			return `background-color:${this.hexToRgba(bg, 0.85)};`;
 		}
 	}
 };
@@ -292,7 +290,14 @@ $xinyi-border-color: #ededed;
 	align-items: flex-end;
 	margin-bottom: 8px;
 	text-align: center;
-
+	/* 隐藏横向滚动条但保留拖动/滚动能力 */
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE/Edge */
+}
+.xinyi-steps__row-text-container::-webkit-scrollbar {
+	display: none; /* WebKit */
+	width: 0;
+	height: 0;
 }
 
 .xinyi-steps__column-text-container {
@@ -316,16 +321,25 @@ $xinyi-border-color: #ededed;
 	min-width: 120px;
 
 	padding-left: 20px;
+	/* macOS 风并行四边形与圆角 */
+	position: relative;
+	overflow: hidden;
+	border-radius: 14px;
+	transform: skewX(-12deg);
+	border: 1px solid rgba(255,255,255,0.20);
+	box-shadow: 0 6px 12px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+	-webkit-backdrop-filter: saturate(160%) blur(6px);
+	backdrop-filter: saturate(160%) blur(6px);
 }
 
 .xinyi-steps-actived {
 	background-color: #FF0000;
 }
 .xinyi-steps-active {
-	background-color: #2979ff;
+	background-color: #00aa00;
 }
 .xinyi-steps-deactive {
-	background-color: #00aa00;
+	background-color: #B7BDC6;
 }
 
 .arrow-right {
@@ -360,9 +374,10 @@ $xinyi-border-color: #ededed;
 .xinyi-steps__row-title {
 	line-height: 16px;
 	text-align: center;
-	color: #000000;
+	color: #ffffff; /* 深色半透明背景上更易读 */
 	letter-spacing: 2px;
 	min-width: 200px;
+	transform: skewX(12deg); /* 抵消外层倾斜，文本保持水平 */
 }
 
 .xinyi-steps__column-title {

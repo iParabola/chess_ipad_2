@@ -17,8 +17,8 @@
     <view class="top">
       <view class="top-head">
         <image src="/static/image/wargame/火力.svg" style="width: 15%; height: 7vh;"></image>
-        <view style="height: 7vh; line-height: 7vh; font-size: 25px; color: #4cf5e3;">火力战</view>
-        <view style="height: 7vh; line-height: 8vh; font-size: 18px; color: white; margin-left: 10px">手工兵棋裁决——火力战系统</view>
+        <view class="top-title">火力战</view>
+        <view class="top-subtitle">手工兵棋裁决——火力战系统</view>
       </view>
       <view class="top-middle">
         <div class="react-left ml-3">
@@ -35,7 +35,7 @@
           </span>
           <span>
           </span>
-          <span style="width: 50%;" class="text">导演 : {{user.userName}}</span>
+          <span style="width: 50%;" class="text top-identity">导演 : {{user.userName}}</span>
         </div>
       </view>
     </view>
@@ -136,6 +136,7 @@
           @change="stageChange"
           :isAdmin="userType === 'admin'"
           :statusIndex="statusIndex"
+          :enableDrag="false"
       ></xinyi-steps>
     </view>
 		<view class="foot-view2">
@@ -148,6 +149,7 @@
 				:campData="campList"
 				@setScore="scoreTableShow"
 				@change="roundChange"
+				:enableDrag="false"
 			></xinyi-steps>
 		</view>
 		<uni-drawer ref="showActionDesc" mode="right" :width="400">
@@ -1384,6 +1386,7 @@ export default {
   }
 }
 
+/* 右侧按钮：改为 macOS 磨砂胶囊样式 */
 .rightBtn {
   position: fixed;
   top: 100px;
@@ -1392,56 +1395,83 @@ export default {
   text-align: center;
 
   .btnView {
-    writing-mode: vertical-rl;
-    background: linear-gradient(to bottom, #1e839b 0%, #62a8b9 100%);
-    color: #ffffff;
-    text-align: center;
+    display: flex;
     align-items: center;
-    //padding: 10px 5px 10px 5px;
-    width: 30px;
-    height: 100px;
-    margin-top: 30px;
-    position: relative; /* 为了使用伪元素 */
+    justify-content: center;
+    cursor: pointer;
+    color: #ffffff;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+    width: 140px;
+    height: 40px;
+    margin: 16px 12px;
+    border-radius: 14px;
+    background-color: rgba(82, 120, 42, 0.78);
+    border: 1px solid rgba(255,255,255,0.26);
+    box-shadow: 0 12px 26px rgba(0,0,0,0.22), 0 0 12px rgba(76,245,227,0.18), inset 0 1px 0 rgba(255,255,255,0.08);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    backdrop-filter: saturate(180%) blur(10px);
+    transition: background-color .15s ease, box-shadow .15s ease, transform .08s ease;
+    position: relative;
   }
 
-  .btnView::before {
-    content: '';
-    position: absolute;
-    top: -30px;
-    left: 0;
-    border-right: 30px solid #1e839b; /* 显示左边框 */
-    border-top: 30px solid transparent; /* 隐藏上边框 */
-
-    width: 0;
-    height: 0;
-  }
-
+  .btnView::before { display: none; }
   .btnView::after {
     content: '';
     position: absolute;
-    bottom: -30px;
-    left: 0;
-    border-bottom: 30px solid transparent; /* 隐藏下边框 */
-    border-right: 30px solid #62a8b9; /* 显示左边框 */
-    width: 0;
-    height: 0;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px rgba(76,245,227,0.20);
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0) 60%);
+  }
+
+  .btnView:hover {
+    background-color: rgba(82, 120, 42, 0.80);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.26), 0 0 16px rgba(76,245,227,0.28), inset 0 1px 0 rgba(255,255,255,0.10);
+  }
+  .btnView:active {
+    transform: translateY(1px) scale(0.99);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 12px rgba(76,245,227,0.22), inset 0 1px 0 rgba(255,255,255,0.08);
   }
 }
 
+/* 顶部菜单栏：改为圆润磨砂单条导航 */
 .top{
   position: fixed;
-  width: 100vw;
-  height: 15vh;
+  top: 10px;
+  left: 12px;
+  width: calc(100vw - 24px);
+  height: 48px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   z-index: 999;
+  padding: 0 12px;
+  background-color: rgba(82, 120, 42, 0.78);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.06);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+  box-sizing: border-box;
 }
+
+.top > .top-head,
+.top > .top-middle { border-right: 1px solid rgba(255,255,255,0.10); }
+.top > .top-tail { border-right: none; }
 
 .top-head{
   width: 30vw;
   display: flex;
   flex-direction: row;
-  margin-top: 10px;
+  align-items: center;
+  margin-top: 0;
+  padding: 0 8px;
+  height: 100%;
+  line-height: 48px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
 }
 
 .top-middle{
@@ -1449,41 +1479,21 @@ export default {
   text-align: center;
   align-items: center;
   .react-left {
-    &.react-l-s {
-      width: 500px;
-      text-align: left;
-    }
+    &.react-l-s { width: auto; text-align: left; }
     font-size: 18px;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 10px;
-    height: 40px;
-    line-height: 40px;
+    width: auto;
+    margin-left: 0;
+    margin-top: 0;
+    height: 48px;
+    line-height: 48px;
     text-align: center;
-    transform: skewX(45deg);
-    background-color: rgba(87, 64, 50, 0.8);
-    border: 4px solid transparent; /* 移除dashed，使用border-image */
-
-
-    /* 设置虚线效果 */
-
-    .react-left {
-      position: absolute;
-      left: -25px;
-      top: 0;
-      height: 50px;
-      width: 50px;
-      background-color: rgba(87, 64, 50, 0.8);
-      transform: skewX(-45deg);
-    }
-
-    .text {
-      color: #4cf5e3;
-      font-size: 25px;
-      font-weight: bold;
-      display: inline-block;
-      transform: skewX(-45deg);
-    }
+    transform: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    .react-left { display: none; }
+    .text { color: #4cf5e3; font-size: 22px; font-weight: bold; display: inline-block; transform: none; }
   }
 }
 
@@ -1493,43 +1503,34 @@ export default {
   flex-direction: row;
 
   .react-right {
-    &.react-l-s {
-      text-align: right;
-      width: 500px;
-    }
+    &.react-l-s { text-align: right; width: 500px; }
     font-size: 18px;
-    width: 80%;
-    margin-left: 20%;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-    transform: skewX(45deg);
-    background-color: rgba(87, 64, 50, 1);
-    .react-after {
-      position: absolute;
-      right: -25px;
-      top: 0;
-      height: 60px;
-      width: 60px;
-      background-color: rgba(87, 64, 50, 1);
-      transform: skewX(-45deg);
-    }
+    width: 100%;
+    margin-left: 0;
+    height: 48px;
+    line-height: 48px;
+    text-align: right;
+    transform: none;
+    position: relative;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    &::before { content: ''; display: none; }
+    .react-after { display: none; }
 
     .text {
       color: #4cf5e3;
       font-size: 18px;
       font-weight: bold;
       display: inline-block;
-      transform: skewX(-45deg);
+      transform: none;
+      letter-spacing: 0.5px;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.3), 0 0 8px rgba(76,245,227,0.45);
     }
   }
 
-  .top-tail-action{
-    color: white;
-  }
-  .hover-top-tail-action{
-    color: #4cf5e3;
-  }
+  .top-tail-action{ color: #ffffff; }
+  .hover-top-tail-action{ color: #4cf5e3; }
 }
 
 
@@ -1593,20 +1594,36 @@ export default {
 .score-btn-view {
   text-align: center;
   background-color: #10292f;
-  // padding: 10px 10px 10px 10px;
   cursor: pointer;
   border-radius: 10px;
 
-  .uv-text {
-    width: 100%;
-    padding: 10px 10px 10px 10px;
-  }
+  .uv-text { width: 100%; padding: 10px; }
+  .chess-view { width: 100%; text-align: left; padding: 10px; color: #ffffff; }
+}
 
-  .chess-view {
-    width: 100%;
-    text-align: left;
-    padding: 10px 10px 10px 10px;
-    color: #ffffff;
-  }
+/* 统一顶部文字样式 */
+.top-title{
+  margin-left: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #4cf5e3;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.25), 0 0 10px rgba(76,245,227,.35);
+  height: 48px;
+  line-height: 48px;
+}
+.top-subtitle{
+  margin-left: 10px;
+  font-size: 16px;
+  color: rgba(255,255,255,.92);
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  height: 48px;
+  line-height: 48px;
+}
+.top-identity{
+  color: rgba(255,255,255,.95);
+  font-size: 16px;
+  letter-spacing: .5px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.3), 0 0 8px rgba(76,245,227,.35);
 }
 </style>

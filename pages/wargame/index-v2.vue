@@ -31,9 +31,10 @@
 
     <view class="top">
       <view class="top-head">
+        <!-- <view class="back-btn" @click="goHall()" hover-class="hover-back-btn">← 返回</view> -->
         <image src="/static/image/wargame/火力.svg" style="width: 15%; height: 7vh;"></image>
-        <view style="height: 7vh; line-height: 7vh; font-size: 25px; color: #4cf5e3;">火力战</view>
-        <view style="height: 7vh; line-height: 8vh; font-size: 18px; color: white; margin-left: 10px">房间号：{{game.inviteCode}}</view>
+        <view class="top-title">火力战</view>
+        <view class="top-subtitle">房间号：{{game.inviteCode}}</view>
       </view>
       <view class="top-middle">
         <div class="react-left ml-3">
@@ -69,7 +70,7 @@
           </span>
           <span>
           </span>
-          <span style="width: 50%;" class="text">{{ avatarText }}{{ avatarDesc }}: {{user.userName}}</span>
+          <span style="width: 50%;" class="text top-identity">{{ avatarText }}{{ avatarDesc }}: {{user.userName}}</span>
         </div>
       </view>
     </view>
@@ -2742,56 +2743,114 @@ export default {
   text-align: center;
 
   .btnView {
-    writing-mode: vertical-rl;
-    background: linear-gradient(to bottom, #1e839b 0%, #62a8b9 100%);
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    cursor: pointer;
     color: #ffffff;
-    text-align: center;
-    align-items: center;
-    //padding: 10px 5px 10px 5px;
-    width: 30px;
-    height: 100px;
-    margin-top: 30px;
-    position: relative; /* 为了使用伪元素 */
+    text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+    width: 140px;
+    height: 40px;
+    margin: 16px 12px;
+    border-radius: 14px; /* 圆润外观 */
+    background-color: rgba(82, 120, 42, 0.78); /* 更高透明度，贴近顶部导航的磨砂风格 */
+    border: 1px solid rgba(255,255,255,0.26);
+    /* 主阴影 + 轻微赛博感外发光 */
+    box-shadow: 0 12px 26px rgba(0,0,0,0.22), 0 0 12px rgba(76,245,227,0.18), inset 0 1px 0 rgba(255,255,255,0.08);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    backdrop-filter: saturate(180%) blur(10px); /* macOS 磨砂玻璃效果 */
+    transition: background-color .15s ease, box-shadow .15s ease, transform .08s ease;
+    position: relative;
   }
 
-  .btnView::before {
-    content: '';
-    position: absolute;
-    top: -30px;
-    left: 0;
-    border-right: 30px solid #1e839b; /* 显示左边框 */
-    border-top: 30px solid transparent; /* 隐藏上边框 */
-
-    width: 0;
-    height: 0;
-  }
-
+  .btnView::before { display: none; }
+  /* 霓虹描边与高光覆层，增强科技感 */
   .btnView::after {
     content: '';
     position: absolute;
-    bottom: -30px;
-    left: 0;
-    border-bottom: 30px solid transparent; /* 隐藏下边框 */
-    border-right: 30px solid #62a8b9; /* 显示左边框 */
-    width: 0;
-    height: 0;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px rgba(76,245,227,0.20);
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0) 60%);
+  }
+
+  .btnView:hover {
+    background-color: rgba(82, 120, 42, 0.80);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.26), 0 0 16px rgba(76,245,227,0.28), inset 0 1px 0 rgba(255,255,255,0.10);
+  }
+  .btnView:active {
+    transform: translateY(1px) scale(0.99);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 12px rgba(76,245,227,0.22), inset 0 1px 0 rgba(255,255,255,0.08);
   }
 }
 
 .top{
   position: fixed;
-  width: 100vw;
-  height: 15vh;
+  top: 10px; /* 悬浮于顶部，留出圆角显示空间 */
+  left: 12px;
+  width: calc(100vw - 24px);
+  height: 48px; /* 统一菜单栏高度 */
   display: flex;
   flex-direction: row;
+  align-items: center;
   z-index: 999;
+  padding: 0 12px;
+  background-color: rgba(82, 120, 42, 0.78); /* 更淡一些的军绿 */
+  border-radius: 16px; /* 圆润外观 */
+  border: 1px solid rgba(255,255,255,0.18); /* 细腻浅色描边 */
+  box-shadow: 0 10px 22px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.06); /* 柔和投影与高光 */
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px); /* 苹果风半透明磨砂 */
+  box-sizing: border-box;
 }
+
+/* 顶栏分区的细分隔线 */
+.top > .top-head,
+.top > .top-middle{
+  border-right: 1px solid rgba(255,255,255,0.10);
+}
+.top > .top-tail{ border-right: none; }
 
 .top-head{
   width: 30vw;
   display: flex;
   flex-direction: row;
-  margin-top: 10px;
+  align-items: center;
+  margin-top: 0;
+  padding: 0 8px;
+  height: 100%;
+  line-height: 48px;
+  background: transparent; /* 由顶栏负责背景 */
+  border: none;
+  border-radius: 0;
+  clip-path: none;
+}
+
+/* 顶部文字样式，适配玻璃导航栏 */
+.top-title{
+  margin-left: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #4cf5e3;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.25), 0 0 10px rgba(76,245,227,.35);
+  height: 48px;
+  line-height: 48px;
+}
+.top-subtitle{
+  margin-left: 10px;
+  font-size: 16px;
+  color: rgba(255,255,255,.92);
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  height: 48px;
+  line-height: 48px;
+}
+.top-identity{
+  color: rgba(255,255,255,.95);
+  font-size: 16px;
+  letter-spacing: .5px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.3), 0 0 8px rgba(76,245,227,.35);
 }
 
 .top-middle{
@@ -2799,41 +2858,21 @@ export default {
   text-align: center;
   align-items: center;
   .react-left {
-    &.react-l-s {
-      width: 500px;
-      text-align: left;
-    }
+    &.react-l-s { width: auto; text-align: left; }
     font-size: 18px;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 10px;
-    height: 40px;
-    line-height: 40px;
+    width: auto;
+    margin-left: 0;
+    margin-top: 0;
+    height: 48px;
+    line-height: 48px;
     text-align: center;
-    transform: skewX(45deg);
-    background-color: rgba(87, 64, 50, 0.8);
-    border: 4px solid transparent; /* 移除dashed，使用border-image */
-
-
-    /* 设置虚线效果 */
-
-    .react-left {
-      position: absolute;
-      left: -25px;
-      top: 0;
-      height: 50px;
-      width: 50px;
-      background-color: rgba(87, 64, 50, 0.8);
-      transform: skewX(-45deg);
-    }
-
-    .text {
-      color: #4cf5e3;
-      font-size: 25px;
-      font-weight: bold;
-      display: inline-block;
-      transform: skewX(-45deg);
-    }
+    transform: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    .react-left { display: none; }
+    .text { color: #4cf5e3; font-size: 22px; font-weight: bold; display: inline-block; transform: none; }
   }
 }
 
@@ -2848,34 +2887,51 @@ export default {
       width: 500px;
     }
     font-size: 18px;
-    width: 80%;
-    margin-left: 20%;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-    transform: skewX(45deg);
-    background-color: rgba(87, 64, 50, 1);
+    width: 100%;
+    margin-left: 0;
+    height: 48px;
+    line-height: 48px;
+    text-align: right;
+    transform: none;
+    position: relative;
+    background: transparent; /* 由顶栏负责背景 */
+    border-radius: 0;
+    box-shadow: none;
+    &::before { content: ''; display: none; }
     .react-after {
-      position: absolute;
-      right: -25px;
-      top: 0;
-      height: 60px;
-      width: 60px;
-      background-color: rgba(87, 64, 50, 1);
-      transform: skewX(-45deg);
+      display: none;
     }
-
+  
     .text {
       color: #4cf5e3;
       font-size: 18px;
       font-weight: bold;
       display: inline-block;
-      transform: skewX(-45deg);
+      transform: none;
+      letter-spacing: 0.5px;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.3), 0 0 8px rgba(76,245,227,0.45);
     }
   }
 
   .top-tail-action{
-    color: white;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+  }
+  /* action 内的每个按钮在 H5 悬停时呈现可点击样式 */
+  .top-tail-action > view{
+    cursor: pointer;
+    padding: 0 6px;
+    border-radius: 6px;
+    transition: color .15s ease, background-color .15s ease, text-shadow .15s ease;
+    color: inherit;
+  }
+  .top-tail-action > view:hover{
+    color: #4cf5e3;
+    background-color: rgba(76,245,227,0.08);
+    text-shadow: 0 0 8px rgba(76,245,227,0.45);
   }
   .hover-top-tail-action{
     color: #4cf5e3;
@@ -2950,5 +3006,26 @@ export default {
   }
 }
 
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 12px;
+  margin-right: 8px;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+  background-color: rgba(82, 120, 42, 0.78);
+  border: 1px solid rgba(255,255,255,0.26);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.08);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+}
+.hover-back-btn {
+  background-color: rgba(82, 120, 42, 0.82);
+}
 
 </style>
