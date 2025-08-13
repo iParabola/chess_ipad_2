@@ -1,754 +1,378 @@
 <template>
   <view>
     <uni-popup ref="popup" :mask-click="false">
+      <!-- 指令上传表 -->
+      <view v-if="showInfo.type === 'input'" class="upload-container">
+        <view class="upload-panel">
+          <view class="panel-header">
+            <view class="panel-title">指令上传表</view>
+            <view class="military-code">COMMAND UPLOAD SYSTEM</view>
+          </view>
 
-      <view class="rule__view">
+          <view class="upload-content">
+            <view class="upload-table-wrapper">
+              <!-- 表头 -->
+              <view class="upload-table-header">
+                <view class="upload-header-cell col-round">回合</view>
+                <view class="upload-header-cell col-stage">阶段</view>
+                <view class="upload-header-cell col-instruction">指挥员指令</view>
+              </view>
 
-        <svg v-if="showInfo.type === 'input'" xmlns="http://www.w3.org/2000/svg"
-             xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%"
-             viewBox="491 252 887 624">
-          <defs>
-            <linearGradient id="linear-gradient" x1="0.442" y1="0.061" x2="0.678" y2="1"
-                            gradientUnits="objectBoundingBox">
-              <stop offset="0" stop-color="#fff"/>
-              <stop offset="1" stop-color="#00cedb"/>
-            </linearGradient>
-            <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
-              <stop offset="0" stop-color="#00cedb"/>
-              <stop offset="1" stop-color="#fff"/>
-            </linearGradient>
-            <filter x="-40.85" y="-5" width="156.686" height="156.686" filterUnits="userSpaceOnUse">
-              <feOffset input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="2" result="blur-11"/>
-              <feFlood flood-color="#00f0ff"/>
-              <feComposite operator="in" in2="blur-11"/>
-            </filter>
-            <filter x="-40.85" y="-5" width="156.686" height="156.686" filterUnits="userSpaceOnUse">
-              <feOffset input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="10" result="blur-12"/>
-              <feFlood flood-color="#00cedb" flood-opacity="0.8" result="color-6"/>
-              <feComposite operator="out" in="SourceGraphic" in2="blur-12"/>
-              <feComposite operator="in" in="color-6"/>
-              <feComposite operator="in" in2="SourceGraphic"/>
-            </filter>
-            <filter x="11.381" y="44.942" width="48.016" height="42.367" filterUnits="userSpaceOnUse">
-              <feOffset input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="2" result="blur-13"/>
-              <feFlood flood-color="#fff" flood-opacity="0.702"/>
-              <feComposite operator="in" in2="blur-13"/>
-            </filter>
-            <filter x="11.381" y="44.942" width="48.016" height="42.367" filterUnits="userSpaceOnUse">
-              <feOffset input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="1.5" result="blur-14"/>
-              <feFlood flood-color="#fff" flood-opacity="0.352" result="color-7"/>
-              <feComposite operator="out" in="SourceGraphic" in2="blur-14"/>
-              <feComposite operator="in" in="color-7"/>
-              <feComposite operator="in" in2="SourceGraphic"/>
-            </filter>
-            <filter x="22.516" y="1014.37" width="243.081" height="67.263" filterUnits="userSpaceOnUse">
-              <feOffset input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="3" result="blur-15"/>
-              <feFlood flood-color="#00f0ff"/>
-              <feComposite operator="in" in2="blur-15"/>
-            </filter>
-            <filter x="22.516" y="1014.37" width="243.081" height="67.263" filterUnits="userSpaceOnUse">
-              <feOffset input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="5" result="blur-16"/>
-              <feFlood flood-color="#00f0ff" flood-opacity="0.102" result="color-8"/>
-              <feComposite operator="out" in="SourceGraphic" in2="blur-16"/>
-              <feComposite operator="in" in="color-8"/>
-              <feComposite operator="in" in2="SourceGraphic"/>
-            </filter>
-            <linearGradient id="linear-gradient-3" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
-              <stop offset="0" stop-color="#fa0" stop-opacity="0.702"/>
-              <stop offset="1" stop-color="#00464a" stop-opacity="0.702"/>
-            </linearGradient>
-            <filter x="217.712" y="1014.37" width="243.081" height="67.263" filterUnits="userSpaceOnUse">
-              <feOffset input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="3" result="blur-17"/>
-              <feFlood flood-color="#fb0" flood-opacity="0.502"/>
-              <feComposite operator="in" in2="blur-17"/>
-            </filter>
-            <filter x="217.712" y="1014.37" width="243.081" height="67.263" filterUnits="userSpaceOnUse">
-              <feOffset input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="5" result="blur-18"/>
-              <feFlood flood-color="#fb0" flood-opacity="0.502" result="color-9"/>
-              <feComposite operator="out" in="SourceGraphic" in2="blur-18"/>
-              <feComposite operator="in" in="color-9"/>
-              <feComposite operator="in" in2="SourceGraphic"/>
-            </filter>
-            <filter x="413.925" y="1014.37" width="243.081" height="67.263" filterUnits="userSpaceOnUse">
-              <feOffset input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="3" result="blur-19"/>
-              <feFlood flood-color="#00f0ff"/>
-              <feComposite operator="in" in2="blur-19"/>
-            </filter>
-            <filter x="413.925" y="1014.37" width="243.081" height="67.263" filterUnits="userSpaceOnUse">
-              <feOffset input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="5" result="blur-20"/>
-              <feFlood flood-color="#00f0ff" flood-opacity="0.102" result="color-10"/>
-              <feComposite operator="out" in="SourceGraphic" in2="blur-20"/>
-              <feComposite operator="in" in="color-10"/>
-              <feComposite operator="in" in2="SourceGraphic"/>
-            </filter>
+              <!-- 表格内容 -->
+              <view class="upload-table-body">
+                <view class="upload-data-row">
+                  <view class="upload-data-cell col-round">
+                    <view class="cell-content">第{{ showInfo.chessRound }}回合</view>
+                  </view>
+                  <view class="upload-data-cell col-stage">
+                    <view class="cell-content">{{ showInfo.roundPeriodName }}</view>
+                  </view>
+                  <view class="upload-data-cell col-instruction">
+                    <view class="instruction-container">
+                      <!-- 文件上传区域 -->
+                      <view class="file-upload-area">
+                        <view class="upload-title">文件上传</view>
+                        <view class="upload-component">
+                          <uv-upload
+                            :fileList="fileList"
+                            name="6"
+                            :previewFullImage="true"
+                            :maxCount="1"
+                            :maxSize="2097152"
+                            @afterRead="afterRead"
+                            @delete="deletePic"
+                            :customStyle="uploadCustomStyle"
+                          ></uv-upload>
+                        </view>
+                      </view>
 
-            <linearGradient id="linear-gradient-5" x1="0.008" y1="0.459" x2="0.996" y2="0.454"
-                            gradientUnits="objectBoundingBox">
-              <stop offset="0" stop-color="#00f0ff"/>
-              <stop offset="0.285" stop-color="#00b4c0" stop-opacity="0"/>
-              <stop offset="0.73" stop-color="#00c7d4" stop-opacity="0"/>
-              <stop offset="1" stop-color="#00f0ff"/>
-            </linearGradient>
-            <linearGradient id="linear-gradient-7" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
-              <stop offset="0" stop-color="#00adb7" stop-opacity="0.8"/>
-              <stop offset="0.439" stop-color="#002123" stop-opacity="0.902"/>
-              <stop offset="0.517" stop-color="#002123" stop-opacity="0.898"/>
-              <stop offset="1" stop-color="#00a8b3" stop-opacity="0.8"/>
-            </linearGradient>
-            <filter id="路径_59" x="491" y="252.231" width="886.844" height="624.229" filterUnits="userSpaceOnUse">
-              <feOffset dy="3" input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="5" result="blur-22"/>
-              <feFlood flood-color="#00f0ff"/>
-              <feComposite operator="in" in2="blur-22"/>
-            </filter>
-            <filter id="路径_59-2" x="491" y="252.231" width="886.844" height="624.229" filterUnits="userSpaceOnUse">
-              <feOffset dy="3" input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="15" result="blur-23"/>
-              <feFlood flood-color="#00f0ff" flood-opacity="0.902" result="color-11"/>
-              <feComposite operator="out" in="SourceGraphic" in2="blur-23"/>
-              <feComposite operator="in" in="color-11"/>
-              <feComposite operator="in" in2="SourceGraphic"/>
-            </filter>
-            <filter id="指令上传表" x="540" y="270" width="196" height="79" filterUnits="userSpaceOnUse">
-              <feOffset dy="3" input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="6" result="blur-24"/>
-              <feFlood flood-color="#00c1cd"/>
-              <feComposite operator="in" in2="blur-24"/>
-              <feComposite in="SourceGraphic"/>
-            </filter>
-            <linearGradient id="linear-gradient-9" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
-              <stop offset="0" stop-color="#00ddeb"/>
-              <stop offset="1" stop-color="#007a82"/>
-            </linearGradient>
-
-          </defs>
-          <g id="指令上传表">
-            <rect id="矩形_26" data-name="矩形 26" class="cls-40" width="100%" height="100%"/>
-            <g>
-              <path class="cls-41" d="M2974.924,1585.89H2866.262l-28.445,26.739v53.477"
-                    transform="translate(-2323.563 -1332.89)"/>
-              <path class="cls-42"
-                    d="M3104.151,2156.031l-17.942,12.691H2871.338l-32.821-31.509V1807.249l10.5,9.846v315.961l22.756,22.975Z"
-                    transform="translate(-2323.454 -1298.397)"/>
-              <path class="cls-41" d="M3245.61,2133.229h131.417l31.29-31.639v-66.562"
-                    transform="translate(-2051.02 -1262.903)"/>
-              <path class="cls-43"
-                    d="M3218.417,1598.512l17.776-11.392h145.071l29.014,28.445v298.789l-9.408-8.079V1622.749l-25.583-24.237Z"
-                    transform="translate(-2055.257 -1332.698)"/>
-              <g data-type="innerShadowGroup">
-                <g class="cls-62" transform="matrix(1, 0, 0, 1, 0, 0)">
-                  <path class="cls-44"
-                        d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z"
-                        transform="translate(-2324.54 -1331.24)"/>
-                </g>
-                <path class="cls-45"
-                      d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z"
-                      transform="translate(-2324.541 -1331.241)"/>
-                <g class="cls-61" transform="matrix(1, 0, 0, 1, 0, 0)">
-                  <path class="cls-4"
-                        d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z"
-                        transform="translate(-2324.54 -1331.24)"/>
-                </g>
-                <path class="cls-5"
-                      d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z"
-                      transform="translate(-2324.541 -1331.241)"/>
-              </g>
-            </g>
-            <foreignObject x="555" y="290" width="500" height="50">
-              <div style="font-size: 40px; font-weight: 700; color: #fff;">
-                指令上传表
-              </div>
-            </foreignObject>
-
-            <foreignObject x="580" y="358" width="100" height="50">
-              <div style="font-size: 32px; font-weight: 700; color: #fff;">
-                回合
-              </div>
-            </foreignObject>
-
-
-            <foreignObject x="767" y="358" width="100" height="50">
-              <div style="font-size: 32px;  font-weight: 700; color: #fff;">
-                阶段
-              </div>
-            </foreignObject>
-
-            <foreignObject x="1000" y="358" width="300" height="50">
-              <div style="font-size: 32px;  font-weight: 700; color: #fff;">
-                指挥员指令
-              </div>
-            </foreignObject>
-
-            <!--            上传图片表格可能要修改-->
-            <foreignObject x="565" y="410" width="800" height="180">
-              <body xmlns="http://www.w3.org/1999/xhtml">
-              <table background-color=transparent width=90%>
-                <tr class="row" >
-                  <td rowspan="3"
-                      style="font-size: 28px; width: 20% ;background-color: rgb(12,52,54);color: #fff ; text-align: center">
-                    第{{ showInfo.chessRound }}回合
-                  </td>
-                  <td rowspan="2"
-                      style="font-size: 28px; width: 35% ;background-color: rgb(12,52,54);color: #fff ; text-align: center">
-                    {{ showInfo.roundPeriodName }}
-                  </td>
-                  <td rowspan="2" style="font-size: 28px; width: 40% ;background-color: rgb(12,52,54);">
-                    <uv-upload
-                        :fileList="fileList"
-                        name="6"
-                        :previewFullImage="true"
-                        :maxCount="1"
-                        :maxSize="2097152"
-                        @afterRead="afterRead"
-                        @delete="deletePic"
-                        :customStyle="uploadCustomStyle"
-                    ></uv-upload>
-                    <view class="save-ins">
-                      <input type="text" placeholder="请输入指令" v-model="instructionText" />
-<!--                      <button @click="submitInstruct">保存指令</button>-->
+                      <!-- 文本输入区域 -->
+                      <view class="text-input-area">
+                        <view class="input-title">文本指令</view>
+                        <view class="input-wrapper">
+                          <input
+                            type="text"
+                            placeholder="请输入指令内容..."
+                            v-model="instructionText"
+                            class="instruction-input-field"
+                          />
+                        </view>
+                      </view>
                     </view>
-                  </td>
-                </tr>
-              </table>
-              </body>
-            </foreignObject>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
 
-            <path class="cls-50"
-                  d="M646.5,398.107s153.393-.724,408.961-.724,356.156.724,356.156.724-64.2,2.209-356.156,2.209S646.5,398.107,646.5,398.107Z"
-                  transform="translate(-96.504 7.831)"/>
-            <foreignObject x="592" y="759" width="320" height="52">
-              <body xmlns="http://www.w3.org/1999/xhtml">
-              <button @click="submitInstruct"
-                      style="width: 100%; height: 100%; font-size: 30px; background: linear-gradient(to right, #00ddeb, #007a82); color: #fff; border: 2px solid #00f0ff; cursor: pointer; display: flex; justify-content: center; align-items: center;">
-                保存指令
-              </button>
-              </body>
-            </foreignObject>
+          <view class="panel-footer">
+            <button class="sci-fi-button primary" @click="submitInstruct">
+              <text class="button-icon">▲</text> 保存指令
+            </button>
+            <button class="sci-fi-button secondary" @click="close">
+              <text class="button-icon">✕</text> 关闭
+            </button>
+          </view>
+        </view>
+      </view>
 
-            <foreignObject x="974" y="759" width="320" height="52">
-              <body xmlns="http://www.w3.org/1999/xhtml">
-              <button @click="close"
-                      style="width: 100%; height: 100%; font-size: 30px; background: linear-gradient(to right, #00ddeb, #007a82); color: #fff; border: 2px solid #00f0ff; cursor: pointer; display: flex; justify-content: center; align-items: center;">
-                关闭
-              </button>
-              </body>
-            </foreignObject>
-            <!--            <image id="图片" width="83" height="83" transform="translate(1051 409)" xlink:href="default_pic.png"/>-->
-          </g>
-        </svg>
+      <!-- 裁决表 -->
+      <view v-else class="judge-container">
+        <view class="judge-panel">
+          <!-- 右上角关闭按钮 -->
+          <view class="close-button-container">
+            <button class="close-button" @click="close">
+              <text class="close-icon">✕</text>
+            </button>
+          </view>
 
-        <svg v-else
-             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-             width="1400" height="626.46" viewBox="0 0 1465.642 626.46">
-          <defs>
-            <filter id="路径_59" x="0" y="2.231" width="1465.642" height="624.229" filterUnits="userSpaceOnUse">
-              <feOffset dy="3" input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="5" result="blur"/>
-              <feFlood flood-color="#00f0ff"/>
-              <feComposite operator="in" in2="blur"/>
-            </filter>
-            <filter id="路径_59-2" x="0" y="2.231" width="1465.642" height="624.229" filterUnits="userSpaceOnUse">
-              <feOffset dy="3" input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="15" result="blur-2"/>
-              <feFlood flood-color="#00f0ff" flood-opacity="0.902" result="color"/>
-              <feComposite operator="out" in="SourceGraphic" in2="blur-2"/>
-              <feComposite operator="in" in="color"/>
-              <feComposite operator="in" in2="SourceGraphic"/>
-            </filter>
-            <filter id="指令裁决表" x="49" y="20" width="196" height="79" filterUnits="userSpaceOnUse">
-              <feOffset dy="3" input="SourceAlpha"/>
-              <feGaussianBlur stdDeviation="6" result="blur-3"/>
-              <feFlood flood-color="#00c1cd"/>
-              <feComposite operator="in" in2="blur-3"/>
-              <feComposite in="SourceGraphic"/>
-            </filter>
-            <linearGradient id="linear-gradient" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
-              <stop offset="0" stop-color="#00ddeb"/>
-              <stop offset="1" stop-color="#007a82"/>
-            </linearGradient>
-            <image id="image" width="83" height="83"
-                   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAACUZJREFUeF7tneF52zgMQMlJrpnkkk3aSZpO0naS5iZpNuGFqX2nurZFUiBIAs9/+iMUSDzgfZJci4qBDwQgcJNAhA0EIHCbAILQHRC4QwBBaA8IIAg9AIE2ApxB2rhxlBMCCOKk0KTZRgBB2rhxlBMCCOKk0KTZRgBB2rhxlBMCCOKk0KTZRgBB2rhxlBMCCOKk0KTZRgBB2rhxlBMCCOKk0KTZRgBB2rhxlBMCCOKk0KTZRgBB2rhxlBMCCOKk0KTZRgBB2rhxlBMCCOKk0KTZRmA6QVJKH0MIf7Wlw1EQeCfwTwjhNcb4epTHFIKcpPgcQvhwNCGOh8AFgecQwvdWWYYKklLKQnwNITxSVgh0JPASQvjUIsloQX4gR8e2IPQlgYdaSYYJklLKl1T59McHAloEnmOMX2omGyLI6dLqZ81CGQsBIQL5UutbaaxRguR7jnx5xQcC2gS+xRg/lU46ShAur0orxDhpAi8xxqfSoKME4ea8tEKMEyfwdh9S3PfFAyVXmVJCEEmgxKoigCBVuBjsjQCCeKs4+VYRQJAqXAz2RgBBvFWcfKsIIEgVLgZ7I4Ag3ipOvlUEEKQKF4O9EUAQbxUn3yoCCFKFi8HeCCCIt4qTbxUBBKnCxWBvBBDEW8XJt4oAglThYrA3AgjireLkW0UAQapwMViIQN455LwPVf73vFNN3rlmqu2cEESo4oTZJZCf7c57TmU5bn5SSlmWv98EypsCDpcFQXbryoCDBKp3BznPN8MmgQhysPocfpNA1fPcO2eVvGFgPqOofxBEHbmLCZvPGrfojNobDUFc9KtqkuJybC651He4QRDV3jE/mdhl1SxnEgQx37NqCeZXCDxozJZSyjttqnzDhSAaFfUxx9PeV7hSGE5fBavstokgUlXzHUft7LG5H1H5ZgtBfDe2VPZqZ4+NICp7NiOIVIv4jaN+9thI0v1eBEH8NrZU5t2+1t1bYEqp+2UWguxVgb/vERgpSPfLLATZKz9/3yOgfv+heR+CIHvl5+97BEYKkv8vpOvbxxBkr/z8fY9A9csu9wLW/P3tN1qpZnztWASpJcb4SwLDBNF4fyWC0PBHCXCJdSLIG6aOtpLN46veBCuJQOMnJ5xBJCvmM1bVm2AlEWk8I4IgkhXzG2vIfUjvG/RcTgTx29SSmavfh2jcoCOIZIv4jtX9QalLvBo/M0EQ300tnb3azbrW2QNBpFvEd7y8AVy+1DpvCNeNRkopPyx13myu2zwI0hWty+DPp83hukmidWl1rh436S77uGvS3X7dq/G17iUZBOnaK26Di59JRsjBJZbb/lVJPO/Bm2/cD19uad5zcAZR6Q0m2RBoPpuMOmtsq8clFr2sReB9d/f82oN7Z5XThtV5d/f8LZXK3lf3ACBI//bIjTFk4+X+qTXPcH4FwvbyawohuMRqrmnTge8/wdD+arJppRx0lQBnkH6N8dvvk5CkH+iekRGkD92rP95Dkj6we0ZFEHm6d3/ZiiTywHtGRBBZukU/+0YSWeg9oyGIHN0iOc7TIYkc+J6REESGbpUcSCIDXSMKghyn3CQHkhwHrxEBQY5RPiQHkhyDr3E0grRTFpEDSdoLoHEkgrRRFpUDSdqKoHEUgtRT7iIHktQXQuMIBKmj3FUOJKkrhsZoBCmnrCIHkpQXRGMkgpRRVpUDScqKojEKQfYpD5HDiCTn5z2GP/i0X+brIxDkPrmhciwuyX9vv00pdX8bbasAe8chyG1CU8ixqCR/vBp6VUkQ5LogU8mxmCQ335u+oiQI8qcgU8qxiCQ35disf6nLLQT5XZCp5Zhckl05VpQEQf4XZAk5JpWkWI7VJEGQXxVbSo7JJKmWYyVJEOTX9ph576olP4OfTGyWYxVJEGTRs8fW5kGSHJZjBUkQxIAgudGUJRGTY3ZJEMSIIIqSiMsxsyQIYkgQBUm6yTGrJAhiTJCOknSXY0ZJEMSgIB0kUZNjNkkQxKgggpKoyzGTJAhiWBABSYbJMYskCGJckAOSDJdjBkkQxIEgDZJMI8doSRDEiSAVkkwnx0hJEMSRIAWSTCvHKEkQxJkgdySZXo4RkiCIQ0GuSLKMHNqSIIhTQTaSPMYYH1b8rb/GM+4I4liQFaW4XHNKKfXMA0EQpGd/dY+NICn9CCE8diS95OO2HXksFRpBEGSphtVeLIIgiHbPLTUfgiDIUg2rvVgEQRDtnltqPgRBkKUaVnuxCIIg2j231HwIgiBLNaz2YhEEQbR7bqn5EARBlmpY7cUiCIJo99xS8yEIgizVsNqLRRAE0e65peZDEARZqmG1F4sgCKLdc0vNhyAIslTDai8WQRBEu+eWmg9BEGSphtVeLIIgiHbPLTUfgiDIUg2rvVgEQRDtnltqPgRBkKUaVnuxCNJfkBftojKfKIGeO94E9sUSrRXBrBFAEGsVJR9RAggiipNg1gggiLWKko8oAQQRxUkwawQQxFpFyUeUAIKI4iSYNQIIYq2i5CNKAEFEcRLMGgEEsVZR8hElgCCiOAlmjQCCWKso+YgSQBBRnASzRgBBrFWUfEQJIIgoToJZI7CCIF9DCB+tgSefJQi8xhgfSlcaSwdKjkspZTmyJHwgoE3gJcb4VDrpKEHyE2P5Xel8IKBN4PntEutL6aRDBMmLSyn9DCF8KF0o4yAgROAhxvhaGmukIJ/fFvlculDGQUCAQNXZI883TJDTWYSbdYGqE6KIQNXN+TniUEFOkuQzSb5p53KrqM4MaiBQdWO+jT9ckJMk+aY9i5IlQZSGDuCQqwS+hRC+xxibt4GaQpBtaiklJKHbjxLIl1PFN+L3JptOkKNkOB4CkgQQRJImscwRQBBzJSUhSQIIIkmTWOYIIIi5kpKQJAEEkaRJLHMEEMRcSUlIkgCCSNIkljkCCGKupCQkSQBBJGkSyxwBBDFXUhKSJIAgkjSJZY4AgpgrKQlJEkAQSZrEMkcAQcyVlIQkCSCIJE1imSOAIOZKSkKSBBBEkiaxzBFAEHMlJSFJAggiSZNY5gggiLmSkpAkAQSRpEkscwQQxFxJSUiSAIJI0iSWOQIIYq6kJCRJAEEkaRLLHAEEMVdSEpIkgCCSNIlljgCCmCspCUkSQBBJmsQyRwBBzJWUhCQJIIgkTWKZI4Ag5kpKQpIEEESSJrHMEfgXwJGyBZeM2yAAAAAASUVORK5CYII="/>
-          </defs>
-          <g id="组_41" data-name="组 41" transform="translate(-227.295 -250)">
-            <g id="组_6" data-name="组 6" transform="translate(-263.705)">
-              <path id="路径_60" data-name="路径 60" d="M2974.924,1585.89H2866.262l-28.445,26.739v53.477"
-                    transform="translate(-2323.563 -1332.89)" fill="none" stroke="#00f0ff" stroke-width="6"/>
-              <path id="路径_61" data-name="路径 61"
-                    d="M3104.151,2156.031l-17.942,12.691H2871.338l-32.821-31.509V1807.249l10.5,9.846v315.961l22.756,22.975Z"
-                    transform="translate(-2323.454 -1298.397)" fill="rgba(0,82,87,0.8)" stroke="#00f0ff"
-                    stroke-width="1" opacity="0.85"/>
-              <path id="路径_62" data-name="路径 62" d="M3245.61,2133.229h131.417l31.29-31.639v-66.562"
-                    transform="translate(-1472.316 -1262.903)" fill="none" stroke="#00f0ff" stroke-width="6"/>
-              <path id="路径_63" data-name="路径 63"
-                    d="M3218.417,1598.512l17.776-11.392h145.071l29.014,28.445v298.789l-9.408-8.079V1622.749l-25.583-24.237Z"
-                    transform="translate(-1476.554 -1332.698)" fill="rgba(0,82,87,0.8)" stroke="#00f0ff"
-                    stroke-width="1" opacity="0.74"/>
-              <g data-type="innerShadowGroup">
-                <g transform="matrix(1, 0, 0, 1, 491, 250)" filter="url(#路径_59)">
-                  <path id="路径_59-3" data-name="路径 59"
-                        d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188H4223.653l24.463-22.187v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z"
-                        transform="translate(-2815.54 -1581.24)" fill="rgba(12,33,34,0.9)" stroke="#00f0ff"
-                        stroke-width="2"/>
-                </g>
-                <path id="路径_59-4" data-name="路径 59"
-                      d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188H4223.653l24.463-22.187v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z"
-                      transform="translate(-2324.541 -1331.241)" fill="rgba(12,33,34,0.9)"/>
-                <g transform="matrix(1, 0, 0, 1, 491, 250)" filter="url(#路径_59-2)">
-                  <path id="路径_59-5" data-name="路径 59"
-                        d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188H4223.653l24.463-22.187v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z"
-                        transform="translate(-2815.54 -1581.24)" fill="#fff"/>
-                </g>
-                <path id="路径_59-6" data-name="路径 59"
-                      d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188H4223.653l24.463-22.187v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z"
-                      transform="translate(-2324.541 -1331.241)" fill="none" stroke="#00f0ff" stroke-width="2"/>
-              </g>
-            </g>
-            <g v-if="showInfo.userType === 'admin'" transform="matrix(1, 0, 0, 1, 227.29, 250)" filter="url(#导演评分表)">
-              <foreignObject x="67" y="50" width="200" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                     style="color: #fff; font-size: 32px;
-                      font-weight: 700;">
-                  导演评分表
-                </div>
-              </foreignObject>
-            </g>
-            <g v-else transform="matrix(1, 0, 0, 1, 227.29, 250)" filter="url(#指令裁决表)">
-              <foreignObject x="67" y="50" width="200" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                     style="color: #fff; font-size: 32px;
-                      font-weight: 700;">
-                  指令裁决表
-                </div>
-              </foreignObject>
-            </g>
+          <view class="panel-header">
+            <view class="panel-title" v-if="showInfo.userType === 'admin'">导演打分裁决表</view>
+            <view class="panel-title" v-else>指令裁决表</view>
+            <view class="military-code" v-if="showInfo.userType === 'admin'">DIRECTOR SCORING & JUDGMENT SYSTEM</view>
+            <view class="military-code" v-else>COMMAND JUDGMENT SYSTEM</view>
+          </view>
 
-            <g transform="translate(320 350)">
-              <foreignObject width="100" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                     style="font-size: 30px;
-                      font-weight: 700;
-                      color: #00f0ff;">
-                  回合
-                </div>
-              </foreignObject>
-            </g>
-            <g transform="translate(415 350)">
-              <foreignObject width="100" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                     style="color: #00f0ff;
-                     font-size: 30px;
-                     font-weight: 700;">
-                  阶段
-                </div>
-              </foreignObject>
-            </g>
-            <g transform="translate(595 350)">
-              <foreignObject width="200" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                     style="color: #00f0ff;
-                     font-size: 30px;
-                     font-weight: 700;">
-                  指挥员指令
-                </div>
-              </foreignObject>
-            </g>
-            <g transform="translate(860 350)">
-              <foreignObject width="100" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                     style="color: #00f0ff;
-                     font-size: 30px;
-                     font-weight: 700;">
-                  单位
-                </div>
-              </foreignObject>
-            </g>
+          <!-- 整个表格滚动区域 -->
+          <view class="judge-scroll-container">
+            <!-- 固定表头区域 -->
+            <view class="judge-header-container">
+              <view class="judge-header">
+                <view class="spacer-cell"></view> <!-- 左侧空白 -->
+                <view class="judge-header-cell round-header">回合</view>
+                <view class="judge-header-cell stage-header">阶段</view>
+                <view class="judge-header-cell instruction-header">指挥员指令</view>
+                <view class="judge-header-cell unit-header">单位</view>
+                <view class="judge-header-cell action-header">部队动作</view>
+                <view class="judge-header-cell result-header">裁决结果</view>
+                <view class="judge-header-cell score-header">裁决得分</view>
+                <view class="spacer-cell"></view> <!-- 右侧空白 -->
+              </view>
+            </view>
 
-            <g transform="translate(1040 350)">
-              <foreignObject width="200" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                     style="color: #00f0ff; font-size: 30px;
-                     font-weight: 700;">
-                  部队动作
-                </div>
-              </foreignObject>
-            </g>
-            <g transform="translate(1270 350)">
-              <foreignObject width="200" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                     style="color: #00f0ff; font-size: 30px;
-                     font-weight: 700;">
-                  裁决结果
-                </div>
-              </foreignObject>
-            </g>
-            <g transform="translate(1440 350)">
-              <foreignObject width="200" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                     style="color: #00f0ff; font-size: 30px;
-                     font-weight: 700;">
-                  裁决得分
-                </div>
-              </foreignObject>
-            </g>
+            <!-- 可滚动内容区域 -->
+            <view class="judge-content">
+            <view class="judge-table-content">
+                <view v-for="(value, key) in recordMap" :key="key + 'map'" class="round-group">
+                  <view v-for="(item, index) in value" :key="index" class="instruction-group">
+                    <!-- 记录模式：合并同一指令下的多条记录为一行展示 -->
+                    <template v-if="showInfo.type === 'record'">
+                      <view class="judge-row">
+                        <view class="spacer-cell"></view> <!-- 左侧空白 -->
+                        <view class="judge-cell round-cell">第{{ key }}回合</view>
+                        <view class="judge-cell stage-cell">{{ item.roundPeriod | roundPeriodFormatter }}</view>
 
-            <path data-name="路径 64"
-                  d="M646.5,398.471s264.974-1.087,706.448-1.087,615.232,1.087,615.232,1.087-110.9,3.318-615.232,3.318S646.5,398.471,646.5,398.471Z"
-                  transform="translate(-360.209 7.095)" fill="#00f0ff"/>
+                        <view class="judge-cell instruction-cell">
+                          <view class="instruction-display">
+                            <view v-if="item.coverUrl" class="image-container">
+                              <uv-image
+                                :src="item.coverUrl"
+                                @click="imageClick(item.coverUrl)"
+                                class="instruction-image"
+                                width="72px"
+                                height="72px"
+                                mode="aspectFill"
+                                radius="6"
+                                :style="{ width: '72px', height: '72px', borderRadius: '6px', overflow: 'hidden' }"
+                              ></uv-image>
+                            </view>
+                            <view v-if="item.textIns" class="text-container">
+                              <view class="instruction-text">{{ item.textIns }}</view>
+                            </view>
+                            <view v-if="!item.coverUrl && !item.textIns" class="no-instruction">暂无指令</view>
+                          </view>
+                        </view>
 
-            <foreignObject x="300" y="420" width="1300" height="335">
-              <div xmlns="http://www.w3.org/1999/xhtml" style="height: 100%; overflow-y: auto; font-size: 21px">
-                <div v-for="(value, key) in recordMap" :key="key + 'map'">
-                  <div v-for="(item, index) in value" :key="index" style="width: 100%">
-                    <table style="width: 100% ;background-color: transparent">
-                      <tr v-for="(eitem, eindex) in item.historyVoList" :key="eindex">
-                        <td v-if="eindex === 0" :rowspan="item.historyVoList.length" align="center"
-                            style="width: 6% ; background-color: transparent ;color: white;">第{{ key }}回合
-                        </td>
-                        <td v-if="eindex === 0" :rowspan="item.historyVoList.length" align="center"
-                            style="width: 11% ; background-color: transparent ;color: white">
-                          {{ item.roundPeriod | roundPeriodFormatter }}
-                        </td>
-                        <td v-if="eindex === 0" :rowspan="item.historyVoList.length" align="center"
-                            style="width: 10% ; background-color: transparent ;color: white">
-                          <uv-image @click="imageClick(item.coverUrl)" :src="item.coverUrl"></uv-image>
-                          <div style="color: white; font-size: 30px; word-break: break-all; text-align: center; line-height: 1.2; max-width: 80px;">{{ item.textIns }}</div>
-                        </td>
-                        <td align="center" style="color: white ;width: 10%">{{ eitem.chessPiecesNumber }}</td>
-                        <td align="center" style="color: white ;width: 24%">{{ eitem.actionDesc }}</td>
-                        <td v-if="showInfo.type === 'record' || showInfo.userType === 'admin'" align="center"
-                            style="width: 10% ;color: white ">{{ eitem.attackResult }}
-                        </td>
-                        <td v-else-if="showInfo.type === 'judge'" style="text-align:left; padding: 0;" >
-                          <button @click="judgeOneByOne(eitem, key, index, eindex)" :disabled="eitem.status === 2" style="width: 120px;white-space: nowrap;margin: 0;">
-                            {{ eitem.status !== 2 ? '裁决' : '已裁决' }}
+                        <view class="judge-cell unit-cell">
+                          <view class="single-text">{{ combineUnits(item.historyVoList) }}</view>
+                        </view>
+
+                        <view class="judge-cell action-cell">
+                          <view class="list-cell">
+                            <view v-for="(txt, i) in flattenActionList(item.historyVoList)" :key="'act'+i" class="list-item">{{ txt }}</view>
+                          </view>
+                        </view>
+
+                        <view class="judge-cell result-cell">
+                          <view class="list-cell">
+                            <view v-for="(txt, i) in pluckList(item.historyVoList, 'attackResult')" :key="'res'+i" class="list-item">{{ txt }}</view>
+                          </view>
+                        </view>
+                        <view class="judge-cell score-cell">
+                          <view class="list-cell">
+                            <view v-for="(txt, i) in pluckList(item.historyVoList, 'attackScore')" :key="'sc'+i" class="list-item">{{ txt }}</view>
+                          </view>
+                        </view>
+                        <view class="spacer-cell"></view> <!-- 右侧空白 -->
+                      </view>
+                    </template>
+
+                    <!-- 非记录模式（裁决/打分）：保持逐条渲染 -->
+                    <template v-else>
+                      <view v-for="(eitem, eindex) in item.historyVoList" :key="eindex" class="judge-row">
+                        <view class="spacer-cell"></view> <!-- 左侧空白 -->
+                        <view class="judge-cell round-cell">第{{ key }}回合</view>
+                        <view class="judge-cell stage-cell">{{ item.roundPeriod | roundPeriodFormatter }}</view>
+
+                        <view class="judge-cell instruction-cell">
+                          <view class="instruction-display">
+                            <view v-if="item.coverUrl" class="image-container">
+                              <uv-image
+                                :src="item.coverUrl"
+                                @click="imageClick(item.coverUrl)"
+                                class="instruction-image"
+                                width="72px"
+                                height="72px"
+                                mode="aspectFill"
+                                radius="6"
+                                :style="{ width: '72px', height: '72px', borderRadius: '6px', overflow: 'hidden' }"
+                              ></uv-image>
+                            </view>
+                            <view v-if="item.textIns" class="text-container">
+                              <view class="instruction-text">{{ item.textIns }}</view>
+                            </view>
+                            <view v-if="!item.coverUrl && !item.textIns" class="no-instruction">暂无指令</view>
+                          </view>
+                        </view>
+
+                        <view class="judge-cell unit-cell">
+                          <view class="single-text">{{ eitem.chessPiecesNumber }}</view>
+                        </view>
+                        <view class="judge-cell action-cell">
+                          <view class="list-cell">
+                            <view v-for="(txt, i) in normalizeList(eitem.actionDesc)" :key="'a'+i" class="list-item">{{ txt }}</view>
+                          </view>
+                        </view>
+
+                        <view v-if="showInfo.type === 'record'" class="judge-cell result-cell">
+                          {{ eitem.attackResult }}
+                        </view>
+                        <view v-else-if="showInfo.userType === 'admin'" class="judge-cell judge-action-cell">
+                          <button @click="judgeOneByOne(eitem, key, index, eindex, 'judge')" class="judge-button">
+                            {{ eitem.attackResult || '裁决' }}
                           </button>
-                        </td>
-                        <td v-if="showInfo.type === 'record'" align="center" class="col6" style="color: white">
+                        </view>
+                        <view v-else-if="showInfo.type === 'judge'" class="judge-cell judge-action-cell">
+                          <button @click="judgeOneByOne(eitem, key, index, eindex, 'judge')"
+                                  :class="['judge-button', eitem.status === 2 ? 'judged' : '']">
+                            {{ eitem.status !== 2 ? '裁决' : '重新裁决' }}
+                          </button>
+                        </view>
+
+                        <view v-if="showInfo.type === 'record'" class="judge-cell score-cell">
                           {{ eitem.attackScore }}
-                        </td>
-                        <td v-if="showInfo.userType === 'admin' && eitem.attackScore" align="center" class="col6"
-                            style="color: white">
-                          <button @click="judgeOneByOne(eitem, key, index, eindex)">{{ eitem.attackScore }}</button>
-                        </td>
-                        <td v-else-if="showInfo.userType === 'admin' && !eitem.attackScore" align="center" class="col6"
-                            style="color: white">
-                          <button @click="judgeOneByOne(eitem, key, index, eindex)">打分</button>
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </foreignObject>
+                        </view>
+                        <view v-else-if="showInfo.userType === 'admin'" class="judge-cell score-cell">
+                          <button @click="judgeOneByOne(eitem, key, index, eindex, 'score')"
+                                  :class="['score-button', eitem.attackScore ? 'scored' : '']">
+                            {{ eitem.attackScore ? `重新打分(${eitem.attackScore})` : '打分' }}
+                          </button>
+                        </view>
+                        <view class="spacer-cell"></view> <!-- 右侧空白 -->
+                      </view>
+                    </template>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
 
-            <g v-if="Object.keys(recordMap).length === 0 && showInfo.userType === 'judge'" transform="translate(1200 759)">
-              <foreignObject width="320" height="52">
-                <div xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;">
-                  <button
-                      @click="stepJudge"
-                      style="width: 100%;
-                      height: 100%; font-size: 24px;
-                      font-weight: 700; color: #fff;
-                      background: #afafaf;
-                      border: none; cursor: pointer;
-                      display: flex; justify-content: center; align-items: center;">
-                    跳过
-                  </button>
-                </div>
-              </foreignObject>
-            </g>
-
-<!--            translate(605 759)-->
-            <g :transform="Object.keys(recordMap).length !== 0? 'translate(785, 759)' : 'translate(785, 759)'">
-              <foreignObject width="320" height="52">
-                <div xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;">
-                  <button
-                      @click="close"
-                      style="width: 100%;
-                      height: 100%; font-size: 24px;
-                      font-weight: 700; color: #fff;
-                      background: linear-gradient(to right, #00ddeb, #007a82);
-                      border: 2px solid #00f0ff; cursor: pointer;
-                      display: flex; justify-content: center; align-items: center;">
-                    关闭
-                  </button>
-                </div>
-              </foreignObject>
-            </g>
-
-
-            <line id="直线_10" data-name="直线 10" y2="441" transform="translate(1637.702 296.616)" fill="none"
-                  stroke="#00f0ff" stroke-linecap="round" stroke-width="6"/>
-          </g>
-        </svg>
-      </view>
-
-
-    </uni-popup>
-
-    <uni-popup ref="judge_" :mask-click="false">
-      <view style="width: 1000px;" class="rule__view">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="886.844" height="626.46" viewBox="0 0 886.844 626.46">
-          <defs>
-<!--            <filter id="请输入裁决结果" x="49" y="38.521" width="260" height="79" filterUnits="userSpaceOnUse">-->
-<!--              <feOffset dy="3" input="SourceAlpha"/>-->
-<!--              <feGaussianBlur stdDeviation="6" result="blur-3"/>-->
-<!--              <feFlood flood-color="#00c1cd"/>-->
-<!--              <feComposite operator="in" in2="blur-3"/>-->
-<!--              <feComposite in="SourceGraphic"/>-->
-<!--            </filter>-->
-            <linearGradient id="linear-gradient" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
-              <stop offset="0" stop-color="#00ddeb"/>
-              <stop offset="1" stop-color="#007a82"/>
-            </linearGradient>
-          </defs>
-          <g id="组_44" data-name="组 44" transform="translate(-516.578 -252)">
-            <g id="组_7" data-name="组 7" transform="translate(25.578 2)">
-              <path d="M2974.924,1585.89H2866.262l-28.445,26.739v53.477" transform="translate(-2323.563 -1332.89)" fill="none" stroke="#00f0ff" stroke-width="6"/>
-              <path d="M3104.151,2156.031l-17.942,12.691H2871.338l-32.821-31.509V1807.249l10.5,9.846v315.961l22.756,22.975Z" transform="translate(-2323.454 -1298.397)" fill="rgba(0,82,87,0.8)" stroke="#00f0ff" stroke-width="1" opacity="0.85"/>
-              <path d="M3245.61,2133.229h131.417l31.29-31.639v-66.562" transform="translate(-2051.02 -1262.903)" fill="none" stroke="#00f0ff" stroke-width="6"/>
-              <path d="M3218.417,1598.512l17.776-11.392h145.071l29.014,28.445v298.789l-9.408-8.079V1622.749l-25.583-24.237Z" transform="translate(-2055.257 -1332.698)" fill="rgba(0,82,87,0.8)" stroke="#00f0ff" stroke-width="1" opacity="0.74"/>
-              <g data-type="innerShadowGroup">
-                <g transform="matrix(1, 0, 0, 1, 491, 250)" filter="url(#路径_59)">
-                  <path id="路径_59-3" data-name="路径 59" d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z" transform="translate(-2815.54 -1581.24)" fill="rgba(12,33,34,0.9)" stroke="#00f0ff" stroke-width="2"/>
-                </g>
-                <path id="路径_59-4" data-name="路径 59" d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z" transform="translate(-2324.541 -1331.241)" fill="rgba(12,33,34,0.9)"/>
-                <g transform="matrix(1, 0, 0, 1, 491, 250)" filter="url(#路径_59-2)">
-                  <path id="路径_59-5" data-name="路径 59" d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z" transform="translate(-2815.54 -1581.24)" fill="#fff"/>
-                </g>
-                <path id="路径_59-6" data-name="路径 59" d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z" transform="translate(-2324.541 -1331.241)" fill="none" stroke="#00f0ff" stroke-width="2"/>
-              </g>
-            </g>
-            <g transform="matrix(1, 0, 0, 1, 516.58, 252)">
-              <foreignObject x="67" y="50" width="250" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml" style="color: #fff; font-size: 32px; font-weight: bold; text-shadow: 0 0 1px #00f0ff, 0 0 1px #00f0ff, 0 0 3px #00f0ff, 0 0 3px #00f0ff;">
-                  请输入裁决结果
-                </div>
-              </foreignObject>
-            </g>
-            <g transform="matrix(1, 0, 0, 1, 516.58, 252)">
-              <foreignObject x="67" y="110" width=740px height="50">
-                <div xmlns="http://www.w3.org/1999/xhtml" style="color: #00f0ff; font-size: 20px; height: 100%; white-space: nowrap; font-weight: bold;">
-                  部队行动： {{ actionInfo.actionDesc }}
-                </div>
-              </foreignObject>
-              <foreignObject x="67" y="170" width="740" height="500">
-                <div xmlns="http://www.w3.org/1999/xhtml">
-                  <div style ="height: 200px; text-align: center; color: transparent; width: 99%; word-wrap: break-word;">
-                    <input v-if="showInfo.userType !== 'admin'" type="text" v-model="judge_result"
-                           placeholder="请输入裁决内容" style="width: 100%; height: 270px; background-color: transparent; color: white; font-size: 20px; font-weight: bold; border: none" placeholder-style="color: white; opacity:0.3;"/>
-                    <input v-if="showInfo.userType === 'admin'" type="number" v-model="judge_score"
-                           placeholder="请输入裁决得分" style="width: 100%; height: 270px; background-color: transparent; color: white; font-size: 20px; font-weight: bold; border: none" placeholder-style="color: white; opacity:0.3;"/>
-                  </div>
-                </div>
-              </foreignObject>
-            </g>
-
-            <foreignObject x="858" y="684" width="300" height="40">
-              <body xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center;">
-              <button @click="openNewWindow" style="display: flex; align-items: center; width: 100%; height: 100%; background: none; border: none; color: #fff; font-size: 20px; font-weight: bold; cursor: pointer;">
-                <img src="@/static/image/v_logo.png" alt="Guide" style="width: 40px; height: 40px; margin-right: 10px;" />
-                打开裁决规则表
-              </button>
-              </body>
-            </foreignObject>
-
-            <path id="路径_65" data-name="路径 65" d="M646.5,398.107s153.393-.724,408.961-.724,356.156.724,356.156.724-64.2,2.209-356.156,2.209S646.5,398.107,646.5,398.107Z" transform="translate(-70.926 9.831)" fill="#00f0ff"/>
-            <foreignObject x="617.578" y="761" width="320" height="52">
-              <body xmlns="http://www.w3.org/1999/xhtml">
-              <button class="custom-button" @click="Judge">确认裁决</button>
-              </body>
-            </foreignObject>
-
-            <foreignObject x="999.578" y="761" width="320" height="52">
-              <body xmlns="http://www.w3.org/1999/xhtml">
-              <button class="custom-button" @click="closeJudge">关闭</button>
-              </body>
-            </foreignObject>
-          </g>
-        </svg>
-<!--        <uni-table border>-->
-<!--          <uni-tr class="rowTitle">-->
-<!--            <uni-td align="center" class="color-light-blue">部队行动： {{ actionInfo.actionDesc }}</uni-td>-->
-<!--          </uni-tr>-->
-<!--          <uni-tr class="rowTitle" style="height: 200px">-->
-<!--            <uni-td align="center" class="color-white" style="width: 120px; word-wrap: break-word">-->
-<!--              <input v-if="showInfo.userType !== 'admin'" type="text" v-model="judge_result"-->
-<!--                     placeholder="请输入裁决内容" style="width: 100%; height: 200px"/>-->
-<!--              <input v-if="showInfo.userType === 'admin'" type="number" v-model="judge_score"-->
-<!--                     placeholder="请输入裁决得分" style="width: 100%; height: 200px;"/>-->
-<!--            </uni-td>-->
-<!--          </uni-tr>-->
-<!--        </uni-table>-->
-<!--        <button @click="openNewWindow">打开裁决规则表</button>-->
-<!--        <view class="foot">-->
-<!--          <view style="flex: 1" class="color-blue" @click="Judge">确认裁决</view>-->
-<!--          <view style="flex: 1" @click="closeJudge" class="color-red">关闭</view>-->
-
-<!--        </view>-->
+          <view class="panel-footer">
+            <button v-if="Object.keys(recordMap).length === 0 && showInfo.userType === 'judge'" class="sci-fi-button secondary" @click="stepJudge">
+              <text class="button-icon">⏭</text> 跳过
+            </button>
+          </view>
+        </view>
       </view>
     </uni-popup>
 
+    <!-- 裁决弹窗 -->
+    <uni-popup ref="judgePopup" :mask-click="false">
+      <view class="sci-fi-panel judge-modal">
+        <view class="panel-header">
+          <view class="panel-title">部队行动裁决</view>
+          <view class="military-code">UNIT ACTION JUDGMENT</view>
+        </view>
 
-    <uni-popup ref="judge_final" :mask-click="false">
-      <view style="width: 1000px;" class="rule__view">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="886.844" height="626.46" viewBox="0 0 886.844 626.46">
-          <defs>
-            <!--            <filter id="请输入裁决结果" x="49" y="38.521" width="260" height="79" filterUnits="userSpaceOnUse">-->
-            <!--              <feOffset dy="3" input="SourceAlpha"/>-->
-            <!--              <feGaussianBlur stdDeviation="6" result="blur-3"/>-->
-            <!--              <feFlood flood-color="#00c1cd"/>-->
-            <!--              <feComposite operator="in" in2="blur-3"/>-->
-            <!--              <feComposite in="SourceGraphic"/>-->
-            <!--            </filter>-->
-            <linearGradient id="linear-gradient" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
-              <stop offset="0" stop-color="#00ddeb"/>
-              <stop offset="1" stop-color="#007a82"/>
-            </linearGradient>
-          </defs>
-          <g id="组_44" data-name="组 44" transform="translate(-516.578 -252)">
-            <g id="组_7" data-name="组 7" transform="translate(25.578 2)">
-              <path d="M2974.924,1585.89H2866.262l-28.445,26.739v53.477" transform="translate(-2323.563 -1332.89)" fill="none" stroke="#00f0ff" stroke-width="6"/>
-              <path d="M3104.151,2156.031l-17.942,12.691H2871.338l-32.821-31.509V1807.249l10.5,9.846v315.961l22.756,22.975Z" transform="translate(-2323.454 -1298.397)" fill="rgba(0,82,87,0.8)" stroke="#00f0ff" stroke-width="1" opacity="0.85"/>
-              <path d="M3245.61,2133.229h131.417l31.29-31.639v-66.562" transform="translate(-2051.02 -1262.903)" fill="none" stroke="#00f0ff" stroke-width="6"/>
-              <path d="M3218.417,1598.512l17.776-11.392h145.071l29.014,28.445v298.789l-9.408-8.079V1622.749l-25.583-24.237Z" transform="translate(-2055.257 -1332.698)" fill="rgba(0,82,87,0.8)" stroke="#00f0ff" stroke-width="1" opacity="0.74"/>
-              <g data-type="innerShadowGroup">
-                <g transform="matrix(1, 0, 0, 1, 491, 250)" filter="url(#路径_59)">
-                  <path id="路径_59-3" data-name="路径 59" d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z" transform="translate(-2815.54 -1581.24)" fill="rgba(12,33,34,0.9)" stroke="#00f0ff" stroke-width="2"/>
-                </g>
-                <path id="路径_59-4" data-name="路径 59" d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z" transform="translate(-2324.541 -1331.241)" fill="rgba(12,33,34,0.9)"/>
-                <g transform="matrix(1, 0, 0, 1, 491, 250)" filter="url(#路径_59-2)">
-                  <path id="路径_59-5" data-name="路径 59" d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z" transform="translate(-2815.54 -1581.24)" fill="#fff"/>
-                </g>
-                <path id="路径_59-6" data-name="路径 59" d="M2874.209,1596.472l-24.463,23.894v51.2l-18.2,15.929v145.07l18.2,17.636v316.31l24.463,22.188h770.646l24.463-22.188v-68.837l17.067-16.5V1919.609l-17.067-13.654v-285.59l-24.463-23.894Z" transform="translate(-2324.541 -1331.241)" fill="none" stroke="#00f0ff" stroke-width="2"/>
-              </g>
-            </g>
-            <g transform="matrix(1, 0, 0, 1, 516.58, 252)">
-              <foreignObject x="67" y="50" width="250" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml" style="color: #fff; font-size: 32px; font-weight: bold; text-shadow: 0 0 1px #00f0ff, 0 0 1px #00f0ff, 0 0 3px #00f0ff, 0 0 3px #00f0ff;">
-                  请输入评分结果
-                </div>
-              </foreignObject>
-            </g>
-            <g transform="matrix(1, 0, 0, 1, 516.58, 252)">
-              <foreignObject x="67" y="110" width=740px height="50">
-                <div xmlns="http://www.w3.org/1999/xhtml" style="color: #00f0ff; font-size: 20px; height: 100%; white-space: nowrap; font-weight: bold;">
-                  部队行动： {{ actionInfo.actionDesc }}
-                </div>
-              </foreignObject>
-              <foreignObject x="67" y="170" width="740" height="500">
-                <div xmlns="http://www.w3.org/1999/xhtml">
-                  <div style ="height: 200px; text-align: center; color: transparent; width: 99%; word-wrap: break-word;">
-                    <input v-if="showInfo.userType !== 'admin'" type="text" v-model="judge_result"
-                           placeholder="请输入裁决内容" style="width: 100%; height: 270px; background-color: transparent; color: white; font-size: 20px; font-weight: bold; border: none" placeholder-style="color: white; opacity:0.3;"/>
-                    <input v-if="showInfo.userType === 'admin'" type="number" v-model="judge_score"
-                           placeholder="请输入评分" style="width: 100%; height: 270px; background-color: transparent; color: white; font-size: 20px; font-weight: bold; border: none" placeholder-style="color: white; opacity:0.3;"/>
-                  </div>
-                </div>
-              </foreignObject>
-            </g>
+        <view class="panel-content">
+          <view class="action-info">
+            <view class="info-row">
+              <text class="label">部队行动：</text>
+              <text class="value">{{ actionInfo.actionDesc }}</text>
+            </view>
+          </view>
 
-            <foreignObject x="858" y="684" width="300" height="40">
-              <body xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center;">
-              <button @click="openNewWindow_v2" style="display: flex; align-items: center; width: 100%; height: 100%; background: none; border: none; color: #fff; font-size: 20px; font-weight: bold; cursor: pointer;">
-                <img src="@/static/image/v_logo.png" alt="Guide" style="width: 40px; height: 40px; margin-right: 10px;" />
-                想定得分计算表
-              </button>
-              </body>
-            </foreignObject>
+          <!-- 裁决结果输入框 -->
+          <view class="judge-input-section">
+            <text class="input-label">裁决结果：</text>
+            <input
+              type="text"
+              v-model="judgeResult"
+              placeholder="请输入裁决结果或点击下方按钮选择"
+              class="judge-input-field"
+            />
+            <view class="input-tip">
+              <text class="tip-text">💡 提示：可以多次提交不同的裁决结果</text>
+            </view>
+          </view>
 
-            <path id="路径_65" data-name="路径 65" d="M646.5,398.107s153.393-.724,408.961-.724,356.156.724,356.156.724-64.2,2.209-356.156,2.209S646.5,398.107,646.5,398.107Z" transform="translate(-70.926 9.831)" fill="#00f0ff"/>
-            <foreignObject x="617.578" y="761" width="320" height="52">
-              <body xmlns="http://www.w3.org/1999/xhtml">
-              <button class="custom-button" @click="Judge">确认评分</button>
-              </body>
-            </foreignObject>
+          <!-- 裁决规则表按钮 -->
+          <view class="judge-rule-buttons">
+            <text class="group-title">使用裁决规则表：</text>
+            <button class="rule-button single-button" @click="openRuleTablePage">
+              <text class="button-text">打开裁决规则表</text>
+            </button>
+          </view>
+        </view>
 
-            <foreignObject x="999.578" y="761" width="320" height="52">
-              <body xmlns="http://www.w3.org/1999/xhtml">
-              <button class="custom-button" @click="closeJudge">关闭</button>
-              </body>
-            </foreignObject>
-          </g>
-        </svg>
-
-<!--        <view class="title">请输入评分结果</view>-->
-<!--        <uni-table border>-->
-<!--          <uni-tr class="rowTitle">-->
-<!--      n="center" class="color-li      <uni-td aligght-blue">部队行动： {{ actionInfo.actionDesc }}</uni-td>-->
-<!--          </uni-tr>-->
-<!--          <uni-tr class="rowTitle" style="height: 200px">-->
-<!--            <uni-td align="center" class="color-white" style="width: 120px; word-wrap: break-word">-->
-<!--              <input v-if="showInfo.userType !== 'admin'" type="text" v-model="judge_result"-->
-<!--                     placeholder="请输入裁决内容" style="width: 100%; height: 200px"/>-->
-<!--              <input v-if="showInfo.userType === 'admin'" type="number" v-model="judge_score"-->
-<!--                     placeholder="请输入裁决得分" style="width: 100%; height: 200px;"/>-->
-<!--            </uni-td>-->
-<!--          </uni-tr>-->
-<!--        </uni-table>-->
-<!--        <button @click="openNewWindow_v2">想定得分统计表</button>-->
-<!--        <view class="foot">-->
-<!--          <view style="flex: 1" class="color-blue" @click="Judge">确认裁决</view>-->
-<!--          <view style="flex: 1" @click="closeJudge" class="color-red">关闭</view>-->
-
-<!--        </view>-->
+        <view class="panel-footer">
+          <button class="sci-fi-button primary" @click="confirmJudgeAction">
+            <text class="button-icon">✓</text> 提交裁决
+          </button>
+          <button class="sci-fi-button secondary" @click="closeJudge">
+            <text class="button-icon">✕</text> 关闭
+          </button>
+        </view>
       </view>
     </uni-popup>
 
+    <!-- 打分弹窗 -->
+    <uni-popup ref="scorePopup" :mask-click="false">
+      <view class="sci-fi-panel score-modal">
+        <!-- 右上角关闭按钮 -->
+        <view class="close-button-container">
+          <button class="close-button" @click="closeScore">
+            <text class="close-icon">✕</text>
+          </button>
+        </view>
 
-    <view v-if="showToast" class="custom-toast">
-      {{ toastMessage }}
-    </view>
+        <view class="panel-header">
+          <view class="panel-title">部队行动打分</view>
+          <view class="military-code">UNIT ACTION SCORING</view>
+        </view>
 
-    <judge-fire-attack-table
-        ref="judgeFireAttackTable"
-        :actionInfo="actionInfo"
-        @confirmJudge="confirmJudge"
-    ></judge-fire-attack-table>
-    <judge-action-table
-        ref="judgeActionTable"
-        :actionInfo="actionInfo"
-        @confirmJudge="confirmJudge"
-    ></judge-action-table>
-    <judge-investigate-table
-        ref="judgeInvestigateTable"
-        :actionInfo="actionInfo"
-        @confirmJudge="confirmJudge"
-    ></judge-investigate-table>
-    <judge-communication-table
-        ref="judgeCommunicationTable"
-        :actionInfo="actionInfo"
-        @confirmJudge="confirmJudge"
-    ></judge-communication-table>
-    <judge-reactance-table
-        ref="judgeReactanceTable"
-        :actionInfo="actionInfo"
-        @confirmJudge="confirmJudge"
-    ></judge-reactance-table>
-    <judge-command-control-table
-        ref="judgeCommandControlTable"
-        :actionInfo="actionInfo"
-        @confirmJudge="confirmJudge"
-    ></judge-command-control-table>
+        <view class="panel-content">
+          <view class="action-info">
+            <view class="info-row">
+              <text class="label">部队行动：</text>
+              <text class="value">{{ actionInfo.actionDesc || '当前行动' }}</text>
+            </view>
+            <view class="info-row" v-if="actionInfo.attackResult">
+              <text class="label">裁决结果：</text>
+              <text class="value">{{ actionInfo.attackResult }}</text>
+            </view>
+            <view class="info-row" v-if="actionInfo.attackScore">
+              <text class="label">当前分数：</text>
+              <text class="value">{{ actionInfo.attackScore }}分</text>
+            </view>
+          </view>
+
+          <!-- 打分结果输入框 -->
+          <view class="score-input-section">
+            <text class="input-label">打分结果：</text>
+            <input
+              type="number"
+              v-model="scoreValue"
+              placeholder="请输入分数"
+              class="score-input-field"
+            />
+            <view class="input-tip">
+              <text class="tip-text">💡 提示：可以多次提交不同的打分结果</text>
+            </view>
+          </view>
+
+          <!-- 打分表按钮 -->
+          <view class="score-table-section">
+            <text class="group-title">查看打分表：</text>
+            <button class="table-button" @click="openScoreTablePage">
+              <text class="button-text">打开打分表</text>
+            </button>
+          </view>
+        </view>
+
+        <view class="panel-footer">
+          <button class="sci-fi-button primary" @click="confirmScoreAction">
+            <text class="button-icon">✓</text> 提交打分
+          </button>
+          <button class="sci-fi-button secondary" @click="closeScore">
+            <text class="button-icon">✕</text> 关闭
+          </button>
+        </view>
+      </view>
+    </uni-popup>
+
   </view>
 </template>
 
 <script>
 import {baseURL, getUserTokenStorage} from '@/api/http.js';
-import {saveRoundCover, getHistoryTreeByRound, confirmJudge,saveTextInstruction} from '@/api/verdictRecord.js';
+import {saveRoundCover, getHistoryTreeByRound, confirmJudge, saveTextInstruction} from '@/api/verdictRecord.js';
+
+
 
 export default {
   name: 'judge-table',
+
   props: {
     showInfo: {
       type: Object,
@@ -783,13 +407,12 @@ export default {
     }
   },
   computed: {
-    buttonWidth() {
-      const hasSaveBtn = this.showInfo.type === 'input';
-      const hasSkipBtn = Object.keys(this.recordMap).length === 0 && this.showInfo.userType === 'judge' && this.showInfo.type !== 'input';
-      const hasCloseBtn = true; // Close button is always present
-
-      const buttonCount = [hasSaveBtn, hasSkipBtn, hasCloseBtn].filter(Boolean).length;
-      return buttonCount > 1 ? '50%' : '100%';
+    judgeOptions() {
+      return [
+        { value: '成功', label: '成功' },
+        { value: '失败', label: '失败' },
+        { value: '部分成功', label: '部分成功' }
+      ];
     }
   },
   data() {
@@ -802,10 +425,14 @@ export default {
       index: -1,
       eindex: -1,
       judge_result: '',
-      judge_score: '',
+      judge_score: '', // 打分结果
       instructionText: '',
       toastMessage: '',
       showToast: false,
+      judgeResult: '',
+      messageHandler: null,
+      tableWindow: null,
+      scoreValue: '' // 打分值
     };
   },
   filters: {
@@ -825,156 +452,371 @@ export default {
   mounted() {
   },
   methods: {
+    // 将传入值标准化为列表：
+    // - 如果是数组，直接返回
+    // - 如果是字符串，按换行/中文逗号/英文逗号/分号进行拆分
+    // - 过滤空项，保证行渲染稳定
+    normalizeList(val) {
+      if (Array.isArray(val)) return val;
+      if (val === null || val === undefined) return [];
+      const text = String(val);
+      // 优先按换行切分，其次通用分隔符
+      const parts = text.split(/\n|,|，|;|；/).map(s => s.trim()).filter(Boolean);
+      return parts.length ? parts : [text];
+    },
+
+    // 组合单位：把同一指令下多条历史的单位合并成一行，去重并按出现顺序排列
+    combineUnits(list = []) {
+      const seq = [];
+      const seen = new Set();
+      list.forEach(it => {
+        const val = it && it.chessPiecesNumber != null ? String(it.chessPiecesNumber).trim() : '';
+        if (val && !seen.has(val)) { seen.add(val); seq.push(val); }
+      });
+      return seq.join('、');
+    },
+
+    // 扁平化动作列表：把每条历史的动作描述拆分后拼在一起，逐条展示
+    flattenActionList(list = []) {
+      const out = [];
+      list.forEach(it => {
+        const parts = this.normalizeList(it && it.actionDesc);
+        parts.forEach(p => out.push(p));
+      });
+      return out;
+    },
+
+    // 抽取字段列表（用于结果/得分列）
+    pluckList(list = [], field) {
+      return list.map(it => it && it[field]).filter(v => v !== undefined && v !== null && String(v).trim() !== '').map(String);
+    },
+
     showCustomToast(message) {
-      this.toastMessage = message;
-      this.showToast = true;
-      setTimeout(() => {
-        this.showToast = false;
-      }, 1500); // Toast 显示 1.5 秒
+      uni.showToast({
+        title: message,
+        icon: 'none',
+        duration: 1500
+      });
     },
 
-    openNewWindow_v2() {
-      window.open(
-          '/#/pages/tables/index_v2',
-          '裁决表窗口',
-          'height=600,width=1000,top=300,left=200,toolbar=no,menubar=no, scrollbars=no,resizable=no,location=no, status=no'
-      )
-      // 监听来自新窗口的消息
-      window.addEventListener('message', this.handleMessage);
-    },
+    confirmJudge(notJudgeNumber) {
+      this.recordMap[this.key][this.index].historyVoList[this.eindex].status = 2;
 
-    openNewWindow() {
-      window.open(
-          '/#/pages/tables/index',
-          '裁决表窗口',
-          'height=600,width=1000,top=300,left=200,toolbar=no,menubar=no, scrollbars=no,resizable=no,location=no, status=no'
-      )
-      // 监听来自新窗口的消息
-      window.addEventListener('message', this.handleMessage);
-    },
-    handleMessage(event) {
-      // 确保消息来自正确的窗口
-      if (event.origin !== window.location.origin) return;
-
-      // 获取数据
-      const data = event.data;
-      console.log('从新窗口接收到数据:', data);
-      if (data) {
-        this.judge_result += data.message
-      }
-
-    },
-    Judge() {
-      if (this.judge_result === '' && this.showInfo.userType !== 'admin') {
-        this.showCustomToast("请输入裁决结果")
-        // alert('请补全内容')
-        return;
-      }
-
-      if (this.judge_score === '' && this.showInfo.userType === 'admin') {
-        this.showCustomToast("请输入裁决得分")
-        return;
-      }
-
+      // 导演端可以同时更新裁决结果和评分
       if (this.showInfo.userType === 'admin') {
-        this.actionInfo.attackScore = this.judge_score;
+        if (this.scoreValue) {
+          this.recordMap[this.key][this.index].historyVoList[this.eindex].attackScore = this.scoreValue;
+        }
+        if (this.judgeResult) {
+          this.recordMap[this.key][this.index].historyVoList[this.eindex].attackResult = this.judgeResult;
+        }
+      } else {
+        this.recordMap[this.key][this.index].historyVoList[this.eindex].attackResult = this.judgeResult;
+      }
+
+      console.log('裁决完毕')
+      this.$emit('judgeComplete');
+    },
+
+    confirmJudgeAction() {
+      if (!this.judgeResult) {
+        this.showCustomToast('请输入裁决结果');
+        return;
+      }
+      this.judge_result = this.judgeResult;
+      this.submitJudge();
+    },
+
+    confirmScore() {
+      if (!this.scoreValue) {
+        this.showCustomToast('请输入评分');
+        return;
+      }
+      this.judge_score = this.scoreValue;
+      this.submitJudge();
+    },
+
+    submitJudge() {
+      // 导演端可以同时设置裁决结果和评分
+      if (this.showInfo.userType === 'admin') {
+        if (this.judge_score) {
+          this.actionInfo.attackScore = this.judge_score;
+        }
+        if (this.judge_result) {
+          this.actionInfo.attackResult = this.judge_result;
+        }
       } else {
         this.actionInfo.attackResult = this.judge_result;
       }
+
       confirmJudge(this.actionInfo).then((res) => {
         if (res.data.code === 200) {
-          this.showCustomToast("提交成功")
-          this.confirmJudge(res.data.data)
+          this.showCustomToast("裁决提交成功，可继续裁决");
+          this.confirmJudge(res.data.data);
 
-          this.judge_result = ''
-          this.judge_score = ''
+          // 清空输入框，但不关闭弹窗，允许继续裁决
+          this.judge_result = '';
+          this.judgeResult = '';
 
-          setTimeout(() => {
-            this.$refs.judge_.close();
-            this.$refs.judge_final.close();
-            this.close();
-          }, 1000);
+          // 如果有评分输入框，也清空
+          if (this.judge_score) {
+            this.judge_score = '';
+          }
+          if (this.scoreValue) {
+            this.scoreValue = '';
+          }
+
+          // 不再自动关闭弹窗，用户可以继续输入新的裁决结果
         } else {
-          uni.showToast({
-            title: res.data.msg,
-            icon: 'none'
-          });
+          this.showCustomToast(res.data.msg || '提交失败');
         }
+      }).catch(() => {
+        this.showCustomToast('网络错误，请重试');
       });
     },
-    checkRule() {
 
-    },
     stepJudge() {
       this.$refs.popup.close();
       this.$emit('stepJudge');
     },
-    judgeOneByOne(eitem, key, index, eindex) {
+
+    judgeOneByOne(eitem, key, index, eindex, actionType = null) {
       this.key = key;
       this.index = index;
       this.eindex = eindex;
       this.actionInfo = eitem;
+
+      // 如果是导演端，根据actionType决定打开哪个弹窗
       if (this.showInfo.userType === 'admin') {
-        this.$refs.judge_final.open();
+        if (actionType === 'score') {
+          // 打开打分弹窗时，如果已有分数则显示
+          if (eitem.attackScore) {
+            this.scoreValue = eitem.attackScore;
+          }
+          this.$refs.scorePopup.open();
+        } else if (actionType === 'judge') {
+          // 打开裁决弹窗时，如果已有裁决结果则显示
+          if (eitem.attackResult) {
+            this.judgeResult = eitem.attackResult;
+          }
+          this.$refs.judgePopup.open();
+        } else {
+          // 默认打开评分弹窗（保持向后兼容）
+          this.$refs.scorePopup.open();
+        }
       } else {
-        this.$refs.judge_.open();
+        this.$refs.judgePopup.open();
       }
     },
+
     open() {
       this.$refs.popup.open();
-      // this.sign();
     },
+
     close() {
       this.$refs.popup.close();
     },
+
     closeJudge() {
-      if (this.showInfo.userType === 'admin') {
-        this.$refs.judge_final.close();
-      } else {
-        this.$refs.judge_.close();
-      }
+      this.$refs.judgePopup.close();
       this.judge_result = '';
-      this.judge_score = '';
+      this.judgeResult = '';
     },
+
+    // 打分相关方法
+    confirmScoreAction() {
+      if (!this.scoreValue) {
+        uni.showToast({
+          title: '请输入打分结果',
+          icon: 'none',
+          duration: 1500
+        });
+        return;
+      }
+      this.judge_score = this.scoreValue;
+      this.submitScore();
+    },
+
+    submitScore() {
+      // 设置打分结果到actionInfo
+      this.actionInfo.attackScore = this.judge_score;
+
+      // 调用打分API（这里需要根据实际的API来调整）
+      confirmJudge(this.actionInfo).then((res) => {
+        if (res.data.code === 200) {
+          uni.showToast({
+            title: '打分提交成功，可继续打分',
+            icon: 'success',
+            duration: 1500
+          });
+
+          // 更新记录状态和分数
+          this.recordMap[this.key][this.index].historyVoList[this.eindex].attackScore = this.judge_score;
+
+          // 清空输入框，但不关闭弹窗，允许继续打分
+          this.judge_score = '';
+          this.scoreValue = '';
+
+        } else {
+          uni.showToast({
+            title: res.data.msg || '提交失败',
+            icon: 'none',
+            duration: 1500
+          });
+        }
+      }).catch(() => {
+        uni.showToast({
+          title: '网络错误，请重试',
+          icon: 'none',
+          duration: 1500
+        });
+      });
+    },
+
+    closeScore() {
+      this.$refs.scorePopup.close();
+      this.judge_score = '';
+      this.scoreValue = '';
+    },
+
+    // 打开打分表页面（新窗口）
+    openScoreTablePage() {
+      try {
+        // 构建完整的URL路径
+        const currentUrl = window.location.href;
+        const baseUrl = currentUrl.split('#')[0]; // 获取基础URL（去掉hash部分）
+        const tablePath = '#/pages/tables/index_v2';
+        const fullUrl = baseUrl + tablePath;
+
+        console.log('打开打分表URL:', fullUrl);
+
+        // 打开新窗口显示打分表页面
+        const scoreWindow = window.open(
+          fullUrl,
+          'scoreTable_' + Date.now(), // 使用时间戳确保窗口名称唯一
+          'height=800,width=1200,top=100,left=200,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no'
+        );
+
+        if (!scoreWindow) {
+          // 如果弹窗被阻止，提示用户
+          uni.showToast({
+            title: '请允许弹窗后重试',
+            icon: 'none',
+            duration: 2000
+          });
+        } else {
+          console.log('打分表页面在新窗口中打开成功');
+
+          // 可选：监听新窗口关闭事件
+          const checkClosed = setInterval(() => {
+            if (scoreWindow.closed) {
+              console.log('打分表窗口已关闭');
+              clearInterval(checkClosed);
+            }
+          }, 1000);
+        }
+      } catch (error) {
+        console.error('打开打分表页面失败:', error);
+        uni.showToast({
+          title: '打分表打开失败',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    },
+
+    // 打开裁决规则表页面
+    openRuleTablePage() {
+      // 添加消息监听器来接收表格页面的选择结果
+      this.addMessageListener();
+
+      // 打开新窗口显示表格页面
+      const tableWindow = window.open(
+        '/#/pages/tables/index',
+        '裁决规则表',
+        'height=800,width=1200,top=100,left=200,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no'
+      );
+
+      // 保存窗口引用以便后续关闭
+      this.tableWindow = tableWindow;
+    },
+
+    // 添加消息监听器
+    addMessageListener() {
+      // 监听来自表格页面的消息
+      this.messageHandler = (event) => {
+        if (event.data && event.data.message) {
+          // 提取裁决结果
+          const message = event.data.message;
+          let result = '';
+
+          if (message.includes('裁决结果为')) {
+            result = message.replace('裁决结果为', '').trim();
+          } else if (message.includes('攻击效果为')) {
+            result = message.replace('攻击效果为', '').replace('，', '').trim();
+          }
+
+          if (result) {
+            this.handleTableResult(result);
+          }
+        }
+      };
+
+      window.addEventListener('message', this.messageHandler);
+    },
+
+    // 移除消息监听器
+    removeMessageListener() {
+      if (this.messageHandler) {
+        window.removeEventListener('message', this.messageHandler);
+        this.messageHandler = null;
+      }
+
+      // 关闭表格窗口
+      if (this.tableWindow && !this.tableWindow.closed) {
+        this.tableWindow.close();
+        this.tableWindow = null;
+      }
+    },
+
+    // 处理表格选择的结果
+    handleTableResult(result) {
+      // 将表格的结果填入裁决结果输入框
+      if (result) {
+        if (typeof result === 'object') {
+          // 如果是对象，尝试获取有用的信息
+          this.judgeResult = result.value || result.text || result.result || JSON.stringify(result);
+        } else {
+          // 如果是字符串或数字，直接使用
+          this.judgeResult = String(result);
+        }
+        this.showCustomToast('裁决结果已自动填入');
+
+        // 关闭表格窗口和清理监听器
+        this.removeMessageListener();
+      }
+    },
+
     imageClick(url) {
       uni.previewImage({
         urls: [url]
       });
     },
+
     async getRoundTree(item) {
       let res = await getHistoryTreeByRound(item);
       let resArray = res.data.data;
-      // resArray = resArray.filter((item) => item.historyVoList.length > 0);
       resArray = resArray.filter((item) => {
         item.historyVoList = item.historyVoList.filter((item) => item.actionDesc);
         return item.historyVoList.length > 0;
       });
       if (resArray.length === 0) {
-        console.log('resArray is empty');
-        // 这里可以处理resArray为空的情况
-        // 由于resArray为空，this.recordMap也将为空，所以可以直接判断this.recordMap
-        this.recordMap = {}; // 初始化为空对象，因为没有数据可以分组
+        this.recordMap = {};
       } else {
         this.recordMap = this.groupBy(resArray, 'chessRound');
-        console.log('this.recordMap: ', this.recordMap);
       }
-      if (this.recordMap[0]) {
-        console.log('第 0 回合数据: ', this.recordMap[0]);
-      } else {
-        console.log('第 0 回合数据不存在');
-      }
+    },
 
-    },
-    getMapIndexByKey(key) {
-      // 依次获取map对象值
-      let index = 0;
-      for (var k in this.recordMap) {
-        if (k === key) {
-          return index;
-        }
-        index++;
-      }
-    },
     groupBy(arr, key) {
       let obj = {};
       arr.forEach((item) => {
@@ -988,17 +830,11 @@ export default {
 
     deletePic(e) {
       this.fileList.splice(e.index, 1);
-      let urlList = [];
-      this.fileList.map((item) => {
-        urlList.push(item.url);
-      });
     },
+
     async afterRead(event) {
-      // 当设置 multiple 为 true 时, file 为数组格式，否则为对象格式afterRead
       let lists = [].concat(event.file);
-      console.log('lists',lists);
       let fileListLen = this.fileList.length;
-      console.log('fileListLen',fileListLen);
       lists.map((item) => {
         this.fileList.push({
           ...item,
@@ -1021,14 +857,9 @@ export default {
         );
         fileListLen++;
       }
-      let urlList = [];
-      this.fileList.map((item) => {
-        urlList.push(item.url);
-      });
-      console.log('this.fileList: ', this.fileList);
     },
+
     uploadFilePromise(avatarUrl) {
-      let that = this;
       return new Promise((resolve, reject) => {
         uni.uploadFile({
           url: baseURL + 'system/upload',
@@ -1042,25 +873,23 @@ export default {
             setTimeout(() => {
               resolve(jsonRes.data.url);
             }, 1000);
+          },
+          fail: (error) => {
+            reject(error);
           }
         });
       });
     },
+
     async submitInstruct() {
-      // 检查是否同时没有图片和文本
       if ((!this.instructionText || !this.instructionText.trim()) && this.fileList.length === 0) {
-        return uni.showToast({
-          title: '请至少上传图片或输入文本',
-          icon: 'none',
-          duration: 2500
-        });
+        return this.showCustomToast('请至少上传图片或输入文本');
       }
 
       let textSaved = false;
       let imageSaved = false;
       let hasError = false;
 
-      // 如果有文本则保存文字指令
       if (this.instructionText && this.instructionText.trim()) {
         this.showInfo.textIns = this.instructionText;
         try {
@@ -1075,7 +904,6 @@ export default {
         }
       }
 
-      // 如果有图片则保存图片
       if (this.fileList.length !== 0) {
         this.showInfo.coverUrl = this.fileList[0].url;
         try {
@@ -1090,551 +918,1080 @@ export default {
         }
       }
 
-      // 根据保存结果显示相应提示
       if (hasError) {
-        uni.showToast({
-          title: '保存失败',
-          icon: 'none',
-          duration: 2500
-        });
+        this.showCustomToast('保存失败');
       } else if (textSaved || imageSaved) {
-        uni.showToast({
-          title: '保存成功',
-          icon: 'none',
-          duration: 2500
-        });
+        this.showCustomToast('保存成功');
         this.fileList = [];
+        this.instructionText = '';
         this.$refs.popup.close();
       }
-    },
-    confirmJudge(notJudgeNumber) {
-      this.recordMap[this.key][this.index].historyVoList[this.eindex].status = 2;
-      console.log('裁决完毕')
-      this.$emit('judgeComplete');
-      // if (notJudgeNumber === 0) {
-      // 	//所有记录裁决完毕
-      // 	this.$emit('judgeComplete');
-      // }
     }
+  },
+  beforeDestroy() {
+    // 组件销毁前清理消息监听器
+    this.removeMessageListener();
   }
 };
 </script>
 
-<style lang="scss" scoped>
-@import url('@/common/css/judge-table.scss');
+<style scoped>
+/* ==================== 指令上传表样式 ==================== */
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: auto; /* 去掉全屏高度，消除上下多余留白 */
+  background: #1a2e1a;
+  padding: 10px 20px; /* 缩小上下边距 */
+}
 
+.upload-panel {
+  background: linear-gradient(145deg, #2d4a2d 0%, #1a2e1a 50%, #2d4a2d 100%);
+  border: 3px solid #4caf50;
+  border-radius: 12px;
+  box-shadow: none;
+  width: 900px;
+  max-width: 95vw;
+  padding: 24px;
+}
 
+.upload-content {
+  margin: 20px 0;
+}
 
-.custom-button {
+/* 上传表格布局 */
+.upload-table-wrapper {
   width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, #00ddeb, #007a82);
-  border: 2px solid #00f0ff;
-  color: #fff;
-  font-size: 24px;
-  font-weight: 700;
+  border: 2px solid rgba(76, 175, 80, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.upload-table-header {
+  display: flex;
+  background: linear-gradient(135deg, #2e7d32 0%, #388e3c 50%, #2e7d32 100%);
+}
+
+.upload-header-cell {
+  color: #e8f5e8;
+  padding: 16px 12px;
   text-align: center;
-  cursor: pointer;
-  border-radius: 5px;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+  border-right: 1px solid rgba(76, 175, 80, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.custom-button:hover {
-  background: linear-gradient(to right, #007a82, #00ddeb);
+.upload-header-cell:last-child {
+  border-right: none;
 }
 
-
-
-.rule__view {
-  min-width: 300rpx;
-
-  .title {
-    text-align: center;
-    height: 40px;
-    line-height: 40px;
-    font-weight: bolder;
-    background-color: #1cade4;
-    font-size: $uni-font-size-title;
-    color: $uni-text-color-inverse;
-  }
-
-  .foot {
-    text-align: center;
-    height: 40px;
-    line-height: 40px;
-    font-weight: bolder;
-    font-size: $uni-font-size-title;
-    color: $uni-text-color-inverse;
-    display: flex;
-    justify-content: space-between; /* 确保按钮之间有足够的空间 */
-    width: 100%;
-
-    .save-btn, .skip-btn, .close-btn {
-      width: v-bind(buttonWidth); /* 使用计算属性 */
-    }
-
-    .save-btn, .skip-btn, .close-btn {
-      height: 20px;
-      line-height: 20px;
-      padding: 10px 20px; /* Padding */
-      border-radius: 5px; /* Border radius */
-      cursor: pointer; /* Pointer cursor */
-      transition: background-color 0.3s ease; /* Transition effect */
-      margin: auto; /* Center button */
-      text-align: center; /* Center text */
-    }
-
-    .save-btn {
-      background-color: #4caf50; /* Background color */
-      color: #ffffff; /* Text color */
-    }
-
-    .save-btn:hover {
-      background-color: #45a049; /* Hover background color */
-    }
-
-    .skip-btn {
-      background-color: #1cade4; /* Background color */
-      color: #ffffff; /* Text color */
-      white-space: nowrap; /* 防止文字换行 */
-    }
-
-    .skip-btn:hover {
-      background-color: #1b9cd4; /* Hover background color */
-    }
-
-    .close-btn {
-      background-color: #ea9d00; /* Background color */
-      color: #ffffff; /* Text color */
-    }
-
-    .close-btn:hover {
-      background-color: #d88a00; /* Hover background color */
-    }
-  }
-
-  td {
-    color: black;
-  }
-
-  .rowTitle {
-    color: #ffffff;
-    background-color: #1cade4;
-  }
-
-  .row:nth-child(odd) {
-    background-color: #cce3f5;
-  }
-
-  .row:nth-child(even) {
-    background-color: #e7f1fa;
-  }
-
-  .col1 {
-    color: #ffffff;
-    background-color: #1cade4;
-  }
+.upload-header-cell.col-round {
+  flex: 0 0 150px;
 }
 
-.line {
-  position: fixed;
-  height: 2px;
-  background-color: rgba(255, 0, 0, 0.2);
-  animation: stretch-line 1s ease-in-out forwards;
-  animation-delay: 1s;
+.upload-header-cell.col-stage {
+  flex: 0 0 150px;
 }
 
-@keyframes stretch-line {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 75vw; /* 指定直线长度 */
-  }
+.upload-header-cell.col-instruction {
+  flex: 1;
+  min-width: 400px;
 }
 
-.v-line {
-  position: fixed;
-  width: 2px;
-  background-color: rgba(255, 0, 0, 0.2);
-  animation: stretch-v-line 1s ease-in-out forwards;
-  visibility: hidden;
-  animation-delay: 1s;
+.upload-table-body {
+  background: linear-gradient(135deg, rgba(45, 69, 45, 0.9) 0%, rgba(26, 46, 26, 0.9) 100%);
 }
 
-@keyframes stretch-v-line {
-  0% {
-    height: 0;
-  }
-  100% {
-    height: 70vh; /* 指定直线长度 */
-  }
+.upload-data-row {
+  display: flex;
+  min-height: 200px;
 }
 
-.circle {
-  position: fixed;
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  border: 1px red solid;
-  visibility: hidden;
+.upload-data-cell {
+  color: #e8f5e8;
+  padding: 16px 12px;
+  font-size: 15px;
+  font-family: 'Courier New', monospace;
+  border-right: 1px solid rgba(76, 175, 80, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-table td {
-  vertical-align: middle !important;
+.upload-data-cell:last-child {
+  border-right: none;
 }
 
-.recordTable {
-  height: 40vh;
-  overflow-y: scroll;
+.upload-data-cell.col-round {
+  flex: 0 0 150px;
 }
 
-.col1 {
-  width: 120px;
-  background-color: transparent;
+.upload-data-cell.col-stage {
+  flex: 0 0 150px;
 }
 
-.col2 {
-  width: 150px;
+.upload-data-cell.col-instruction {
+  flex: 1;
+  min-width: 400px;
+  align-items: stretch;
+  padding: 20px;
 }
 
-.col3 {
-  width: 120px;
+.cell-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
-.col4 {
-  width: 80px;
+/* ==================== 裁决表样式 ==================== */
+.judge-container {
+  display: block;
+  height: 85vh; /* 缩小页面高度到85%视窗高度 */
+  background: #1a2e1a;
+  padding: 0;
+  overflow: hidden;
 }
 
-.col5 {
-  width: 300px;
+.judge-panel {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 0 50px 0; /* 底部增加50px内边距，防止内容被遮挡 */
+  position: relative;
+  min-height: 100vh; /* 确保面板至少占满视窗高度 */
+  box-sizing: border-box;
 }
 
-.col6 {
-  width: 120px;
+/* 统一滚动容器 */
+.judge-scroll-container {
+  width: 100%;
+  max-height: calc(100vh - 200px); /* 为标题和底部按钮留出空间 */
+  overflow-x: auto; /* 水平滚动 */
+  overflow-y: auto; /* 垂直滚动 */
+  border: 2px solid rgba(76, 175, 80, 0.4); /* 边框 */
+  border-radius: 8px; /* 圆角 */
+  background: rgba(26, 46, 26, 0.3); /* 背景色 */
 }
 
-.custom-toast {
-  position: fixed;
-  top: 50%; /* 你可以根据需要调整位置 */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 8px;
-  z-index: 10000; /* 保证在 popup 之上 */
+.judge-content {
+  margin: 0;
+  width: 100%;
+  padding-bottom: 20px; /* 底部内边距 */
+  overflow: visible; /* 内容区域不再控制滚动 */
 }
 
-.cls-17,
-.cls-2,
-.cls-24,
-.cls-3,
-.cls-42,
-.cls-43,
-.cls-6,
-.cls-7 {
-  fill: rgba(0, 82, 87, 0.8);
+.judge-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* 固定表格布局，确保列宽严格按grid定义 */
 }
 
-.cls-17,
-.cls-18,
-.cls-2,
-.cls-41,
-.cls-42,
-.cls-43,
-.cls-44,
-.cls-5,
-.cls-52,
-.cls-6,
-.cls-9 {
-  stroke: #00f0ff;
+.judge-header {
+  display: grid;
+  grid-template-columns: 20px 120px 120px 260px 140px 1fr 150px 150px 20px; /* 裁决结果和裁决得分都设为150px，保持对齐 */
+  gap: 6px;
+  margin-bottom: 6px;
 }
 
-.cls-2,
-.cls-44,
-.cls-5,
-.cls-52 {
-  stroke-width: 2px;
-}
-
-.cls-12,
-.cls-15,
-.cls-21,
-.cls-31,
-.cls-39,
-.cls-4,
-.cls-46,
-.cls-48,
-.cls-54,
-.cls-8 {
-  fill: #fff;
-}
-
-.cls-18,
-.cls-25,
-.cls-28,
-.cls-32,
-.cls-38,
-.cls-41,
-.cls-5,
-.cls-51,
-.cls-59,
-.cls-9 {
-  fill: none;
-}
-
-.cls-6,
-.cls-7,
-.cls-8,
-.cls-9 {
-  opacity: 0.9;
-}
-
-.cls-10 {
-  fill: #a7faff;
-  font-size: 40px;
-}
-
-.cls-10,
-.cls-15,
-.cls-22,
-.cls-35,
-.cls-39,
-.cls-46,
-.cls-47,
-.cls-54 {
-  font-family: YuGothicUI-Bold, Yu Gothic UI;
-}
-
-.cls-10,
-.cls-15,
-.cls-22,
-.cls-23,
-.cls-35,
-.cls-39,
-.cls-46,
-.cls-47,
-.cls-54 {
+.judge-header-cell {
+  background: rgba(46, 125, 50, 0.9);
+  color: #e8f5e8;
+  padding: 15px 12px;
+  text-align: left;
   font-weight: 700;
+  font-size: 24px; /* 字体放大到24px */
+  letter-spacing: 0.5px;
+  font-family: 'Courier New', monospace;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.cls-11,
-.cls-21,
-.cls-49 {
-  font-family: MicrosoftJhengHeiUIBold, Microsoft JhengHei UI;
+.judge-table-content {
+  /* 内容区域不限制高度，让其自然展开，由外层judge-content控制滚动 */
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  width: 100%;
+  min-height: 100%; /* 确保内容至少填满容器 */
 }
 
-.cls-11 {
-  font-weight: 400;
+.judge-row {
+  display: grid;
+  grid-template-columns: 20px 120px 120px 260px 140px 1fr 150px 150px 20px; /* 裁决结果和裁决得分都设为150px，与表头完全一致 */
+  align-items: stretch;
+  gap: 6px;
+  margin-bottom: 6px;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  border: none;
+  width: 100%;
+  min-height: 80px;
 }
 
-.cls-12 {
-  font-size: 20px;
+.judge-cell {
+  background: rgba(45, 69, 45, 0.55);
+  color: #e8f5e8;
+  padding: 15px 12px;
+  text-align: left;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 80px;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  font-family: 'Courier New', monospace;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  overflow: visible; /* 确保单元格内容不被裁剪，由外层控制滚动 */
 }
 
-.cls-12,
-.cls-48 {
-  font-family: YuGothicUI-Regular, Yu Gothic UI;
+/* 空白占位单元格 */
+.spacer-cell {
+  background: transparent;
+  border: none;
+  min-height: 80px;
 }
 
-.cls-13 {
-  font-family: MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI;
+/* 表头容器样式 */
+.judge-header-container {
+  background: #1a2e1a;
+  padding: 10px 0;
+  border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+  margin-bottom: 10px;
+  position: sticky; /* 固定表头 */
+  top: 0;
+  z-index: 100;
+  border-radius: 8px 8px 0 0; /* 顶部圆角 */
 }
 
-.cls-14 {
-  font-family: SegoeUI, Segoe UI;
+/* 统一滚动容器的滚动条样式 - 绿色科幻主题 */
+.judge-scroll-container::-webkit-scrollbar {
+  width: 16px; /* 垂直滚动条宽度 */
+  height: 16px; /* 水平滚动条高度 */
 }
 
-.cls-15,
-.cls-21,
-.cls-47,
-.cls-49 {
+.judge-scroll-container::-webkit-scrollbar-track {
+  background: rgba(26, 46, 26, 0.8);
+  border-radius: 8px;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.judge-scroll-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4caf50 0%, #66bb6a 50%, #8bc34a 100%);
+  border-radius: 8px;
+  border: 2px solid rgba(26, 46, 26, 0.3);
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+}
+
+.judge-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #66bb6a 0%, #81c784 50%, #9ccc65 100%);
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.4);
+}
+
+.judge-scroll-container::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(135deg, #388e3c 0%, #4caf50 50%, #66bb6a 100%);
+}
+
+/* 滚动条交叉点样式 */
+.judge-scroll-container::-webkit-scrollbar-corner {
+  background: rgba(26, 46, 26, 0.8);
+}
+
+/* 全局图片强制显示规则 */
+.judge-table-content img,
+.judge-table-content image,
+.judge-table-content .uv-image,
+.judge-table-content [class*="image"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* 单元格中的列表，纵向堆叠，避免换行导致高度异常 */
+.list-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+}
+
+.list-item {
+  width: 100%;
+  text-align: left;
+  line-height: 1.5;
+  word-break: break-word;
+  font-size: 24px; /* 字体放大到24px */
+}
+
+.single-text {
+  width: 100%;
+  text-align: left;
+  line-height: 1.5;
+  word-break: break-word;
+  font-size: 24px; /* 字体放大到24px */
+}
+
+/* 占位单元格：不显示内容但占位，维持 7 列对齐 */
+.placeholder { visibility: hidden; }
+
+/* ==================== 指令显示样式 ==================== */
+.instruction-display {
+  display: flex;
+  flex-direction: column; /* 图片在上，文字在下，避免重叠 */
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 6px;
+  gap: 6px;
+}
+
+.image-container {
+  flex-shrink: 0;
+  max-width: 100%;
+  display: block !important; /* 确保容器始终显示 */
+  visibility: visible !important;
+  opacity: 1 !important; /* 确保不透明 */
+  position: relative !important; /* 确保定位正常 */
+  overflow: visible !important; /* 确保内容不被裁剪 */
+}
+
+.instruction-image {
+  width: 72px !important;   /* 强制固定尺寸，防止消失 */
+  height: 72px !important;
+  border-radius: 6px;
+  border: 2px solid rgba(76, 175, 80, 0.5);
+  box-shadow: none;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block !important; /* 强制显示，防止被隐藏 */
+  visibility: visible !important; /* 确保可见性 */
+  opacity: 1 !important; /* 强制不透明 */
+  position: relative !important; /* 确保定位 */
+  z-index: 10 !important; /* 确保层级 */
+  max-width: none !important; /* 防止被压缩 */
+  min-width: 72px !important; /* 最小宽度 */
+  min-height: 72px !important; /* 最小高度 */
+}
+
+.instruction-image:hover {
+  border-color: #8bc34a;
+  transform: scale(1.05);
+}
+
+.text-container {
+  flex: 1;
+  width: 100%;
+}
+
+.instruction-text {
+  font-size: 24px; /* 字体放大到24px */
+  word-break: break-word;
+  line-height: 1.5;
+  color: #e8f5e8;
+  font-family: 'Courier New', monospace;
+  text-align: left;
+  max-width: 100%;
+  overflow: visible;
+  white-space: normal;
+}
+
+.no-instruction {
+  font-size: 24px; /* 字体放大到24px */
+  color: rgba(232, 245, 232, 0.6);
+  font-style: italic;
+  font-family: 'Courier New', monospace;
+  text-align: left;
+}
+
+/* ==================== 弹窗样式 ==================== */
+.judge-modal, .score-modal {
+  width: 550px;
+  min-height: 350px;
+  padding: 28px;
+  background: linear-gradient(145deg, #2d4a2d 0%, #1a2e1a 50%, #2d4a2d 100%);
+  border: 3px solid #4caf50;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+/* ==================== 通用样式 ==================== */
+.panel-header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: linear-gradient(90deg, transparent 0%, rgba(76, 175, 80, 0.2) 50%, transparent 100%);
+  border: 2px solid rgba(76, 175, 80, 0.4);
+  border-radius: 8px;
+  position: relative;
+}
+
+/* .panel-header::before {
+  content: '★';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #8bc34a;
+  text-shadow: none;
+} */
+
+/* .panel-header::after {
+  content: '★';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #8bc34a;
+  text-shadow: none;
+} */
+
+.panel-title {
   font-size: 28px;
+  font-weight: 800;
+  color: #8bc34a;
+  text-shadow: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 8px;
 }
 
-.cls-16,
-.cls-23 {
-  font-family: SegoeUI-Bold, Segoe UI;
+.military-code {
+  font-size: 12px;
+  color: rgba(139, 195, 74, 0.8);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.8;
 }
 
-.cls-19 {
-  fill: url(#linear-gradient);
+/* ==================== 指令容器样式 ==================== */
+.instruction-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
 }
 
-.cls-20 {
-  fill: url(#linear-gradient-2);
+.file-upload-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.cls-26,
-.cls-27 {
-  fill: rgba(255, 255, 255, 0.5);
+.upload-title {
+  color: #8bc34a;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  text-shadow: none;
+  text-align: center;
 }
 
-.cls-26,
-.cls-28 {
-  stroke: #fff;
+.upload-component {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 46, 26, 0.3);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 80px;
 }
 
-.cls-29,
-.cls-30 {
-  fill: rgba(0, 50, 53, 0.1);
+.text-input-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.cls-29,
-.cls-30,
-.cls-31,
-.cls-32,
-.cls-42 {
-  opacity: 0.85;
+.input-title {
+  color: #8bc34a;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  text-shadow: none;
+  text-align: center;
 }
 
-.cls-33,
-.cls-34 {
-  fill: url(#linear-gradient-3);
+.input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
-.cls-35 {
-  fill: #9c9c9c;
+.instruction-input-field {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(26, 46, 26, 0.8) 0%, rgba(45, 69, 45, 0.8) 100%);
+  border: 2px solid #4caf50;
+  color: #e8f5e8;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Courier New', monospace;
+  box-shadow: none;
+  transition: all 0.3s ease;
 }
 
-.cls-35,
-.cls-39,
-.cls-48 {
-  font-size: 22px;
+.instruction-input-field:focus {
+  border-color: #8bc34a;
+  box-shadow: none;
+  outline: none;
 }
 
-.cls-36 {
-  fill: url(#linear-gradient-5);
+.instruction-input-field::placeholder {
+  color: rgba(232, 245, 232, 0.6);
+  font-style: italic;
 }
 
-.cls-37 {
-  fill: url(#linear-gradient-7);
+/* ==================== 按钮样式 ==================== */
+.sci-fi-button {
+  background: linear-gradient(135deg, #4caf50 0%, #388e3c 50%, #2e7d32 100%);
+  border: 3px solid #8bc34a;
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  margin: 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
 }
 
-.cls-38 {
-  stroke: #99f9ff;
-  stroke-linecap: round;
+.sci-fi-button:hover {
+  background: linear-gradient(135deg, #66bb6a 0%, #4caf50 50%, #388e3c 100%);
+  box-shadow: none;
+  transform: translateY(-2px);
 }
 
-.cls-40 {
-  fill: #002b3d;
-  opacity: 0;
+.sci-fi-button.secondary {
+  background: linear-gradient(135deg, #616161 0%, #424242 50%, #212121 100%);
+  border-color: #9e9e9e;
 }
 
-.cls-41 {
-  stroke-width: 6px;
+.sci-fi-button.secondary:hover {
+  background: linear-gradient(135deg, #757575 0%, #616161 50%, #424242 100%);
+  box-shadow: none;
 }
 
-.cls-43 {
-  opacity: 0.74;
+.judge-button, .score-button {
+  background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+  border: 2px solid #8bc34a;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  box-shadow: none;
 }
 
-.cls-44,
-.cls-45 {
-  fill: rgba(12, 33, 34, 0.9);
+.judge-button:hover, .score-button:hover {
+  background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%);
+  box-shadow: none;
+  transform: translateY(-1px);
 }
 
-.cls-46 {
-  font-size: 32px;
+/* 已裁决按钮的样式 */
+.judge-button.judged {
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  border-color: #ffb74d;
 }
 
-.cls-47,
-.cls-49,
-.cls-50 {
-  fill: #00f0ff;
+.judge-button.judged:hover {
+  background: linear-gradient(135deg, #ffb74d 0%, #ff9800 100%);
 }
 
-.cls-51 {
-  stroke: #005f65;
+/* ==================== 打分弹窗样式 ==================== */
+.score-modal {
+  width: 650px;
+  min-height: 450px;
+  max-height: 80vh;
+  padding: 28px;
+  background: linear-gradient(145deg, #2d4a2d 0%, #1a2e1a 50%, #2d4a2d 100%);
+  border: 3px solid #4caf50;
+  border-radius: 12px;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.cls-52 {
-  fill: url(#linear-gradient-9);
+.score-input-section {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(26, 46, 26, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
-.cls-53 {
-  fill: #afafaf;
+.score-input-field {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(26, 46, 26, 0.8) 0%, rgba(45, 69, 45, 0.8) 100%);
+  border: 2px solid #4caf50;
+  color: #e8f5e8;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 24px;
+  font-family: 'Courier New', monospace;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-top: 8px;
 }
 
-.cls-54 {
+.score-input-field:focus {
+  border-color: #8bc34a;
+  box-shadow: none;
+  outline: none;
+}
+
+.score-input-field::placeholder {
+  color: rgba(232, 245, 232, 0.6);
+  font-style: italic;
+}
+
+/* 已打分按钮的样式 */
+.score-button.scored {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  border-color: #64b5f6;
+}
+
+.score-button.scored:hover {
+  background: linear-gradient(135deg, #64b5f6 0%, #2196f3 100%);
+}
+
+/* ==================== 打分表按钮样式 ==================== */
+.score-table-section {
+  margin-bottom: 24px;
+}
+
+.group-title {
+  color: #8bc34a;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: block;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  text-shadow: none;
   font-size: 24px;
 }
 
-.cls-55,
-.cls-56,
-.cls-57,
-.cls-58 {
-  stroke: none;
+.table-button {
+  background: linear-gradient(135deg, #2e7d32 0%, #388e3c 50%, #4caf50 100%);
+  border: 2px solid #8bc34a;
+  color: #ffffff;
+  padding: 16px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-.cls-56 {
-  fill: #00f0ff;
+.table-button:hover {
+  background: linear-gradient(135deg, #388e3c 0%, #4caf50 50%, #66bb6a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
 }
 
-.cls-57 {
-  fill: #fb0;
+.table-button:active {
+  transform: translateY(0);
 }
 
-.cls-58 {
-  fill: rgba(0, 45, 48, 0.8);
+.button-text {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  line-height: 1.2;
 }
 
-.cls-60 {
-  filter: url(#指令上传表);
+.panel-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  padding: 16px;
+  background: linear-gradient(90deg, transparent 0%, rgba(76, 175, 80, 0.1) 50%, transparent 100%);
+  border-top: 2px solid rgba(76, 175, 80, 0.4);
+  border-radius: 8px;
 }
 
-.cls-61 {
-  filter: url(#路径_59-2);
+.button-icon {
+  margin-right: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: none;
 }
 
-.cls-62 {
-  filter: url(#路径_59);
+/* ==================== 弹窗内容样式 ==================== */
+.action-info {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(26, 46, 26, 0.8) 0%, rgba(45, 69, 45, 0.8) 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(76, 175, 80, 0.4);
+  box-shadow: none;
 }
 
-.cls-63 {
-  filter: url(#回合1);
+.info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(76, 175, 80, 0.2);
 }
 
-.cls-64 {
-  filter: url(#路径_46-2);
+.info-row:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
 }
 
-.cls-65 {
-  filter: url(#路径_46);
+.label {
+  color: #8bc34a;
+  font-weight: 700;
+  margin-right: 16px;
+  min-width: 120px;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  text-shadow: none;
 }
 
-.cls-66 {
-  filter: url(#路径_45-2);
+.value {
+  color: #e8f5e8;
+  flex: 1;
+  font-family: 'Courier New', monospace;
 }
 
-.cls-67 {
-  filter: url(#路径_45);
+/* ==================== 裁决选项样式 ==================== */
+.judge-options {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(26, 46, 26, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
-.cls-68 {
-  filter: url(#路径_44-2);
+.group-title {
+  color: #8bc34a;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: block;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  text-shadow: none;
 }
 
-.cls-69 {
-  filter: url(#路径_44);
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.cls-70 {
-  filter: url(#路径_42-2);
+.radio-item {
+  display: flex;
+  align-items: center;
+  color: #e8f5e8;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  background: rgba(45, 69, 45, 0.3);
+  font-family: 'Courier New', monospace;
 }
 
-.cls-71 {
-  filter: url(#路径_42);
+.radio-item:hover {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: rgba(76, 175, 80, 0.5);
+  box-shadow: none;
 }
 
-.cls-72 {
-  filter: url(#路径_41-2);
+.radio-item radio {
+  margin-right: 12px;
+  transform: scale(1.2);
 }
 
-.cls-73 {
-  filter: url(#路径_41);
+/* ==================== 评分输入样式 ==================== */
+.score-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(26, 46, 26, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
 }
+
+.input-label {
+  color: #8bc34a;
+  font-weight: 700;
+  margin-right: 16px;
+  min-width: 80px;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  text-shadow: none;
+}
+
+.score-field {
+  flex: 1;
+  background: linear-gradient(135deg, rgba(26, 46, 26, 0.8) 0%, rgba(45, 69, 45, 0.8) 100%);
+  border: 2px solid #4caf50;
+  color: #e8f5e8;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Courier New', monospace;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.score-field:focus {
+  border-color: #8bc34a;
+  box-shadow: none;
+  outline: none;
+}
+
+.score-field::placeholder {
+  color: rgba(232, 245, 232, 0.6);
+  font-style: italic;
+}
+
+/* ==================== 固定表头样式 ==================== */
+.judge-header-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #1a2e1a;
+  padding: 10px 0;
+}
+
+/* ==================== 右上角关闭按钮样式 ==================== */
+.close-button-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.close-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #d32f2f 0%, #f44336 50%, #d32f2f 100%);
+  border: 2px solid #ff5722;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+}
+
+.close-button:hover {
+  background: linear-gradient(135deg, #f44336 0%, #ff5722 50%, #f44336 100%);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(211, 47, 47, 0.4);
+}
+
+.close-button:active {
+  transform: scale(0.95);
+}
+
+.close-icon {
+  font-size: 20px;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================== 固定表头和滚动区域样式 ==================== */
+.judge-header-container {
+  flex-shrink: 0; /* 表头不参与滚动，固定显示 */
+  background: #1a2e1a;
+  padding: 10px 0;
+  border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+  z-index: 100;
+}
+
+/* 整体表格滚动条样式 - 绿色科幻主题 */
+.judge-content::-webkit-scrollbar {
+  width: 14px; /* 稍微加宽滚动条 */
+}
+
+.judge-content::-webkit-scrollbar-track {
+  background: rgba(26, 46, 26, 0.8);
+  border-radius: 8px;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.judge-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4caf50 0%, #66bb6a 50%, #8bc34a 100%);
+  border-radius: 8px;
+  border: 2px solid rgba(26, 46, 26, 0.3);
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+}
+
+.judge-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #66bb6a 0%, #81c784 50%, #9ccc65 100%);
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.4);
+}
+
+.judge-content::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(135deg, #388e3c 0%, #4caf50 50%, #66bb6a 100%);
+}
+
+/* ==================== 裁决输入框样式 ==================== */
+.judge-input-section {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(26, 46, 26, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.judge-input-field {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(26, 46, 26, 0.8) 0%, rgba(45, 69, 45, 0.8) 100%);
+  border: 2px solid #4caf50;
+  color: #e8f5e8;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 24px;
+  font-family: 'Courier New', monospace;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.judge-input-field:focus {
+  border-color: #8bc34a;
+  box-shadow: none;
+  outline: none;
+}
+
+.judge-input-field::placeholder {
+  color: rgba(232, 245, 232, 0.6);
+  font-style: italic;
+}
+
+.input-tip {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 4px;
+  border-left: 3px solid #4caf50;
+}
+
+.tip-text {
+  color: rgba(139, 195, 74, 0.9);
+  font-size: 16px;
+  font-family: 'Courier New', monospace;
+  font-style: italic;
+}
+
+/* ==================== 裁决规则按钮样式 ==================== */
+.judge-rule-buttons {
+  margin-bottom: 24px;
+}
+
+.group-title {
+  color: #8bc34a;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: block;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  text-shadow: none;
+  font-size: 24px;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.single-button {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.rule-button {
+  background: linear-gradient(135deg, #2e7d32 0%, #388e3c 50%, #4caf50 100%);
+  border: 2px solid #8bc34a;
+  color: #ffffff;
+  padding: 16px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+.rule-button:hover {
+  background: linear-gradient(135deg, #388e3c 0%, #4caf50 50%, #66bb6a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.rule-button:active {
+  transform: translateY(0);
+}
+
+.button-text {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  line-height: 1.2;
+}
+
 </style>

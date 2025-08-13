@@ -75,12 +75,15 @@ export default {
       uni.showModal({
         title: '提交结果',
         content: '确认您提交的攻击效果是：' + value,
-        success: function (res) {
+        success: (res) => {
           if (res.confirm) {
             console.log('用户点击确定' + value);
 
+            // 发出事件给父组件
+            this.$emit('selectResult', value);
+
             const dataToSend = { message: '攻击效果为' + value + '，' };
-            // 通过 window.opener 向父页面发送消息
+            // 通过 window.opener 向父页面发送消息（保持向后兼容）
             if (window.opener) {
               window.opener.postMessage(dataToSend, window.location.origin);
             }

@@ -1,7 +1,7 @@
 <template>
   <view class="rule__view">
 	<view class="title">反车辆战斗结果表</view>
-    <highlight-table :headers="headers" :data="data" :table-type="tableType" @send-data="onChildEvent" ></highlight-table>
+    <highlight-table :headers="headers" :data="data" :table-type="tableType" @send-data="onChildEvent"></highlight-table>
   </view>
 </template>
 

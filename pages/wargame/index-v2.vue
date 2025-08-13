@@ -40,7 +40,6 @@
           <span v-if="game.nowRound === 0 && game.isDeplaoy && userType === 'user'" class="text">准备阶段</span>
           <span v-else-if="game.nowRound === 0 && game.isDeplaoy && userType !== 'user'" class="text">准备阶段</span>
           <span v-else-if="game.chessRound === 0" class="text">准备阶段</span>
-          <span v-else-if="userType === 'admin' && game.status !== 50"  class="text"> 第{{game.chessRound}}回合： {{ stage[stageActive] }} </span>
           <span v-else-if="game.status !== 50" class="text"> 第{{game.chessRound}}回合：{{ stage[stageActive] }}——{{stage2[statusIndex]}} </span>
           <span v-else class="text">游戏结束</span>
         </div>
@@ -58,16 +57,13 @@
                     @click="endRoundFunc()">
                 结束指挥
               </view>
-              <view v-if="userType === 'judge' && roundEnd" @click="judge()">
-                 裁决
-              </view>
               <view v-if="userType === 'user' && game.nowRound !== 0 && userModify"
                     @click="endRoundFuncAndSetRoundActionPoint()">
                  结束走棋
               </view>
-              <view v-if="userType === 'admin'"
+              <view v-if="userType === 'admin' && roundEnd"
                   @click="judge()">
-                打分
+                打分裁决
               </view>
             </view>
           </span>
@@ -1907,6 +1903,7 @@ export default {
       if (this.user.id === this.game.inviterUserId) {
         this.userType = 'admin';
         this.avatarText = '导演';
+        this.avatarDesc = '导演';
       }
       if (this.user.id === this.game.firstUserId || this.user.id === this.game.secondUserId) {
         this.userType = 'user';
@@ -1917,14 +1914,15 @@ export default {
         }
         this.avatarDesc = '操作员';
       }
+      // 将裁决员功能合并到导演端，如果是裁决员也设置为admin类型
       if (this.user.id === this.game.firstJudgeUserId || this.user.id === this.game.secondJudgeUserId) {
-        this.userType = 'judge';
+        this.userType = 'admin';
         if (this.user.id === this.game.firstJudgeUserId) {
           this.avatarText = this.game.firstCampName;
         } else if (this.user.id === this.game.secondJudgeUserId) {
           this.avatarText = this.game.secondCampName;
         }
-        this.avatarDesc = '裁决员';
+        this.avatarDesc = '导演';
       }
       if (this.user.id === this.game.firstCommanderUserId || this.user.id === this.game.secondCommanderUserId) {
         this.userType = 'commander';
@@ -2012,23 +2010,30 @@ export default {
         if (sum === 0) {
           this.statusDesc = '未提交';
           this.statusIndex = 0;
+          this.roundEnd = false;
         } else if (sum === 1) {
           this.statusDesc = '未提交';
           this.statusIndex = 0;
+          this.roundEnd = false;
         } else if (sum === 2) {
           this.statusDesc = '待裁决';
           this.statusIndex = 1;
+          this.roundEnd = true;
         } else if (sum === 3) {
           this.statusDesc = '待裁决';
           this.statusIndex = 1;
+          this.roundEnd = true;
         } else if (sum === 4) {
           this.statusDesc = '已裁决';
           this.statusIndex = 2;
+          this.roundEnd = false;
         } else if (sum === 5) {
           this.statusDesc = '待修正';
           this.statusIndex = 2;
+          this.roundEnd = false;
         } else if (sum === 6) {
           this.statusDesc = '已修正';
+          this.roundEnd = false;
           // if (this.userType === 'admin'){
           //   uni.showToast({
           //     title: '到您操作啦！',
@@ -2062,7 +2067,7 @@ export default {
                 this.statusDesc = '待裁决';
                 this.statusIndex = 1;
                 this.userStageNotSubmit = false;
-                if (this.userType === 'judge') {
+                if (this.userType === 'admin') {
                   this.roundEnd = true;
                   // this.showCustomToast('到您操作啦！')
                   // uni.showToast({
@@ -2215,7 +2220,7 @@ export default {
         roundPeriod: this.stageActive + 1,
         roundPeriodName: this.stageOptions[this.stageActive].title
       };
-      if (this.userType === 'user' || this.userType === 'judge') {
+      if (this.userType === 'user') {
         this.judgeTableShowInfo.campId = this.campId;
       }
       this.$refs.judgeTable.open();
@@ -2240,10 +2245,8 @@ export default {
         type: 'record',
         verdictRecordId: this.verdictRecordId
       };
-      // if (this.userType === 'user' || this.userType === 'judge') {
-      //   this.judgeTableShowInfo.campId = this.campId;
-      // }
-      if (this.userType === 'judge') {
+      // 导演端不需要设置campId，可以查看所有阵营的裁决结果
+      if (this.userType === 'user') {
         this.judgeTableShowInfo.campId = this.campId;
       }
       this.$refs.judgeTable.open();

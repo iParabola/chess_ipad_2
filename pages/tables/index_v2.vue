@@ -1,6 +1,12 @@
 <template>
   <div class="container">
-    <h1>想定得分统计表</h1>
+    <div class="header">
+      <button v-if="isNewWindow" class="close-btn" @click="closeWindow">✕ 关闭窗口</button>
+      <h1>想定得分统计表</h1>
+      <div class="window-info" v-if="isNewWindow">
+        <span class="info-text">新窗口模式</span>
+      </div>
+    </div>
     <table>
       <thead>
       <tr class="header-row">
@@ -148,6 +154,7 @@ export default {
   data() {
     return {
       editingCell: null,
+      isNewWindow: false, // 是否在新窗口中打开
       scores: {
         planDeployment: '',
         combinedIndicators: '',
@@ -201,7 +208,21 @@ export default {
       return ((planScore * 0.1) + (roundScore * 0.3) + (overallScore * 0.6)).toFixed(2);
     }
   },
+  mounted() {
+    // 检测是否在新窗口中打开
+    // 如果window.opener存在，说明是通过window.open打开的新窗口
+    this.isNewWindow = !!window.opener;
+  },
   methods: {
+    // 关闭新窗口
+    closeWindow() {
+      if (window.opener) {
+        window.close();
+      } else {
+        // 如果不是新窗口，则提示用户
+        alert('无法关闭窗口');
+      }
+    },
     editCell(event, cellKey) {
       this.editingCell = cellKey;
       setTimeout(() => {
@@ -255,10 +276,48 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.close-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+  background: #d32f2f;
+}
+
+.window-info {
+  display: flex;
+  align-items: center;
+}
+
+.info-text {
+  background: #4caf50;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 h1 {
+  flex: 1;
   text-align: center;
+  margin: 0;
   color: #333;
-  margin-bottom: 30px;
 }
 
 table {
