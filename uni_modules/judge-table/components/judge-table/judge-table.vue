@@ -358,6 +358,7 @@
             <text class="button-icon">✕</text> 关闭
           </button>
         </view>
+        <ScoreTable ref="scoreTablePopup" :showInfo="showInfo" :stageOptions="stageOptions"></ScoreTable>
       </view>
     </uni-popup>
 
@@ -367,12 +368,14 @@
 <script>
 import {baseURL, getUserTokenStorage} from '@/api/http.js';
 import {saveRoundCover, getHistoryTreeByRound, confirmJudge, saveTextInstruction} from '@/api/verdictRecord.js';
-
+import ScoreTable from '@/pages/tables/index_v2.vue';
 
 
 export default {
   name: 'judge-table',
-
+  components: { // 注册组件
+    ScoreTable
+  },
   props: {
     showInfo: {
       type: Object,
@@ -681,64 +684,7 @@ export default {
 
     // 打开打分表页面（新窗口）
     openScoreTablePage() {
-      try {
-        // 构建完整的URL路径
-        const currentUrl = window.location.href;
-        const baseUrl = currentUrl.split('#')[0]; // 获取基础URL（去掉hash部分）
-        const tablePath = '#/pages/tables/index_v2';
-        const fullUrl = baseUrl + tablePath;
-
-        console.log('打开打分表URL:', fullUrl);
-
-        // 打开新窗口显示打分表页面
-        const scoreWindow = window.open(
-          fullUrl,
-          'scoreTable_' + Date.now(), // 使用时间戳确保窗口名称唯一
-          'height=800,width=1200,top=100,left=200,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no'
-        );
-
-        if (!scoreWindow) {
-          // 如果弹窗被阻止，提示用户
-          uni.showToast({
-            title: '请允许弹窗后重试',
-            icon: 'none',
-            duration: 2000
-          });
-        } else {
-          console.log('打分表页面在新窗口中打开成功');
-
-          // 可选：监听新窗口关闭事件
-          const checkClosed = setInterval(() => {
-            if (scoreWindow.closed) {
-              console.log('打分表窗口已关闭');
-              clearInterval(checkClosed);
-            }
-          }, 1000);
-        }
-      } catch (error) {
-        console.error('打开打分表页面失败:', error);
-        uni.showToast({
-          title: '打分表打开失败',
-          icon: 'none',
-          duration: 2000
-        });
-      }
-    },
-
-    // 打开裁决规则表页面
-    openRuleTablePage() {
-      // 添加消息监听器来接收表格页面的选择结果
-      this.addMessageListener();
-
-      // 打开新窗口显示表格页面
-      const tableWindow = window.open(
-        '/#/pages/tables/index',
-        '裁决规则表',
-        'height=800,width=1200,top=100,left=200,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no'
-      );
-
-      // 保存窗口引用以便后续关闭
-      this.tableWindow = tableWindow;
+      this.$refs.scoreTablePopup.open();
     },
 
     // 添加消息监听器
@@ -1564,7 +1510,7 @@ export default {
 }
 
 .score-input-field {
-  width: 100%;
+  width: 90%;
   background: linear-gradient(135deg, rgba(26, 46, 26, 0.8) 0%, rgba(45, 69, 45, 0.8) 100%);
   border: 2px solid #4caf50;
   color: #e8f5e8;
