@@ -2,7 +2,7 @@
 	<view class="rule__view">
 		<view class="title">火力单位对苏军车辆攻击效果评价表</view>
 	  <fire-table :headers="headers" :data="data"
-	    :fire_headers1="fire_headers1" :fire_headers2="fire_headers2"></fire-table>
+	    :fire_headers1="fire_headers1" :fire_headers2="fire_headers2" @selectResult="onSelectResult"></fire-table>
 	</view>
 </template>
 
@@ -36,22 +36,16 @@ export default {
             ['XMBT', 'APC', 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 9, 8, 5]
       ]
     };
-  }
+  },
+  methods: {
+      // 监听子表格的选择结果并向上传递
+      onSelectResult(value) {
+        this.$emit('selectResult', value);
+      }
+    }
 };
 </script>
 
 <style lang="scss" scoped>
-@import url('@/common/css/judge-table.scss');
-.rule__view {
-
-	.title {
-		text-align: center;
-		height: 40px;
-		line-height: 40px;
-		font-weight: bolder;
-		background-color: #ffffff;
-		font-size: $uni-font-size-title;
-		color: #000000;
-	}
-}
+/* 样式已迁移到 fire-table.vue 和 judge-table.scss 中 */
 </style>

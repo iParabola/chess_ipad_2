@@ -96,32 +96,40 @@
 		height: 56px;
 		width: 100%;
 		line-height: 56px;
-		color: #303133;
+		color: #c8d9c8 !important; /* 更亮的军绿色白色文字 */
+		background-color: rgba(20, 35, 20, 0.8) !important; /* 深军绿色背景 */
 		transition: all 0.3s;
 		cursor: pointer;
-		// border-bottom: 1px #f5f5f5 solid;
+		border-bottom: 1px solid rgba(139, 195, 74, 0.3) !important; /* 明亮绿色分隔线 */
+		font-family: 'Courier New', monospace !important; /* 科幻字体 */
+		font-size: 15px !important; /* 稍大字体 */
+		font-weight: 600 !important; /* 加粗字体 */
+		letter-spacing: 1px !important; /* 字母间距 */
 	}
 
 	.uni-menu-item:hover {
 		outline: none;
-		//background-color: #EBEBEB; //
+		background-color: rgba(76, 175, 80, 0.3) !important; /* 更明显的悬停绿色背景 */
+		color: #8bc34a !important; /* 明亮绿色文字 */
 		transition: all 0.3s;
-		// width: 50%;
+		transform: translateX(3px) !important; /* 轻微右移动画效果 */
 	}
 
 	.is-active {
-		color: #42B983;
-		// background-color: #ecf8f3;
+		color: #a5d6a7 !important; /* 激活状态更亮的绿色文字 */
+		background-color: rgba(76, 175, 80, 0.4) !important; /* 激活状态更明显的绿色背景 */
+		border-left: 3px solid #8bc34a !important; /* 左边框高亮 */
 	}
 
 	.is-disabled {
-		// background-color: #f5f5f5;
-		color: #999;
+		background-color: rgba(20, 35, 20, 0.5) !important;
+		color: #666 !important; /* 禁用状态灰色 */
 	}
 
 	.uni-menu-item.is-disabled:hover {
-		background-color: inherit;
-		color: #999;
+		background-color: rgba(20, 35, 20, 0.5) !important;
+		color: #666 !important;
 		cursor: not-allowed;
+		transform: none !important;
 	}
 </style>

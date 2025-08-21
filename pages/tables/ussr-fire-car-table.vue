@@ -2,7 +2,7 @@
 	<view class="rule__view">
 		<view class="title">火力单位对美军车辆攻击效果评价表</view>
 	  <fire-table :headers="headers" :data="data"
-	    :fire_headers1="fire_headers1" :fire_headers2="fire_headers2"></fire-table>
+	    :fire_headers1="fire_headers1" :fire_headers2="fire_headers2" @selectResult="onSelectResult"></fire-table>
 	</view>
 </template>
 
@@ -36,7 +36,13 @@ export default {
           ['XMBT', 'APC', 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 9, 8, 5]
       ]
     };
-  }
+  },
+  methods: {
+      // 监听子表格的选择结果并向上传递
+      onSelectResult(value) {
+        this.$emit('selectResult', value);
+      }
+    }
 };
 </script>
 

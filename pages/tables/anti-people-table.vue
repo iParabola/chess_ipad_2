@@ -1,7 +1,7 @@
 <template>
   <view class="rule__view">
 	<view class="title">反人员战斗结果表</view>
-    <highlight-table :headers="headers" :data="data" :table-type="tableType"></highlight-table>
+    <highlight-table :headers="headers" :data="data" :table-type="tableType" @selectResult="onSelectResult"></highlight-table>
   </view>
 </template>
 
@@ -30,22 +30,16 @@ export default {
           ['12', 'S','S',  'S', 'S', 'S', 'S', 'K', 'K', 'K']
       ]
     };
-  }
+  },
+  methods: {
+      // 监听子表格的选择结果并向上传递
+      onSelectResult(value) {
+        this.$emit('selectResult', value);
+      }
+    }
 };
 </script>
 
 <style lang="scss" scoped>
-@import url('@/common/css/judge-table.scss');
-.rule__view {
-
-	.title {
-		text-align: center;
-		height: 40px;
-		line-height: 40px;
-		font-weight: bolder;
-		background-color: #ffffff;
-		font-size: $uni-font-size-title;
-		color: #000000;
-	}
-}
+/* 样式已迁移到 light-table.vue 和 judge-table.scss 中 */
 </style>

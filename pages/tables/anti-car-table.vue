@@ -1,7 +1,7 @@
 <template>
   <view class="rule__view">
 	<view class="title">反车辆战斗结果表</view>
-    <highlight-table :headers="headers" :data="data" :table-type="tableType" @send-data="onChildEvent"></highlight-table>
+    <highlight-table :headers="headers" :data="data" :table-type="tableType" @selectResult="onSelectResult"></highlight-table>
   </view>
 </template>
 
@@ -32,26 +32,14 @@ export default {
     };
   },
   methods: {
-      // 处理子组件的事件
-      onChildEvent(data) {
-        this.childData = data;
+      // 监听子表格的选择结果并向上传递
+      onSelectResult(value) {
+        this.$emit('selectResult', value);
       }
     }
 };
 </script>
 
 <style lang="scss" scoped>
-@import url('@/common/css/judge-table.scss');
-.rule__view {
-
-	.title {
-		text-align: center;
-		height: 40px;
-		line-height: 40px;
-		font-weight: bolder;
-		background-color: #ffffff;
-		font-size: $uni-font-size-title;
-		color: #000000;
-	}
-}
+/* 样式已迁移到 light-table.vue 和 judge-table.scss 中 */
 </style>
