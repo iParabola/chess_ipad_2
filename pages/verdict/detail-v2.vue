@@ -504,7 +504,9 @@ export default {
 			reactanceConfirm:false,
 			isCommunication: false,
 			communicationConfirm: false,
-			flowLineArr: [] // 画箭头存储点集合
+			flowLineArr: [], // 画箭头存储点集合
+			// 临时开关：仅渲染六角格地图（不加载棋子与状态图层）
+			mapOnly: true
 		};
 	},
 	onLoad(res) {
@@ -536,14 +538,18 @@ export default {
       let res = await getMapCoordinate(data);
       console.log("coordinateMap", res)
       this.coordinateMap = res.data.data;
-      let chessImageData = {
-        verdictRecordId: this.verdictRecordId
-      };
-      let chessImageRes = await getMapChessImage(chessImageData);
-      this.mapChessImageMap = chessImageRes.data.data;
-      console.log('this.mapChessImageMap: ', this.mapChessImageMap);
+      if (!this.mapOnly) {
+        let chessImageData = {
+          verdictRecordId: this.verdictRecordId
+        };
+        let chessImageRes = await getMapChessImage(chessImageData);
+        this.mapChessImageMap = chessImageRes.data.data;
+        console.log('this.mapChessImageMap: ', this.mapChessImageMap);
+      }
       await this.initImage();
-      this.queryChessRecordByRound();
+      if (!this.mapOnly) {
+        this.queryChessRecordByRound();
+      }
 
 		},
 		roundChange(index) {
@@ -644,8 +650,10 @@ export default {
 					attribution: false
 				})
 			});
-			this.queryAllFunc();
-			this.queryChessRecordByRound()
+			if (!this.mapOnly) {
+				this.queryAllFunc();
+				this.queryChessRecordByRound()
+			}
 			// var grid = new HexGrid({ size: 4000, origin: map.getView().getCenter(), row: 39, col: 54 });
 			var grid = new HexGrid({
 				size: 200,
