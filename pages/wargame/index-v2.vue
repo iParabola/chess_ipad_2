@@ -806,6 +806,15 @@ export default {
       // 临时开关：仅渲染六角格地图（不加载棋子与状态图层）
       mapOnly: false,
 
+      // 资源缓存：避免重复调用 getOssById
+      ossCache: {},
+
+      // 刷新节流/抑制
+      lastRefreshAt: 0,
+      refreshCooldownMs: 300,
+      refreshTimer: null,
+      suppressNextRefresh: false,
+
     };
   },
   components: {NjustScorePopup},
@@ -925,6 +934,11 @@ export default {
             this.judgeShow(judgeData);
             break;
           case 'refresh':
+            // 避免本端刚发送移动引起的即时自刷新（短暂抑制）
+            if (this.suppressNextRefresh) {
+              this.suppressNextRefresh = false;
+              break;
+            }
             this.refresh();
             break;
           case 'drawRoad':
@@ -957,9 +971,14 @@ export default {
         for (var key in this.mapChessImageMap) {
           let value = this.mapChessImageMap[key];
           console.log('value: ', value);
-          let oss = await getOssById(value);
-          console.log('oss: ', oss.data.data.fileName);
-          let coverUrl = this.baseOssIpPort + oss.data.data.fileName;
+          let coverUrl;
+          if (this.ossCache[value]) {
+            coverUrl = this.ossCache[value];
+          } else {
+            let oss = await getOssById(value);
+            coverUrl = this.baseOssIpPort + oss.data.data.fileName;
+            this.ossCache[value] = coverUrl;
+          }
           await that.loadImage(coverUrl).then(function (img) {
             that.imageMap.set(key, img);
           });
@@ -2174,8 +2193,14 @@ export default {
         item.isAdd = false;
         item.canMove = true;
         item.isDie = false;
-        let oss = await getOssById(item.chessPiecesCover);
-        let coverUrl = this.baseOssIpPort + oss.data.data.fileName;
+        let coverUrl;
+        if (this.ossCache[item.chessPiecesCover]) {
+          coverUrl = this.ossCache[item.chessPiecesCover];
+        } else {
+          let oss = await getOssById(item.chessPiecesCover);
+          coverUrl = this.baseOssIpPort + oss.data.data.fileName;
+          this.ossCache[item.chessPiecesCover] = coverUrl;
+        }
         item.chessPiecesCover = coverUrl;
         this.game.userPiece.push(item);
       }
@@ -2532,8 +2557,17 @@ export default {
       this.$refs.blowEffectTable.open();
     },
     async refresh() {
-      await this.queryUsChessPiecesInfoFunc();
-      await this.queryPromptFunc();
+      // 刷新去抖：短时间内的重复refresh合并
+      const now = Date.now();
+      if (this.refreshTimer) {
+        clearTimeout(this.refreshTimer);
+        this.refreshTimer = null;
+      }
+      this.refreshTimer = setTimeout(async () => {
+        await this.queryUsChessPiecesInfoFunc();
+        await this.queryPromptFunc();
+        this.refreshTimer = null;
+      }, this.refreshCooldownMs);
     },
     async endRoundFuncAndSetRoundActionPoint(){
       let data={
@@ -3259,12 +3293,15 @@ export default {
       };
       
       moveChess(data);
+      // 仅通知轻量刷新，避免触发全量流程
       sendMsg(
         JSON.stringify({
-          action: 'takeAction',
+          action: 'refresh',
           verdictRecordId: this.verdictRecordId
         })
       );
+      // 本端抑制一次自刷新（避免紧随其后触发两次渲染）
+      this.suppressNextRefresh = true;
     }
   }
 };
