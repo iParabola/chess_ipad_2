@@ -20,8 +20,8 @@ export default {
     return {
 	  tableType: 'fire', // fire是火力值表，anti是结果表（废弃）
       headers: ['苏射击', '美目标', ],
-	  fire_headers1: ['距离（米）', '50', '100', '150', '200', '250', '300', '350', '400', '450', '500', '750', '1000', '1500', '2000', '2500', '3000'],
-	  fire_headers2: ['六边格数量', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11~15', '16~20', '21~30', '31~40', '41~50', '51~60'],
+	  fire_headers1: ['', '距离（米）', '50', '100', '150', '200', '250', '300', '350', '400', '450', '500', '750', '1000', '1500', '2000', '2500', '3000'],
+	  fire_headers2: ['', '六边格数量', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11~15', '16~20', '21~30', '31~40', '41~50', '51~60'],
       data: [
 		  // 数据不对，要改
             ['TM+',  8, 7, 6, 5, 3, 3, 2, 2, 1, 1, '*', '*', '*', '*', '*', '*'],
@@ -44,5 +44,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* 样式已迁移到 fire-table.vue 和 judge-table.scss 中 */
+@import url('@/common/css/judge-table.scss');
+.rule__view {
+
+	.title {
+		text-align: center;
+		height: 40px;
+		line-height: 40px;
+		font-weight: bolder;
+		background-color: #8bc34a;
+		font-size: $uni-font-size-title;
+		color: #ffffff;
+		border-radius: 4px;
+		margin-bottom: 10px;
+	}
+}
 </style>

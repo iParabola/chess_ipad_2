@@ -55,9 +55,11 @@ export default {
 		height: 40px;
 		line-height: 40px;
 		font-weight: bolder;
-		background-color: #ffffff;
+		background-color: #8bc34a;
 		font-size: $uni-font-size-title;
-		color: #000000;
+		color: #ffffff;
+		border-radius: 4px;
+		margin-bottom: 10px;
 	}
 }
 </style>

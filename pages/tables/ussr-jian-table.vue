@@ -1,15 +1,20 @@
 <template>
-  <view class="rule__view">
-	<view class="title">苏方间瞄射击数据表</view>
-    <!-- <highlight-table :headers="headers" :data="data" :table-type="tableType"></highlight-table> -->
-	<view class="content">
-		<image src="/static/image/judge/ussr-jian.jpg" class="img-responsive"></image>
+  <view class="jian-container">
+	<view class="jian-title">苏方间瞄射击数据表</view>
+	<view class="image-content">
+		<image 
+			src="/static/image/judge/ussr-jian.jpg" 
+			@error="onImageError"
+			@load="onImageLoad"
+			mode="widthFix"
+			style="width: 90%; max-width: 800px;"
+		></image>
 	</view>
 
-	<view class="title">苏方间瞄射击结果表</view>
-	<highlight-table :headers="headers" :data="data" :table-type="tableType" @selectResult="onSelectResult"></highlight-table>
-
-
+	<view class="jian-title">苏方间瞄射击结果表</view>
+	<view class="table-content">
+		<highlight-table :headers="headers" :data="data" :table-type="tableType" @selectResult="onSelectResult"></highlight-table>
+	</view>
   </view>
 </template>
 
@@ -43,63 +48,71 @@ export default {
       // 监听子表格的选择结果并向上传递
       onSelectResult(value) {
         this.$emit('selectResult', value);
+      },
+      // 图片加载事件处理
+      onImageError(e) {
+        console.error('图片加载失败:', e);
+        uni.showToast({
+          title: '图片加载失败',
+          icon: 'none'
+        });
+      },
+      onImageLoad(e) {
+        console.log('图片加载成功:', e);
       }
     }
 };
 </script>
 
 <style lang="scss" scoped>
-@import url('@/common/css/judge-table.scss');
-.rule__view {
-	margin-bottom: 0px; /* 调整间距 */
-	background: rgba(26, 46, 26, 0.6); /* 表格背景 */
-	border: 1px solid rgba(76, 175, 80, 0.3); /* 边框 */
-	border-radius: 8px; /* 圆角 */
-	padding: 10px; /* 内边距 */
-	box-sizing: border-box;
-	color: #e8f5e8; /* 默认文字颜色 */
-	font-family: 'Courier New', monospace; /* 科幻字体 */
+.jian-container {
+	padding: 20px;
+	min-height: 100vh;
+	background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 100%);
+	font-family: 'Courier New', monospace;
+}
 
-	.title {
-		text-align: center;
-		height: auto; /* 自动高度 */
-		line-height: 1.5; /* 调整行高 */
-		font-weight: bolder;
-		background: linear-gradient(90deg, transparent 0%, rgba(76, 175, 80, 0.2) 50%, transparent 100%); /* 标题渐变背景 */
-		font-size: 18px; /* 调整字体大小 */
-		color: #8bc34a; /* 调整字体颜色 */
-		padding: 10px; /* 调整内边距 */
-		border-bottom: 1px solid rgba(76, 175, 80, 0.4); /* 底部边框 */
-		margin-bottom: 10px; /* 调整间距 */
-	}
+.jian-title {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	color: #8bc34a;
+	margin-bottom: 20px;
+	padding: 12px;
+	background: linear-gradient(90deg, transparent 0%, rgba(139, 195, 74, 0.2) 50%, transparent 100%);
+	border: 1px solid rgba(139, 195, 74, 0.4);
+	border-radius: 8px;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
 
-	.content {
-		padding: 0px; /* 调整内边距 */
-		width: 100%;
-		display: flex;
-	    justify-content: center;
-	    align-items: center;
-	    overflow: auto; /* 允许图片内容滚动 */
+.image-content {
+	text-align: center;
+	padding: 20px;
+	margin-bottom: 30px;
+	background: rgba(26, 46, 26, 0.6);
+	border: 1px solid rgba(139, 195, 74, 0.3);
+	border-radius: 12px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
 
-	    /* 自定义滚动条 */
-	    &::-webkit-scrollbar {
-	      width: 8px; /* 垂直滚动条宽度 */
-	      height: 8px; /* 水平滚动条高度 */
-	    }
-	    &::-webkit-scrollbar-track {
-	      background: rgba(26, 46, 26, 0.8);
-	      border-radius: 4px;
-	    }
-	    &::-webkit-scrollbar-thumb {
-	      background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
-	      border-radius: 4px;
-	    }
-	}
+.image-content image {
+	border: 2px solid rgba(139, 195, 74, 0.6);
+	border-radius: 8px;
+	background: #ffffff;
+	box-shadow: 0 6px 20px rgba(139, 195, 74, 0.3);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-	  .img-responsive {
-	    max-width: 100%; /* 适应容器宽度 */
-	    height: auto; /* 保持图片比例 */
-	    display: block; /* 避免底部空白 */
-	}
+.image-content image:hover {
+	transform: scale(1.02);
+	box-shadow: 0 8px 30px rgba(139, 195, 74, 0.5);
+}
+
+.table-content {
+	background: rgba(26, 46, 26, 0.6);
+	border: 1px solid rgba(139, 195, 74, 0.3);
+	border-radius: 12px;
+	padding: 15px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 </style>

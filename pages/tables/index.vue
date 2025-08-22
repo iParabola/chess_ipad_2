@@ -182,9 +182,14 @@ export default {
 		          ]
 		        },
 		        {
-					text: '打开地形影响表',
-					url: 'LandformTable',
-				}
+		          text: '地形影响表',
+		          children: [
+		            {
+		              text: '打开地形影响表',
+		              url: 'LandformTable',
+		            }
+		          ]
+		        }
 		      ],
 		      activeUrl: '',
 		}
