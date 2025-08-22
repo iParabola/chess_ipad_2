@@ -3108,7 +3108,7 @@ export default {
       
       // 地图层指针事件：实现长按触发拖拽
       this.map.on('pointerdown', (evt) => {
-        if (!this.chessLayerVisible) return;
+        if (!this.chessLayerVisible || evt.originalEvent.button !== 0) return; // 只响应左键
         this.longPressActive = false;
         this.longPressStartPixel = evt.pixel.slice();
         const feature = this.map.forEachFeatureAtPixel(evt.pixel, f => f, { layerFilter: l => l === this.chessLayer });
@@ -3145,6 +3145,8 @@ export default {
       });
 
       this.map.on('pointermove', (evt) => {
+        // 只响应左键拖拽
+        if (evt.originalEvent.buttons !== 1) return;
         // 若在等待长按，检测位移阈值以取消长按
         if (this.longPressTimer) {
           const dx = evt.pixel[0] - this.longPressStartPixel[0];
@@ -3173,6 +3175,8 @@ export default {
       };
 
       this.map.on('pointerup', (evt) => {
+        // 只响应左键释放
+        if (evt.originalEvent.button !== 0) return;
         clearLongPress();
         // 如果长按未激活，保持原状；若已激活，Translate会处理拖拽结束事件恢复不透明度
         // 恢复地图拖拽平移
