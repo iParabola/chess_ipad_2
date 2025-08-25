@@ -42,6 +42,7 @@
 			<view class="btnView" @click="testZoomListener" style="background: linear-gradient(to bottom, #607D8B 0%, #455A64 100%);">
 				测试缩放
 			</view>
+			
 		</view>
 		<view class="middleBtn">
 			<view class="btnView" v-if="isMove" @click="moveStop">移动结束</view>
@@ -523,6 +524,22 @@
 <!--        ></uv-text>-->
       </view>
     </view>
+    <!-- 轨迹右键菜单 -->
+    <view v-if="trailMenu.visible"
+          class="newcontextmenu"
+          :style="{ left: trailMenu.left + 'px', top: trailMenu.top + 'px', zIndex: 1002 }">
+      <view class="score-btn-view">
+        <view class="menu-btn" @click="toggleTrailForChess()">
+          {{ trailEnabledByChess[trailMenu.chessNumber] ? '停止记录轨迹' : '开始记录轨迹' }}
+        </view>
+        <view class="menu-btn" @click="toggleShowTrailForChess()">
+          {{ isTrailHiddenForChess(trailMenu.chessNumber) ? '显示棋子轨迹' : '隐藏棋子轨迹' }}
+        </view>
+        <view class="menu-btn" @click="clearTrailForChess()">
+          清空该棋子轨迹
+        </view>
+      </view>
+    </view>
     <view
         v-if="showChessListInfo.visible"
         :style="{ left: showChessListInfo.left + 'px', top: showChessListInfo.top + 'px', width: '200px' }"
@@ -789,6 +806,20 @@ export default {
       vector: null, // 路径图层实例
       grid: null, // 六角格网格实例
       lastZoom: 15, // 记录上一次的缩放级别
+
+      // 轨迹 Layer 与存储
+      trailsLayer: null,
+      trailsVisible: true,
+      chessTrails: {}, // { [chessNumber]: Coordinate[] }
+      trailFeatureByChess: {}, // { [chessNumber]: Feature }
+      // 轨迹圆点层
+      trailPointsLayer: null,
+      // 轨迹开关（按棋子编号）
+      trailEnabledByChess: {},
+      // 轨迹显示开关（按棋子编号，true 表示隐藏）
+      trailHiddenByChess: {},
+      // 轨迹右键菜单状态
+      trailMenu: { visible: false, left: 0, top: 0, chessNumber: null },
 
       // 拖拽相关
       isDragging: false, // 是否正在拖拽
@@ -1126,8 +1157,45 @@ export default {
       });
       this.vector.set('name', '路径层');
       
+      // 创建棋子轨迹图层（细线条）
+      this.trailsLayer = new VectorLayer({
+        source: new VectorSource(),
+        visible: this.trailsVisible,
+        zIndex: 9
+      });
+      this.trailsLayer.set('name', '轨迹层');
+      // 深色线样式（更易辨识）
+      const trailStroke = new Stroke({ color: 'rgba(40,40,40,0.95)', width: 3 });
+      const trailStyle = new Style({ stroke: trailStroke });
+      // 设置样式函数：当要素被标记为隐藏时不返回样式
+      this.trailsLayer.setStyle((feature) => {
+        if (feature && feature.get('hidden') === true) {
+          return null;
+        }
+        return trailStyle;
+      });
+
+      // 创建轨迹圆点层（小圆点标记位置，仅在启用记录时添加）
+      this.trailPointsLayer = new VectorLayer({
+        source: new VectorSource(),
+        visible: this.trailsVisible,
+        zIndex: 9
+      });
+      this.trailPointsLayer.set('name', '轨迹点层');
+      const pointStyle = new Style({
+        image: new CircleStyle({ radius: 5, fill: new Fill({ color: 'rgba(30,30,30,1)' }), stroke: new Stroke({ color: 'rgba(255,255,255,0.95)', width: 1.25 }) })
+      });
+      this.trailPointsLayer.setStyle((feature) => {
+        if (feature && feature.get('hidden') === true) {
+          return null;
+        }
+        return pointStyle;
+      });
+
       // 将路径图层添加到棋子层中，这样路径的显示也会受棋子层控制
       if (this.chessLayerVisible) {
+        map.addLayer(this.trailsLayer);
+        map.addLayer(this.trailPointsLayer);
         map.addLayer(this.vector);
       }
       
@@ -2807,6 +2875,13 @@ export default {
           if (this.vector) {
             this.map.addLayer(this.vector);
           }
+          // 添加轨迹图层
+          if (this.trailsLayer) {
+            this.map.addLayer(this.trailsLayer);
+          }
+          if (this.trailPointsLayer) {
+            this.map.addLayer(this.trailPointsLayer);
+          }
           // 重新渲染棋子
           this.renderChessToVectorLayer();
         } else {
@@ -2818,9 +2893,47 @@ export default {
           if (this.vector) {
             this.map.removeLayer(this.vector);
           }
+          // 保留轨迹图层由 trailsVisible 控制，这里不移除
         }
       }
       console.log('棋子层可见性:', this.chessLayerVisible);
+    },
+
+    // 切换棋子轨迹显示
+    toggleTrailsLayer() {
+      this.trailsVisible = !this.trailsVisible;
+      if (this.trailsLayer) {
+        this.trailsLayer.setVisible(this.trailsVisible);
+      }
+      if (this.trailPointsLayer) {
+        this.trailPointsLayer.setVisible(this.trailsVisible);
+      }
+      console.log('轨迹层可见性:', this.trailsVisible);
+    },
+
+    // 清空所有轨迹
+    clearAllTrails() {
+      if (this.trailsLayer) {
+        this.trailsLayer.getSource().clear();
+      }
+      if (this.trailPointsLayer) {
+        this.trailPointsLayer.getSource().clear();
+      }
+      this.chessTrails = {};
+      this.trailFeatureByChess = {};
+      console.log('已清空所有棋子轨迹');
+    },
+
+    // 打印轨迹统计信息
+    debugLogTrails() {
+      const stats = Object.entries(this.chessTrails).map(([num, coords]) => ({
+        chessNumber: num,
+        points: coords.length
+      }));
+      console.log('轨迹统计:', stats);
+      if (this.trailsLayer) {
+        console.log('轨迹要素数量:', this.trailsLayer.getSource().getFeatures().length);
+      }
     },
     
     // 获取当前图层状态信息
@@ -2875,7 +2988,7 @@ export default {
         }
       }
       
-      // 清空棋子层
+      // 清空棋子层（保留轨迹层，不清空）
       this.chessLayer.getSource().clear();
       
       // 为每个棋子创建Feature
@@ -2930,6 +3043,37 @@ export default {
           // 添加到棋子层
           this.chessLayer.getSource().addFeature(chessFeature);
           console.log('棋子已添加到图层:', chessItem.info.chessPiecesName);
+
+          // 初始化或保持棋子的轨迹首点
+          const chessNum = chessItem.info.chessPiecesNumber;
+          const currentCoord = coord;
+          // 仅当该棋子启用了轨迹记录时，才建立初始轨迹与圆点
+          if (this.trailEnabledByChess && this.trailEnabledByChess[chessNum] === true) {
+            if (!this.chessTrails[chessNum]) {
+              this.chessTrails[chessNum] = [currentCoord];
+              const trailFeature = new Feature({ geometry: new LineString(this.chessTrails[chessNum]) });
+              trailFeature.set('chessNumber', String(chessNum));
+              this.trailFeatureByChess[chessNum] = trailFeature;
+              if (this.trailsLayer) {
+                this.trailsLayer.getSource().addFeature(trailFeature);
+              }
+              // 初始位置加一个圆点
+              if (this.trailPointsLayer) {
+                const pointFeature = new Feature({ geometry: new Point(currentCoord) });
+                pointFeature.set('chessNumber', String(chessNum));
+                this.trailPointsLayer.getSource().addFeature(pointFeature);
+              }
+            } else if (this.chessTrails[chessNum].length === 0) {
+              this.chessTrails[chessNum].push(currentCoord);
+              const existing = this.trailFeatureByChess[chessNum];
+              if (existing) existing.getGeometry().setCoordinates(this.chessTrails[chessNum]);
+              if (this.trailPointsLayer) {
+                const pointFeature = new Feature({ geometry: new Point(currentCoord) });
+                pointFeature.set('chessNumber', String(chessNum));
+                this.trailPointsLayer.getSource().addFeature(pointFeature);
+              }
+            }
+          }
         }
       }
       
@@ -3036,8 +3180,22 @@ export default {
       
       // 禁用右键菜单
       this.map.getViewport().addEventListener('contextmenu', (e) => {
+        // 在棋子上右键时弹出轨迹菜单
         e.preventDefault();
         e.stopPropagation();
+        if (!this.map || !this.chessLayerVisible) return false;
+        const pixel = this.map.getEventPixel(e);
+        const feature = this.map.forEachFeatureAtPixel(pixel, f => f, { layerFilter: l => l === this.chessLayer });
+        if (feature && feature.get('chessInfo')) {
+          const chess = feature.get('chessInfo');
+          this.trailMenu.visible = true;
+          this.trailMenu.chessNumber = chess.chessPiecesNumber;
+          // 记录锚点要素与更新一次位置
+          this.trailMenu._anchorFeature = feature;
+          this.updateTrailMenuPosition();
+        } else {
+          this.trailMenu.visible = false;
+        }
         return false;
       });
 
@@ -3105,6 +3263,13 @@ export default {
             // 清理计时器引用，避免后续pointermove误判
             this.longPressTimer = null;
           }, this.longPressDelay);
+        }
+      });
+
+      // 在地图渲染周期内，如果轨迹菜单可见，则根据棋子坐标更新菜单位置
+      this.map.on('postrender', () => {
+        if (this.trailMenu && this.trailMenu.visible) {
+          this.updateTrailMenuPosition();
         }
       });
 
@@ -3230,6 +3395,54 @@ export default {
       
       // 更新mapChessArray中对应的棋子位置
       this.updateChessPositionInArray(chessInfo.chessPiecesNumber, hexInfo.offset);
+
+      // 追加轨迹点（仅当该棋子开启了轨迹记录，且确实发生了坐标变化）
+      const chessNum = chessInfo.chessPiecesNumber;
+      if (this.trailEnabledByChess && this.trailEnabledByChess[chessNum] !== true) {
+        // 未开启记录：只更新棋子、发送请求，不记录轨迹
+        this.chessLayer.changed();
+        this.sendMoveRequest(chessInfo, hexInfo);
+        return;
+      }
+      const trail = this.chessTrails[chessNum] || (this.chessTrails[chessNum] = []);
+      // 对比坐标：若与最后一个点相同则不生成圆点/线段
+      const lastCoord = trail.length > 0 ? trail[trail.length - 1] : null;
+      const sameAsLast = lastCoord && Array.isArray(lastCoord) && lastCoord[0] === hexInfo.coord[0] && lastCoord[1] === hexInfo.coord[1];
+      // 确保第一段包含起点：使用长按开始时记录的起点坐标
+      if (trail.length === 0) {
+        const startCoord = this.dragStartPosition ? this.dragStartPosition : chessFeature.getGeometry().getCoordinates();
+        // 如果此时feature已被更新为新坐标，优先使用dragStartPosition
+        if (this.dragStartPosition) {
+          trail.push(this.dragStartPosition);
+        } else {
+          trail.push(startCoord);
+        }
+        // 起点圆点
+        if (this.trailPointsLayer) {
+          const pf = new Feature({ geometry: new Point(trail[0]) });
+          pf.set('chessNumber', String(chessNum));
+          this.trailPointsLayer.getSource().addFeature(pf);
+        }
+      }
+      if (!sameAsLast) {
+        trail.push(hexInfo.coord);
+        // 终点圆点
+        if (this.trailPointsLayer) {
+          const pf2 = new Feature({ geometry: new Point(hexInfo.coord) });
+          pf2.set('chessNumber', String(chessNum));
+          this.trailPointsLayer.getSource().addFeature(pf2);
+        }
+      }
+      let trailFeature = this.trailFeatureByChess[chessNum];
+      if (!trailFeature) {
+        trailFeature = new Feature({ geometry: new LineString(trail) });
+        trailFeature.set('chessNumber', String(chessNum));
+        this.trailFeatureByChess[chessNum] = trailFeature;
+        if (this.trailsLayer) this.trailsLayer.getSource().addFeature(trailFeature);
+      } else {
+        trailFeature.getGeometry().setCoordinates(trail);
+      }
+      this.trailsLayer && this.trailsLayer.changed();
       
       // 触发图层更新
       this.chessLayer.changed();
@@ -3275,6 +3488,123 @@ export default {
       );
       // 本端抑制一次自刷新（避免紧随其后触发两次渲染）
       this.suppressNextRefresh = true;
+    },
+
+    // 切换指定棋子的轨迹记录开关
+    toggleTrailForChess() {
+      const num = this.trailMenu.chessNumber;
+      if (!num) return;
+      const current = !!this.trailEnabledByChess[num];
+      this.$set ? this.$set(this.trailEnabledByChess, num, !current) : (this.trailEnabledByChess[num] = !current);
+      // 如果是从 开启 -> 关闭，且尚未发生实际移动（只有起点），需要移除起点圆点与空轨迹
+      if (current === true && this.trailEnabledByChess[num] === false) {
+        const key = String(num);
+        const trail = this.chessTrails[num];
+        if (Array.isArray(trail) && trail.length <= 1) {
+          // 移除线要素
+          const f = this.trailFeatureByChess[num];
+          if (f && this.trailsLayer) this.trailsLayer.getSource().removeFeature(f);
+          this.trailFeatureByChess[num] = undefined;
+          this.chessTrails[num] = [];
+          // 移除该棋子的所有点（仅有一个起点时）
+          if (this.trailPointsLayer) {
+            const src = this.trailPointsLayer.getSource();
+            const remain = [];
+            src.getFeatures().forEach(ff => {
+              if (ff.get('chessNumber') !== key) remain.push(ff);
+            });
+            src.clear();
+            remain.forEach(ff => src.addFeature(ff));
+          }
+        }
+      }
+      // 开启记录时不立即种下起点，等待发生实际移动后再生成
+      this.trailMenu.visible = false;
+    },
+
+    // 清空指定棋子的轨迹
+    clearTrailForChess() {
+      const num = this.trailMenu.chessNumber;
+      if (!num) return;
+      // 清空线
+      const f = this.trailFeatureByChess[num];
+      if (f && this.trailsLayer) this.trailsLayer.getSource().removeFeature(f);
+      this.trailFeatureByChess[num] = undefined;
+      this.chessTrails[num] = [];
+      // 清空点（简单做法：清空后重画其他棋子的点）
+      if (this.trailPointsLayer) {
+        const src = this.trailPointsLayer.getSource();
+        const remain = [];
+        src.getFeatures().forEach(ff => {
+          if (ff.get('chessNumber') !== String(num)) remain.push(ff);
+        });
+        src.clear();
+        remain.forEach(ff => src.addFeature(ff));
+      }
+      this.trailMenu.visible = false;
+    },
+
+    // 是否已隐藏某棋子的轨迹
+    isTrailHiddenForChess(num) {
+      return !!this.trailHiddenByChess[String(num)];
+    },
+
+    // 切换显示/隐藏指定棋子的轨迹
+    toggleShowTrailForChess() {
+      const num = this.trailMenu.chessNumber;
+      if (!num) return;
+      const key = String(num);
+      const toHide = !this.isTrailHiddenForChess(key);
+      this.$set ? this.$set(this.trailHiddenByChess, key, toHide) : (this.trailHiddenByChess[key] = toHide);
+
+      // 线要素
+      const line = this.trailFeatureByChess[key];
+      if (line) {
+        line.set('hidden', toHide);
+      }
+      // 点要素
+      if (this.trailPointsLayer) {
+        this.trailPointsLayer.getSource().getFeatures().forEach(f => {
+          if (f.get('chessNumber') === key) {
+            f.set('hidden', toHide);
+          }
+        });
+      }
+      // 触发重渲染
+      this.trailsLayer && this.trailsLayer.changed();
+      this.trailPointsLayer && this.trailPointsLayer.changed();
+      this.trailMenu.visible = false;
+    },
+
+    // 根据锚点棋子的地图坐标，更新右键菜单的屏幕位置
+    updateTrailMenuPosition() {
+      if (!this.map || !this.trailMenu || !this.trailMenu._anchorFeature) return;
+      const geom = this.trailMenu._anchorFeature.getGeometry();
+      if (!geom) return;
+      const coord = geom.getCoordinates();
+      const pixel = this.map.getPixelFromCoordinate(coord);
+      if (!pixel) return;
+      // 将像素转为页面坐标
+      const viewportRect = this.map.getTargetElement().getBoundingClientRect();
+      const left = viewportRect.left + pixel[0];
+      const top = viewportRect.top + pixel[1];
+      this.trailMenu.left = left;
+      this.trailMenu.top = top;
+    },
+
+    // 根据棋子编号找到其Feature
+    findChessFeatureByNumber(num) {
+      if (!this.chessLayer) return null;
+      let found = null;
+      this.chessLayer.getSource().getFeatures().some(f => {
+        const info = f.get('chessInfo');
+        if (info && info.chessPiecesNumber === num) {
+          found = f;
+          return true;
+        }
+        return false;
+      });
+      return found;
     }
   }
 };
@@ -3383,23 +3713,23 @@ export default {
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 
   .btnView {
-    background: linear-gradient(to bottom, #8b4513 0%, #d2691e 100%);
+    background: linear-gradient(to bottom, #7a573f 0%, #b36b3a 100%);
     color: #ffffff;
     text-align: center;
     align-items: center;
-    padding: 8px 12px;
-    font-size: 12px;
+    padding: 6px 10px;
+    font-size: 11px;
     cursor: pointer;
-    border-radius: 5px;
-    min-width: 80px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    border-radius: 6px;
+    min-width: 70px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
   }
 
   .btnView:hover {
-    background: linear-gradient(to bottom, #a0522d 0%, #cd853f 100%);
+    background: linear-gradient(to bottom, #8e5f44 0%, #c47a46 100%);
   }
 }
 
@@ -3601,19 +3931,20 @@ export default {
   position: absolute;
   width: 100px;
   z-index: 1000;
-  background-color: #10292f;
+  background-color: #0f1f24;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
 }
 
 .score-btn-view {
   text-align: center;
-  background-color: #10292f;
-  // padding: 10px 10px 10px 10px;
+  background-color: transparent;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 8px;
 
   .uv-text {
     width: 100%;
-    padding: 10px 10px 10px 10px;
+    padding: 0;
   }
 
   .chess-view {
@@ -3621,6 +3952,23 @@ export default {
     text-align: left;
     padding: 10px 10px 10px 10px;
     color: #ffffff;
+  }
+  .menu-btn {
+    width: 100%;
+    text-align: left;
+    color: #e7f7fa;
+    font-size: 12px;
+    letter-spacing: .2px;
+    padding: 8px 10px;
+    white-space: nowrap; /* 不换行 */
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* 分隔明显 */
+  }
+  .menu-btn:last-child {
+    border-bottom: none;
+  }
+  .menu-btn:hover {
+    background-color: rgba(76,245,227,0.08);
+    color: #4cf5e3;
   }
 }
 
