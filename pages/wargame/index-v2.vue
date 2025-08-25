@@ -798,8 +798,6 @@ export default {
       dragInteraction: null, // 拖拽交互器
       selectInteraction: null, // 选择交互器（长按模式下不再使用）
       dragFeatures: null, // 长按时参与拖拽的要素集合
-      
-
       longPressTimer: null, // 长按计时器
       longPressDelay: 300, // 长按判定时长（毫秒）
       longPressActive: false, // 长按已激活标记
@@ -1085,6 +1083,7 @@ export default {
       
       // 监听地图缩放事件，自动调整六角格大小和棋子大小
       map.getView().on('change:zoom', () => {
+        console.log('地图缩放级别变化，自动同步棋子缩放');
         setTimeout(() => {
           this.adjustHexSize(); // 先调整六角格大小
           this.syncChessScale(); // 再调整棋子大小
@@ -1095,6 +1094,7 @@ export default {
       map.on('moveend', () => {
         const currentZoom = map.getView().getZoom();
         if (this.lastZoom !== currentZoom) {
+          console.log('地图移动结束，缩放级别变化:', this.lastZoom, '->', currentZoom);
           this.lastZoom = currentZoom;
           this.adjustHexSize(); // 先调整六角格大小
           this.syncChessScale(); // 再调整棋子大小
@@ -1608,13 +1608,16 @@ export default {
       ) {
         useUp += 1;
         data.terrain = 1;
+        console.log('地形类型：' + thisPoint.terrainName + '修正系数：' + 1);
       } else if (thisPoint.terrainName === '湖泊') {
         useUp += 1;
         data.terrain = 1;
+        console.log('地形类型：' + thisPoint.terrainName + '修正系数：' + 1);
       }
       //道路修正
       let previousCoordinate = this.chessMoveArray[this.chessMoveArray.length - 1].coordinate;
       let thisCoordinate = this.hex.hexToPointNumber(offset[1], offset[0], this.mapInfo.row, this.mapInfo.col);
+      console.log('当前点坐标：' + thisCoordinate);
       //是否是路
       let roadArray = []; //点位道路集合
       if (thisPoint.roadVoList) {
@@ -1635,9 +1638,11 @@ export default {
       if (correctRoadArray.length > 0) {
         correctRoadArray = correctRoadArray.sort((a, b) => a.terrainActionValue - b.terrainActionValue);
         useUp -= correctRoadArray[0].terrainActionValue;
+        console.log('道路类型修正系数：' + correctRoadArray[0].terrainActionValue);
         data.road = -correctRoadArray[0].terrainActionValue;
       }
       //隔间地物（湖泊为区域修正）
+      console.log('消耗行动值: ', useUp);
       data.useUp = useUp;
       let chessMoveData = {
         offset: offsetString,
@@ -1651,6 +1656,7 @@ export default {
       return this.game.roundPeriod === 1 || this.game.roundPeriod === 4;
     },
     attackPoint() {
+      console.log("this.selCellInfo",this.selCellInfo)
       if(this.game.status==2) this.periodActionChessList.push(this.selCellInfo);
       // const tmp = this.mapChessArray.find(function (ttt) {
       //   return this.selCellInfo.offset === ttt.offset;
@@ -1660,6 +1666,7 @@ export default {
       this.isMove = false;
       this.$refs.moveConfirm.close();
       this.$refs.attackConfirm.close();
+      console.log(this.attackLine)
       this.vector.getSource().addFeature(this.attackLine);
       this.flowLineArr = [];
       this.chessPiecesActionFunc(20, this.selCellInfo, this.targetCellInfo, true);
@@ -1696,6 +1703,7 @@ export default {
       this.chessPiecesActionFunc(this.selCellInfo, this.targetCellInfo, false);
     },
     async moveStop() {
+      console.log("this.selCellInfo",this.selCellInfo)
       if(this.game.status==2) this.periodActionChessList.push(this.selCellInfo);
       // const tmp = this.mapChessArray.find(function (ttt) {
       //   return this.selCellInfo.offset === ttt.offset;
@@ -1765,7 +1773,7 @@ export default {
         let y = e.detail.y; //这个应该是相对于整个浏览器页面的y坐标，左上角为坐标原点（0,0）
         this.showChessButtonInfo.top = y;
         this.showChessButtonInfo.left = x;
-
+        console.log("11111",typeof this.selCellInfo.roundActionPoint)
         // if(this.selCellInfo.roundActionPoint=='1'){
         //   uni.showToast({
         //     title: '该棋子在本回合已无行动能力！',
@@ -1777,6 +1785,7 @@ export default {
       }, 100);
     },
     chessClick(e, type) {
+      console.log("this.game.roundPeriod",typeof this.game.roundPeriod)
       if (type === 'action') {
         setTimeout(() => {
           let x = e.originalEvent.pageX; //这个应该是相对于整个浏览器页面的x坐标，左上角为坐标原点（0,0）
@@ -2814,20 +2823,49 @@ export default {
       console.log('棋子层可见性:', this.chessLayerVisible);
     },
     
-
+    // 获取当前图层状态信息
+    getLayerStatus() {
+      console.log('=== 图层状态信息 ===');
+      console.log('地图层可见性:', this.mapLayerVisible);
+      console.log('棋子层可见性:', this.chessLayerVisible);
+      console.log('地图层实例:', this.mapLayer);
+      console.log('棋子层实例:', this.chessLayer);
+      console.log('地图实例:', this.map);
+      
+      if (this.map) {
+        console.log('地图上的图层数量:', this.map.getLayers().getLength());
+        console.log('地图上的图层列表:');
+        this.map.getLayers().forEach((layer, index) => {
+          console.log(`图层${index}:`, layer.get('name') || layer.constructor.name, '可见性:', layer.getVisible());
+        });
+      }
+      
+      if (this.chessLayer) {
+        console.log('棋子层Feature数量:', this.chessLayer.getSource().getFeatures().length);
+      }
+      console.log('==================');
+    },
     
     // 将棋子渲染到VectorLayer
     renderChessToVectorLayer() {
+      console.log('开始渲染棋子到VectorLayer');
+      console.log('棋子层状态:', this.chessLayer);
+      console.log('棋子数组:', this.mapChessArray);
+      console.log('棋子层可见性:', this.chessLayerVisible);
+      
       if (!this.chessLayer || !this.mapChessArray) {
+        console.log('棋子层或棋子数组未初始化');
         return;
       }
       
       if (this.mapChessArray.length === 0) {
+        console.log('棋子数组为空，跳过渲染');
         return;
       }
       
       // 确保棋子层可见
       if (!this.chessLayerVisible) {
+        console.log('棋子层当前不可见，设置为可见');
         this.chessLayerVisible = true;
         if (this.map && this.chessLayer) {
           this.map.addLayer(this.chessLayer);
@@ -2842,11 +2880,15 @@ export default {
       
       // 为每个棋子创建Feature
       for (let chessItem of this.mapChessArray) {
+        console.log('处理棋子:', chessItem);
+        
         if (chessItem.info && chessItem.info.offset) {
           // 解析offset坐标
           let offsetParts = chessItem.info.offset.split(',');
           let q = parseInt(offsetParts[0]);
           let r = parseInt(offsetParts[1]);
+          
+          console.log('offset坐标:', q, r);
           
           // 将offset坐标转换为地图坐标
           let coord;
@@ -2856,9 +2898,11 @@ export default {
             coord = this.grid.hex2coord(hexCoord);
           } else {
             console.error('无法找到grid或hex2coord方法');
+            console.log('grid对象:', this.grid);
             // 使用默认坐标作为回退
             coord = [13240200 + q * 200, 3767000 + r * 200];
           }
+          console.log('转换后的地图坐标:', coord);
           
           // 创建棋子Feature
           let chessFeature = new Feature({
@@ -2885,8 +2929,12 @@ export default {
           
           // 添加到棋子层
           this.chessLayer.getSource().addFeature(chessFeature);
+          console.log('棋子已添加到图层:', chessItem.info.chessPiecesName);
         }
       }
+      
+      console.log('棋子渲染完成，共', this.mapChessArray.length, '个棋子');
+      console.log('棋子层Feature数量:', this.chessLayer.getSource().getFeatures().length);
     },
     
 
@@ -2900,7 +2948,7 @@ export default {
       const zoom = this.map.getView().getZoom();
       const resolution = this.map.getView().getResolution();
       const hexSize = this.grid.getSize(); // 获取六角格大小
-      
+
       // 计算六角格在当前分辨率下的像素大小
       const hexPixelSize = hexSize / resolution;
       
@@ -2910,24 +2958,24 @@ export default {
       // 计算棋子应该的缩放比例，使其大小约为六角格的50%
       let targetChessPixelSize = hexPixelSize * 0.5;
       let scale = targetChessPixelSize / originalChessSize;
-      
+
       // 设置缩放范围，避免棋子过大或过小
       const minScale = 0.1;
       const maxScale = 2.0;
       scale = Math.max(minScale, Math.min(maxScale, scale));
-      
+
       return scale;
     },
     
 
-    
 
-    
+
+
     // 手动同步棋子缩放
     syncChessScale() {
       if (this.map && this.grid && this.chessLayer) {
         const newScale = this.getChessScale();
-        
+
         // 更新所有棋子的缩放比例
         let updatedCount = 0;
         this.chessLayer.getSource().getFeatures().forEach(feature => {
@@ -2939,6 +2987,7 @@ export default {
         });
         this.chessLayer.changed();
       }
+      console.log('==================');
     },
     
     // 调整六角格大小以匹配棋子
@@ -2946,6 +2995,7 @@ export default {
       if (this.map && this.grid && this.hex) {
         const currentHexSize = this.grid.getSize();
         const zoom = this.map.getView().getZoom();
+        console.log('当前地图缩放级别:', zoom);
         
         // 根据缩放级别动态调整六角格大小
         let newHexSize;
@@ -2960,27 +3010,27 @@ export default {
         
         if (newHexSize !== currentHexSize) {
           this.grid.setSize(newHexSize);
-          
+
           // 重新渲染地图层
           if (this.hex) {
             this.hex.changed();
           }
-          
+
           // 重新计算棋子缩放
           setTimeout(() => {
             this.syncChessScale();
           }, 100);
         }
+      } else {
+        console.log('地图实例不存在');
       }
+      console.log('==================');
     },
-    
-
-    
-
     
     // 初始化拖拽交互器
     initDragInteraction() {
       if (!this.map || !this.chessLayer) {
+        console.log('地图或棋子层未初始化，无法设置拖拽');
         return;
       }
       
@@ -2990,7 +3040,7 @@ export default {
         e.stopPropagation();
         return false;
       });
-      
+
       // 禁用右键拖拽
       this.map.getViewport().addEventListener('mousedown', (e) => {
         if (e.button === 2) {
@@ -2999,7 +3049,7 @@ export default {
           return false;
         }
       });
-      
+
       // 长按拖拽：使用Translate并在长按后动态设置features
       this.dragFeatures = new Collection();
       this.dragInteraction = new Translate({
@@ -3021,7 +3071,7 @@ export default {
           evt.originalEvent.stopPropagation();
           return;
         }
-        
+
         if (!this.chessLayerVisible) return;
         this.longPressActive = false;
         this.longPressStartPixel = evt.pixel.slice();
@@ -3063,7 +3113,7 @@ export default {
         if (evt.originalEvent && evt.originalEvent.button === 2) {
           return;
         }
-        
+
         // 若在等待长按，检测位移阈值以取消长按
         if (this.longPressTimer) {
           const dx = evt.pixel[0] - this.longPressStartPixel[0];
@@ -3096,7 +3146,7 @@ export default {
         if (evt.originalEvent && evt.originalEvent.button === 2) {
           return;
         }
-        
+
         clearLongPress();
         // 如果长按未激活，保持原状；若已激活，Translate会处理拖拽结束事件恢复不透明度
         // 恢复地图拖拽平移
@@ -3130,6 +3180,8 @@ export default {
         this.draggedChess = null;
         this.dragStartPosition = null;
       });
+      
+      console.log('拖拽交互器初始化完成');
     },
     
     // 找到最近的六角格位置
@@ -3145,6 +3197,13 @@ export default {
       // 将offset坐标转换回地图坐标（确保位置准确）
       const finalCoord = this.grid.hex2coord(hexCoord);
       
+      console.log('坐标转换:', {
+        original: coord,
+        hex: hexCoord,
+        offset: offsetCoord,
+        final: finalCoord
+      });
+      
       return {
         coord: finalCoord,
         offset: offsetCoord.join(','),
@@ -3155,10 +3214,12 @@ export default {
     // 移动棋子到指定六角格
     moveChessToHex(chessFeature, hexInfo) {
       if (!chessFeature || !hexInfo) {
+        console.log('棋子或六角格信息无效');
         return;
       }
       
       const chessInfo = chessFeature.get('chessInfo');
+      console.log('移动棋子:', chessInfo.chessPiecesName, '到位置:', hexInfo.offset);
       
       // 更新棋子的几何位置
       chessFeature.getGeometry().setCoordinates(hexInfo.coord);
@@ -3183,6 +3244,7 @@ export default {
         if (this.mapChessArray[i].info.chessPiecesNumber === chessNumber) {
           this.mapChessArray[i].offset = newOffset;
           this.mapChessArray[i].info.offset = newOffset;
+          console.log('更新棋子数组位置:', chessNumber, '->', newOffset);
           break;
         }
       }
@@ -3190,6 +3252,11 @@ export default {
     
     // 发送移动请求到后端
     sendMoveRequest(chessInfo, hexInfo) {
+      console.log('发送移动请求:', {
+        chessNumber: chessInfo.chessPiecesNumber,
+        fromOffset: this.dragStartPosition ? this.findNearestHex(this.dragStartPosition).offset : chessInfo.offset,
+        toOffset: hexInfo.offset
+      });
       
       // 调用后端移动API
       let data = {
