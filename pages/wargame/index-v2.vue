@@ -15,6 +15,59 @@
     <view v-if="showToast" class="custom-toast">
       {{ toastMessage }}
     </view>
+    
+    <!-- 左侧标绘工具栏 -->
+    <view class="leftDrawToolbar" v-if="initType !== 'watch' && userType === 'user'">
+      <view class="toolbar-title">标绘工具</view>
+      <view class="toolbar-content">
+        <view class="draw-tool-item" 
+              :class="{ active: currentDrawMode === 'movement' }"
+              @click="setDrawMode('movement')">
+          <view class="tool-icon">→</view>
+          <view class="tool-name">行军路线</view>
+        </view>
+        <view class="draw-tool-item" 
+              :class="{ active: currentDrawMode === 'attack' }"
+              @click="setDrawMode('attack')">
+          <view class="tool-icon">⚔</view>
+          <view class="tool-name">攻击路线</view>
+        </view>
+        <view class="draw-tool-item" 
+              :class="{ active: currentDrawMode === 'security' }"
+              @click="setDrawMode('security')">
+          <view class="tool-icon">🛡</view>
+          <view class="tool-name">安全区域</view>
+        </view>
+        <view class="draw-tool-item" 
+              :class="{ active: currentDrawMode === 'command' }"
+              @click="setDrawMode('command')">
+          <view class="tool-icon">🎯</view>
+          <view class="tool-name">指挥范围</view>
+        </view>
+        <view class="draw-tool-item" 
+              :class="{ active: currentDrawMode === 'supply' }"
+              @click="setDrawMode('supply')">
+          <view class="tool-icon">📦</view>
+          <view class="tool-name">补给路线</view>
+        </view>
+      </view>
+      <view class="toolbar-actions">
+        <view class="action-btn" @click="clearAllDrawings">
+          <view class="action-icon">🗑</view>
+          <view class="action-name">清空</view>
+        </view>
+        <view class="action-btn" @click="exitDrawMode">
+          <view class="action-icon">✕</view>
+          <view class="action-name">退出</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 标绘状态提示 -->
+    <view v-if="currentDrawMode && showDrawStatus" class="draw-status">
+      标绘模式：{{ drawModeNames[currentDrawMode] }}
+    </view>
+    
 		    <view class="rightBtn" v-if="initType !== 'watch'">
 <!--			<view class="btnView" @click="showActionDescFunc">记录明细</view>-->
 <!--			<view class="btnView" @click="getRealTimeScore">实时得分</view>-->
@@ -613,6 +666,7 @@ import Overlay from 'ol/Overlay.js';
 import Polygon from 'ol/geom/Polygon.js';
 import Point from 'ol/geom/Point.js';
 import LineString from 'ol/geom/LineString.js';
+import Circle from 'ol/geom/Circle.js';
 import Icon from 'ol/style/Icon.js';
 import WebGLVectorLayerRenderer from 'ol/renderer/webgl/VectorLayer.js';
 import DragAndDrop from 'ol/interaction/DragAndDrop.js';
@@ -845,6 +899,48 @@ export default {
       refreshCooldownMs: 300,
       refreshTimer: null,
       suppressNextRefresh: false,
+
+      // 标绘功能相关数据
+      currentDrawMode: null, // 当前标绘模式
+      showDrawStatus: true, // 是否显示标绘状态
+      drawModeNames: {
+        'movement': '行军路线',
+        'attack': '攻击路线', 
+        'security': '安全区域',
+        'command': '指挥范围',
+        'supply': '补给路线'
+      },
+      // 标绘图层
+      drawLayer: null,
+      drawFeatures: [], // 存储所有绘制的要素
+      // 绘制状态
+      isDrawing: false,
+      drawStartPoint: null,
+      drawCurrentPoint: null,
+      drawPreviewFeature: null,
+      // 绘制样式配置
+      drawStyles: {
+        movement: {
+          stroke: { color: '#0066cc', width: 3 },
+          fill: { color: 'rgba(0,102,204,0.2)' }
+        },
+        attack: {
+          stroke: { color: '#cc0000', width: 3 },
+          fill: { color: 'rgba(204,0,0,0.2)' }
+        },
+        security: {
+          stroke: { color: '#00cc00', width: 2 },
+          fill: { color: 'rgba(0,204,0,0.1)' }
+        },
+        command: {
+          stroke: { color: '#cc6600', width: 2 },
+          fill: { color: 'rgba(204,102,0,0.15)' }
+        },
+        supply: {
+          stroke: { color: '#cc00cc', width: 2, lineDash: [5, 5] },
+          fill: { color: 'rgba(204,0,204,0.1)' }
+        }
+      }
 
     };
   },
@@ -1199,6 +1295,9 @@ export default {
         map.addLayer(this.vector);
       }
       
+      // 初始化标绘图层
+      this.initDrawLayer();
+      
       // 初始化拖拽交互器
       this.initDragInteraction();
 
@@ -1235,6 +1334,12 @@ export default {
         
         // 如果正在拖拽，不处理点击事件
         if (that.isDragging) {
+          return;
+        }
+        
+        // 标绘模式处理
+        if (that.currentDrawMode) {
+          that.handleDrawClick(e);
           return;
         }
         
@@ -1431,6 +1536,28 @@ export default {
           }
         }
       });
+
+      // 添加地图拖拽和释放事件处理（用于标绘功能）
+      map.on(['pointermove'], function (e) {
+        if (that.currentDrawMode && that.isDrawing) {
+          that.handleDrawDrag(e);
+        }
+      });
+
+      map.on(['pointerup'], function (e) {
+        if (that.currentDrawMode && that.isDrawing) {
+          that.handleDrawRelease(e);
+        }
+      });
+
+      // 添加右键取消当前绘制事件处理
+      map.on(['contextmenu'], function (e) {
+        if (that.currentDrawMode && that.isDrawing) {
+          that.cancelCurrentDrawing();
+          e.preventDefault();
+        }
+      });
+
       // 	map.on(['pointermove', 'click'], function (e) {
       // 		// Coords
       // 		var h = grid.coord2hex(e.coordinate);
@@ -3605,6 +3732,343 @@ export default {
         return false;
       });
       return found;
+    },
+
+    // ========== 标绘功能方法 ==========
+    
+    // 设置标绘模式
+    setDrawMode(mode) {
+      if (this.currentDrawMode === mode) {
+        // 如果点击的是当前模式，则退出标绘模式
+        this.exitDrawMode();
+        return;
+      }
+      
+      this.currentDrawMode = mode;
+      this.showCustomToast(`已进入${this.drawModeNames[mode]}模式`);
+      
+      // 初始化标绘图层
+      this.initDrawLayer();
+      
+      // 修改鼠标样式
+      this.setDrawCursor(mode);
+      
+      // 禁用地图拖拽交互，避免与绘制操作冲突
+      this.disableMapDrag();
+    },
+
+    // 退出标绘模式
+    exitDrawMode() {
+      this.currentDrawMode = null;
+      this.isDrawing = false;
+      this.drawStartPoint = null;
+      this.drawCurrentPoint = null;
+      this.clearDrawPreview();
+      
+      // 恢复鼠标样式
+      this.resetCursor();
+      
+      // 恢复地图拖拽交互
+      this.enableMapDrag();
+      
+      this.showCustomToast('已退出标绘模式');
+    },
+
+    // 初始化标绘图层
+    initDrawLayer() {
+      if (!this.drawLayer) {
+        this.drawLayer = new VectorLayer({
+          source: new VectorSource(),
+          visible: true,
+          zIndex: 20 // 确保在最上层
+        });
+        this.drawLayer.set('name', '标绘层');
+        
+        if (this.map) {
+          this.map.addLayer(this.drawLayer);
+        }
+      }
+    },
+
+    // 设置绘制光标
+    setDrawCursor(mode) {
+      const cursorMap = {
+        'movement': 'crosshair',
+        'attack': 'crosshair', 
+        'security': 'crosshair',
+        'command': 'crosshair',
+        'supply': 'crosshair'
+      };
+      
+      if (this.map && this.map.getTargetElement()) {
+        this.map.getTargetElement().style.cursor = cursorMap[mode] || 'default';
+      }
+    },
+
+    // 重置光标
+    resetCursor() {
+      if (this.map && this.map.getTargetElement()) {
+        this.map.getTargetElement().style.cursor = 'default';
+      }
+    },
+
+    // 禁用地图拖拽交互
+    disableMapDrag() {
+      if (this.map) {
+        this.map.getInteractions().forEach(interaction => {
+          if (interaction instanceof DragPan) {
+            interaction.setActive(false);
+          }
+        });
+      }
+    },
+
+    // 启用地图拖拽交互
+    enableMapDrag() {
+      if (this.map) {
+        this.map.getInteractions().forEach(interaction => {
+          if (interaction instanceof DragPan) {
+            interaction.setActive(true);
+          }
+        });
+      }
+    },
+
+    // 清空所有绘制内容
+    clearAllDrawings() {
+      if (this.drawLayer) {
+        this.drawLayer.getSource().clear();
+        this.drawFeatures = [];
+      }
+      this.showCustomToast('已清空所有标绘内容');
+    },
+
+    // 清空绘制预览
+    clearDrawPreview() {
+      if (this.drawPreviewFeature && this.drawLayer) {
+        this.drawLayer.getSource().removeFeature(this.drawPreviewFeature);
+        this.drawPreviewFeature = null;
+      }
+    },
+
+    // 处理地图点击事件（标绘模式）
+    handleDrawClick(e) {
+      if (!this.currentDrawMode) return;
+      
+      if (!this.isDrawing) {
+        // 开始绘制
+        this.startDrawing(e.coordinate);
+      } else {
+        // 左键确认当前绘制，生成完整箭头
+        this.confirmCurrentDrawing();
+      }
+    },
+
+    // 取消当前绘制
+    cancelCurrentDrawing() {
+      // 清理预览要素
+      this.clearDrawPreview();
+      
+      // 重置绘制状态
+      this.isDrawing = false;
+      this.drawStartPoint = null;
+      this.drawCurrentPoint = null;
+      
+      this.showCustomToast('已取消当前绘制，可重新开始绘制');
+    },
+
+    // 确认当前绘制（左键确认）
+    confirmCurrentDrawing() {
+      if (!this.isDrawing || !this.drawPreviewFeature) return;
+      
+      // 将预览要素转换为正式要素
+      const finalFeature = this.drawPreviewFeature.clone();
+      finalFeature.set('drawType', this.currentDrawMode);
+      finalFeature.set('drawTime', Date.now());
+      
+      // 为行军路线和攻击路线创建箭头要素
+      if (this.currentDrawMode === 'movement' || this.currentDrawMode === 'attack') {
+        this.createFinalArrow(finalFeature);
+      }
+      
+      this.drawFeatures.push(finalFeature);
+      this.drawLayer.getSource().addFeature(finalFeature);
+      
+      // 清理预览
+      this.clearDrawPreview();
+      this.isDrawing = false;
+      this.drawStartPoint = null;
+      this.drawCurrentPoint = null;
+      
+      this.showCustomToast(`${this.drawModeNames[this.currentDrawMode]}绘制完成`);
+    },
+
+    // 开始绘制
+    startDrawing(coordinate) {
+      this.isDrawing = true;
+      this.drawStartPoint = coordinate;
+      this.drawCurrentPoint = coordinate;
+      
+      this.showCustomToast('左键确认绘制，右键取消');
+    },
+
+    // 继续绘制
+    continueDrawing(coordinate) {
+      this.drawCurrentPoint = coordinate;
+      this.updateDrawPreview();
+    },
+
+    // 更新绘制预览
+    updateDrawPreview() {
+      this.clearDrawPreview();
+      
+      if (!this.drawStartPoint || !this.drawCurrentPoint) return;
+      
+      let geometry;
+      
+      switch (this.currentDrawMode) {
+        case 'movement':
+        case 'attack':
+        case 'supply':
+          // 绘制线条
+          geometry = new LineString([this.drawStartPoint, this.drawCurrentPoint]);
+          break;
+        case 'security':
+          // 绘制圆形区域
+          const radius = this.calculateDistance(this.drawStartPoint, this.drawCurrentPoint);
+          geometry = new Circle(this.drawStartPoint, radius);
+          break;
+        case 'command':
+          // 绘制扇形区域
+          geometry = this.createSectorGeometry(this.drawStartPoint, this.drawCurrentPoint);
+          break;
+      }
+      
+      if (geometry) {
+        this.drawPreviewFeature = new Feature({ geometry });
+        this.drawPreviewFeature.setStyle(this.getDrawStyle(this.currentDrawMode));
+        this.drawLayer.getSource().addFeature(this.drawPreviewFeature);
+      }
+    },
+
+
+
+    // 创建最终的箭头要素
+    createFinalArrow(lineFeature) {
+      const geometry = lineFeature.getGeometry();
+      const coordinates = geometry.getCoordinates();
+      
+      if (coordinates.length < 2) return;
+      
+      const start = coordinates[0];
+      const end = coordinates[coordinates.length - 1];
+      
+      // 创建箭头几何
+      const arrowGeometry = this.createArrowGeometry(start, end);
+      
+      // 创建箭头要素
+      const arrowFeature = new Feature({
+        geometry: arrowGeometry,
+        drawType: this.currentDrawMode + '_arrow',
+        parentFeature: lineFeature.getId()
+      });
+      
+      // 设置箭头样式
+      const isAttack = this.currentDrawMode === 'attack';
+      arrowFeature.setStyle(new Style({
+        fill: new Fill({
+          color: isAttack ? '#cc0000' : '#0066cc'
+        }),
+        stroke: new Stroke({
+          color: isAttack ? '#cc0000' : '#0066cc',
+          width: 1
+        })
+      }));
+      
+      // 添加到图层
+      this.drawLayer.getSource().addFeature(arrowFeature);
+      this.drawFeatures.push(arrowFeature);
+    },
+
+    // 创建箭头几何
+    createArrowGeometry(start, end) {
+      const dx = end[0] - start[0];
+      const dy = end[1] - start[1];
+      const angle = Math.atan2(dy, dx);
+      
+      // 箭头长度和宽度
+      const arrowLength = 100;
+      const arrowWidth = 50;
+      
+      // 箭头头部点
+      const arrowHead = [
+        end[0] - arrowLength * Math.cos(angle),
+        end[1] - arrowLength * Math.sin(angle)
+      ];
+      
+      // 箭头两侧点
+      const arrowLeft = [
+        arrowHead[0] - arrowWidth * Math.cos(angle - Math.PI / 6),
+        arrowHead[1] - arrowWidth * Math.sin(angle - Math.PI / 6)
+      ];
+      
+      const arrowRight = [
+        arrowHead[0] - arrowWidth * Math.cos(angle + Math.PI / 6),
+        arrowHead[1] - arrowWidth * Math.sin(angle + Math.PI / 6)
+      ];
+      
+      // 创建箭头多边形
+      return new Polygon([[
+        end,
+        arrowLeft,
+        arrowHead,
+        arrowRight,
+        end
+      ]]);
+    },
+
+    // 获取绘制样式
+    getDrawStyle(mode) {
+      const styleConfig = this.drawStyles[mode];
+      if (!styleConfig) return null;
+      
+      return new Style({
+        stroke: new Stroke({
+          color: styleConfig.stroke.color,
+          width: styleConfig.stroke.width,
+          lineDash: styleConfig.stroke.lineDash
+        }),
+        fill: new Fill({
+          color: styleConfig.fill.color
+        })
+      });
+    },
+
+    // 计算两点距离
+    calculateDistance(point1, point2) {
+      const dx = point2[0] - point1[0];
+      const dy = point2[1] - point1[1];
+      return Math.sqrt(dx * dx + dy * dy);
+    },
+
+    // 创建扇形几何
+    createSectorGeometry(center, endPoint) {
+      // 简化为圆形，实际可以扩展为扇形
+      const radius = this.calculateDistance(center, endPoint);
+      return new Circle(center, radius);
+    },
+
+    // 处理地图拖拽事件（标绘模式）
+    handleDrawDrag(e) {
+      if (this.isDrawing && this.currentDrawMode) {
+        this.continueDrawing(e.coordinate);
+      }
+    },
+
+    // 处理地图释放事件（标绘模式）
+    handleDrawRelease(e) {
+      // 鼠标释放时不自动完成绘制，需要用户左键确认
+      // 这里可以添加一些视觉反馈，但不自动完成
     }
   }
 };
@@ -3614,6 +4078,29 @@ export default {
 .xinyi-content {
   background-image: url('@/static/image/login/bg.jpg');
   background-size: 100% 100%;
+}
+
+.custom-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(82, 120, 42, 0.95);
+  color: #4cf5e3;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid rgba(76,245,227,0.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 16px rgba(76,245,227,0.3);
+  z-index: 9999;
+  pointer-events: none;
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+  white-space: nowrap;
+  max-width: 80vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #map {
@@ -3654,6 +4141,122 @@ export default {
   .btnView:hover{
     color: #4cf5e3;
   }
+}
+
+.leftDrawToolbar {
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  z-index: 1000;
+  width: 160px;
+  background-color: rgba(82, 120, 42, 0.85);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.06);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+  padding: 16px;
+  box-sizing: border-box;
+
+  .toolbar-title {
+    color: #4cf5e3;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 12px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+  }
+
+  .toolbar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .draw-tool-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+
+    &:hover {
+      background-color: rgba(76,245,227,0.1);
+      border-color: rgba(76,245,227,0.3);
+    }
+
+    &.active {
+      background-color: rgba(76,245,227,0.2);
+      border-color: rgba(76,245,227,0.5);
+      color: #4cf5e3;
+    }
+
+    .tool-icon {
+      font-size: 18px;
+      margin-right: 8px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .tool-name {
+      font-size: 14px;
+      color: #ffffff;
+      flex: 1;
+    }
+  }
+
+  .toolbar-actions {
+    display: flex;
+    gap: 8px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 12px;
+  }
+
+  .action-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+
+    .action-icon {
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .action-name {
+      font-size: 11px;
+      color: #ffffff;
+    }
+  }
+}
+
+.draw-status {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  background-color: rgba(82, 120, 42, 0.9);
+  color: #4cf5e3;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid rgba(76,245,227,0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
 }
 
 .rightBtn {
