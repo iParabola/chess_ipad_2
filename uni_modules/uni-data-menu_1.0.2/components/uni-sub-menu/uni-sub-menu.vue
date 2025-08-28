@@ -106,7 +106,7 @@
 <style lang="scss">
 	.uni-sub-menu {
 		position: relative;
-		/* background-color: #FFFFFF; */
+		background-color: rgba(15, 25, 15, 0.9) !important; /* 更深的军绿色背景 */
 	}
 
 	.uni-sub-menu__title {
@@ -117,22 +117,28 @@
 		height: 56px;
 		width: 90%; // 改侧边栏宽度
 		line-height: 56px;
-		color: #303133;
+		color: #c8d9c8 !important; /* 更亮的军绿色白色文字 */
+		background-color: rgba(25, 40, 25, 0.8) !important; /* 深军绿色背景 */
 		cursor: pointer;
-		/* border-bottom: 1px #f5f5f5 solid; */
+		border-bottom: 1px solid rgba(139, 195, 74, 0.3) !important; /* 明亮绿色分隔线 */
+		font-family: 'Courier New', monospace !important; /* 科幻字体 */
+		font-size: 15px !important; /* 稍大字体 */
+		font-weight: 600 !important; /* 加粗字体 */
+		letter-spacing: 1px !important; /* 字母间距 */
 	}
 
 	.uni-sub-menu__title:hover {
-		color: #42B983;
+		color: #8bc34a !important; /* 明亮绿色文字 */
+		background-color: rgba(76, 175, 80, 0.25) !important; /* 更明显的悬停绿色背景 */
 		outline: none;
-		//background-color: #EBEBEB;
-		//width: 95%;
+		transform: translateX(2px) !important; /* 轻微右移动画效果 */
 	}
 
 	.uni-sub-menu__title-sub {
 		display: flex;
 		align-items: center;
 		flex: 1;
+		color: inherit !important; /* 继承父元素颜色 */
 	}
 
 	.uni-sub-menu--close {
@@ -142,25 +148,31 @@
 
 	.uni-sub-menu__content {
 		overflow: hidden;
+		background-color: rgba(15, 30, 15, 0.9) !important; /* 更深的子菜单内容背景 */
+		border-left: 2px solid rgba(139, 195, 74, 0.4) !important; /* 左边框 */
 	}
 
 	.uni-sub-menu__icon {
 		max-height: auto;
 		transition: all 0.2s;
+		color: #a5d6a7 !important; /* 更亮的展开图标绿色 */
+		font-size: 16px !important; /* 稍大的图标 */
 	}
 
 	.transition {
 		transform: rotate(-180deg);
+		color: #8bc34a !important; /* 展开时的图标颜色 */
 	}
 
 	.is-disabled {
-		/* background-color: #f5f5f5; */
-		color: red;
+		background-color: rgba(20, 35, 20, 0.5) !important;
+		color: #666 !important; /* 禁用状态灰色 */
 	}
+	
 	.uni-sub-menu__title.is-disabled:hover {
-		background-color: inherit;
-		color: #999;
+		background-color: rgba(20, 35, 20, 0.5) !important;
+		color: #666 !important;
 		cursor: not-allowed;
+		transform: none !important;
 	}
-
 </style>

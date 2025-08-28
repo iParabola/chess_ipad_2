@@ -358,6 +358,20 @@
             <text class="button-icon">✕</text> 关闭
           </button>
         </view>
+        <ScoreTable ref="scoreTablePopup" :showInfo="showInfo" :stageOptions="stageOptions"></ScoreTable>
+      </view>
+    </uni-popup>
+
+    <!-- 规则表弹窗 -->
+    <uni-popup ref="ruleTablePopup" :mask-click="false">
+      <view class="sci-fi-panel rule-modal">
+        <view class="panel-header compact-header">
+          <view class="panel-title">部队行动裁决规则</view>
+          <view class="military-code">UNIT ACTION JUDGMENT RULES</view>
+        </view>
+        <view class="panel-content">
+          <RuleTable @close="onRuleTableClose" @selectResult="onRuleTableSelectResult"></RuleTable>
+        </view>
       </view>
     </uni-popup>
 
@@ -367,12 +381,16 @@
 <script>
 import {baseURL, getUserTokenStorage} from '@/api/http.js';
 import {saveRoundCover, getHistoryTreeByRound, confirmJudge, saveTextInstruction} from '@/api/verdictRecord.js';
-
+import ScoreTable from '@/pages/tables/index_v2.vue';
+import RuleTable from '@/pages/tables/index.vue'; // 引入新的规则表组件
 
 
 export default {
   name: 'judge-table',
-
+  components: { // 注册组件
+    ScoreTable,
+    RuleTable // 注册规则表组件
+  },
   props: {
     showInfo: {
       type: Object,
@@ -682,102 +700,56 @@ export default {
 
     // 打开打分表页面（新窗口）
     openScoreTablePage() {
-      try {
-        // 构建完整的URL路径
-        const currentUrl = window.location.href;
-        const baseUrl = currentUrl.split('#')[0]; // 获取基础URL（去掉hash部分）
-        const tablePath = '#/pages/tables/index_v2';
-        const fullUrl = baseUrl + tablePath;
-
-        console.log('打开打分表URL:', fullUrl);
-
-        // 打开新窗口显示打分表页面
-        const scoreWindow = window.open(
-          fullUrl,
-          'scoreTable_' + Date.now(), // 使用时间戳确保窗口名称唯一
-          'height=800,width=1200,top=100,left=200,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no'
-        );
-
-        if (!scoreWindow) {
-          // 如果弹窗被阻止，提示用户
-          uni.showToast({
-            title: '请允许弹窗后重试',
-            icon: 'none',
-            duration: 2000
-          });
-        } else {
-          console.log('打分表页面在新窗口中打开成功');
-
-          // 可选：监听新窗口关闭事件
-          const checkClosed = setInterval(() => {
-            if (scoreWindow.closed) {
-              console.log('打分表窗口已关闭');
-              clearInterval(checkClosed);
-            }
-          }, 1000);
-        }
-      } catch (error) {
-        console.error('打开打分表页面失败:', error);
-        uni.showToast({
-          title: '打分表打开失败',
-          icon: 'none',
-          duration: 2000
-        });
-      }
+      this.$refs.scoreTablePopup.open();
     },
 
     // 打开裁决规则表页面
     openRuleTablePage() {
-      // 添加消息监听器来接收表格页面的选择结果
-      this.addMessageListener();
-
-      // 打开新窗口显示表格页面
-      const tableWindow = window.open(
-        '/#/pages/tables/index',
-        '裁决规则表',
-        'height=800,width=1200,top=100,left=200,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no'
-      );
-
-      // 保存窗口引用以便后续关闭
-      this.tableWindow = tableWindow;
+      this.$refs.ruleTablePopup.open(); // 调用 uni-popup 打开弹窗
     },
 
-    // 添加消息监听器
+    // 监听规则表弹窗关闭事件
+    onRuleTableClose() {
+      console.log('规则表弹窗已关闭');
+      this.$refs.ruleTablePopup.close(); // 调用 uni-popup 关闭弹窗
+    },
+
+    // 监听规则表选择结果事件
+    onRuleTableSelectResult(result) {
+      console.log('从规则表获取到选择结果:', result);
+      this.handleTableResult(result); // 调用已有的处理方法
+      this.$refs.ruleTablePopup.close(); // 关闭规则表弹窗
+    },
+
+    // 添加消息监听器 (此方法将不再需要，但保留注释以示修改)
     addMessageListener() {
-      // 监听来自表格页面的消息
-      this.messageHandler = (event) => {
-        if (event.data && event.data.message) {
-          // 提取裁决结果
-          const message = event.data.message;
-          let result = '';
-
-          if (message.includes('裁决结果为')) {
-            result = message.replace('裁决结果为', '').trim();
-          } else if (message.includes('攻击效果为')) {
-            result = message.replace('攻击效果为', '').replace('，', '').trim();
-          }
-
-          if (result) {
-            this.handleTableResult(result);
-          }
-        }
-      };
-
-      window.addEventListener('message', this.messageHandler);
+      // this.messageHandler = (event) => {
+      //   if (event.data && event.data.message) {
+      //     const message = event.data.message;
+      //     let result = '';
+      //     if (message.includes('裁决结果为')) {
+      //       result = message.replace('裁决结果为', '').trim();
+      //     } else if (message.includes('攻击效果为')) {
+      //       result = message.replace('攻击效果为', '').replace('，', '').trim();
+      //     }
+      //     if (result) {
+      //       this.handleTableResult(result);
+      //     }
+      //   }
+      // };
+      // window.addEventListener('message', this.messageHandler);
     },
 
-    // 移除消息监听器
+    // 移除消息监听器 (此方法将不再需要，但保留注释以示修改)
     removeMessageListener() {
-      if (this.messageHandler) {
-        window.removeEventListener('message', this.messageHandler);
-        this.messageHandler = null;
-      }
-
-      // 关闭表格窗口
-      if (this.tableWindow && !this.tableWindow.closed) {
-        this.tableWindow.close();
-        this.tableWindow = null;
-      }
+      // if (this.messageHandler) {
+      //   window.removeEventListener('message', this.messageHandler);
+      //   this.messageHandler = null;
+      // }
+      // if (this.tableWindow && !this.tableWindow.closed) {
+      //   this.tableWindow.close();
+      //   this.tableWindow = null;
+      // }
     },
 
     // 处理表格选择的结果
@@ -1353,6 +1325,21 @@ export default {
   position: relative;
 }
 
+/* 紧凑型标题头 - 用于规则表弹窗 */
+.compact-header {
+  margin-bottom: 12px !important; /* 减少下边距 */
+  padding: 12px 15px !important; /* 减少内边距 */
+}
+
+.compact-header .panel-title {
+  font-size: 22px !important; /* 稍小的标题字体 */
+  margin-bottom: 4px !important; /* 减少标题与副标题的间距 */
+}
+
+.compact-header .military-code {
+  font-size: 10px !important; /* 稍小的副标题字体 */
+}
+
 /* .panel-header::before {
   content: '★';
   position: absolute;
@@ -1568,7 +1555,7 @@ export default {
 }
 
 .score-input-field {
-  width: 100%;
+  width: 90%;
   background: linear-gradient(135deg, rgba(26, 46, 26, 0.8) 0%, rgba(45, 69, 45, 0.8) 100%);
   border: 2px solid #4caf50;
   color: #e8f5e8;

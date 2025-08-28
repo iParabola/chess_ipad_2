@@ -3,7 +3,7 @@
 	<view class="rule__view">
 		<view class="title">火力单位对美军人员攻击效果评价表</view>
 	  <fire-table :headers="headers" :data="data"
-	    :fire_headers1="fire_headers1" :fire_headers2="fire_headers2" @send-data="onChildEvent"></fire-table>
+	    :fire_headers1="fire_headers1" :fire_headers2="fire_headers2" @selectResult="onSelectResult"></fire-table>
 	</view>
 </template>
 
@@ -20,8 +20,8 @@ export default {
     return {
 	  tableType: 'fire', // fire是火力值表，anti是结果表（废弃）
       headers: ['苏射击', '美目标', ],
-	  fire_headers1: ['距离（米）', '50', '100', '150', '200', '250', '300', '350', '400', '450', '500', '750', '1000', '1500', '2000', '2500', '3000'],
-	  fire_headers2: ['六边格数量', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11~15', '16~20', '21~30', '31~40', '41~50', '51~60'],
+	  fire_headers1: ['', '距离（米）', '50', '100', '150', '200', '250', '300', '350', '400', '450', '500', '750', '1000', '1500', '2000', '2500', '3000'],
+	  fire_headers2: ['', '六边格数量', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11~15', '16~20', '21~30', '31~40', '41~50', '51~60'],
       data: [
 		  // 数据不对，要改
             ['TM+',  8, 7, 6, 5, 3, 3, 2, 2, 1, 1, '*', '*', '*', '*', '*', '*'],
@@ -35,9 +35,9 @@ export default {
     };
   },
   methods: {
-    // 处理子组件的事件
-    onChildEvent(data) {
-      this.childData = data;
+    // 监听子表格的选择结果并向上传递
+    onSelectResult(value) {
+      this.$emit('selectResult', value);
     }
   }
 };
@@ -52,9 +52,11 @@ export default {
 		height: 40px;
 		line-height: 40px;
 		font-weight: bolder;
-		background-color: #ffffff;
+		background-color: #8bc34a;
 		font-size: $uni-font-size-title;
-		color: #000000;
+		color: #ffffff;
+		border-radius: 4px;
+		margin-bottom: 10px;
 	}
 }
 </style>

@@ -1619,7 +1619,7 @@ export default {
   text-shadow: 0 1px 0 rgba(0,0,0,.25);
   height: 48px;
   line-height: 48px;
-}
+  }
 .top-identity{
   color: rgba(255,255,255,.95);
   font-size: 16px;
