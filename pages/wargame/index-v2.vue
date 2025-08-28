@@ -2489,6 +2489,14 @@ export default {
       await this.queryPromptFunc();
     },
     async endRoundFuncAndSetRoundActionPoint(){
+      // 检查用户是否在当前阶段进行了任何操作
+      if (this.periodActionChessList.length === 0) {
+        console.log(`用户在第${this.game.chessRound}回合第${this.game.roundPeriod}阶段（修正）没有进行任何操作，创建未操作记录`);
+        await this.createNoActionRecord();
+      } else {
+        console.log(`用户在第${this.game.chessRound}回合第${this.game.roundPeriod}阶段（修正）进行了${this.periodActionChessList.length}个操作`);
+      }
+
       let data={
         // id:this.periodActionChessList[i].id,
         verdictRecordId:this.verdictRecordId,
@@ -2499,11 +2507,23 @@ export default {
       }
       await changePiecesActionPoint(data);
       // console.log("this.periodActionChessList[i].id",this.periodActionChessList[i].id)
-      await this.endRoundFunc();
+
+      // 调用endRoundFunc，但跳过未操作检查（因为已经在上面处理了）
+      await this.endRoundFuncInternal(true);
 
     },
     async endRoundFunc() {
-      // this.showCustomToast("修正成功")
+      await this.endRoundFuncInternal(false);
+    },
+
+    async endRoundFuncInternal(skipNoActionCheck = false) {
+      // 检查用户是否在当前阶段进行了任何操作（除非明确跳过检查）
+      if (!skipNoActionCheck && this.periodActionChessList.length === 0) {
+        console.log(`用户在第${this.roundActive}回合第${this.stageActive + 1}阶段没有进行任何操作，创建未操作记录`);
+        await this.createNoActionRecord();
+      } else if (!skipNoActionCheck) {
+        console.log(`用户在第${this.roundActive}回合第${this.stageActive + 1}阶段进行了${this.periodActionChessList.length}个操作`);
+      }
 
       let data = {
         id: this.verdictRecordId,
@@ -2527,6 +2547,48 @@ export default {
           })
       );
     },
+
+    // 创建未操作记录
+    async createNoActionRecord() {
+      try {
+        // 构造未操作记录的数据，参考正常棋子操作的数据结构
+        const noActionData = {
+          actionMode: 0, // 使用0表示未操作
+          campId: this.campId,
+          chessPiecesNumber: '未操作', // 单位字段设为"未操作"
+          selfCoordinate: '', // 空坐标
+          selfOffset: '', // 空偏移
+          targetCoordinate: '', // 空目标坐标
+          targetOffset: '', // 空目标偏移
+          userId: this.user.id,
+          verdictRecordId: this.verdictRecordId,
+          targetChessPiecesNumber: '', // 空目标棋子编号
+          chessRound: this.roundActive,
+          roundPeriod: this.stageActive + 1,
+          moveInfo: JSON.stringify([]), // 空的移动信息
+          attackResult: '', // 空的攻击结果
+          roundActionPoint: false
+        };
+
+        console.log('创建未操作记录:', noActionData);
+
+        // 调用棋子操作API来创建记录
+        await chessPiecesActionNew(noActionData);
+
+        console.log('未操作记录创建成功');
+
+        // 刷新历史记录，确保biz_verdict_record_history表中的记录也被更新
+        await this.queryPromptFunc();
+
+        // 显示提示信息
+        this.showCustomToast('已记录：当前阶段无操作');
+
+      } catch (error) {
+        console.error('创建未操作记录失败:', error);
+        // 即使创建失败也不阻止正常的结束流程
+      }
+    },
+
     async judge() {
       if (this.userType === 'admin') {
         this.judgeTableShowInfo = {
