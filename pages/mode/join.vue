@@ -53,7 +53,6 @@
 
     <NjustPopup ref="camp">
       <uni-data-select class="njust-select" v-model="campId" :localdata="campList"></uni-data-select>
-      <uni-data-select class="njust-select" v-model="userType" :localdata="typeList"></uni-data-select>
       <button class="njust-button" @click="chooseCamp()">进入房间</button>
       <view style="height: 30px"></view>
     </NjustPopup>
@@ -79,23 +78,9 @@ export default {
       campList:[],
 
       campId: '',
-      userType: 0,
+      userType: 1, // 固定为操作员
       isAdmin: false,
       isUser: true,
-      typeList: [
-        {
-          text: '操作员',
-          value: 1
-        },
-        {
-          text: '裁决员',
-          value: 2
-        },
-        {
-          text: '指挥员',
-          value: 3
-        }
-      ],
 
       isModalVisible: false,
       currentItem : '',
@@ -192,9 +177,9 @@ export default {
       }
     },
     chooseCamp() {
-      if(this.campId === '' || this.userType === 0){
+      if(this.campId === ''){
         uni.showToast({
-          title: '请选择阵营和角色',
+          title: '请选择阵营',
           icon: 'none'
         })
         return;
