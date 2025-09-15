@@ -117,7 +117,7 @@
                   <view v-for="(item, index) in value" :key="index" class="instruction-group">
                     <!-- 记录模式：合并同一指令下的多条记录为一行展示 -->
                     <template v-if="showInfo.type === 'record'">
-                      <view class="judge-row">
+                      <view :class="['judge-row', getGroupCampClass(item.historyVoList)]">
                         <view class="spacer-cell"></view> <!-- 左侧空白 -->
                         <view class="judge-cell round-cell">第{{ key }}回合</view>
                         <view class="judge-cell stage-cell">{{ item.roundPeriod | roundPeriodFormatter }}</view>
@@ -169,7 +169,7 @@
 
                     <!-- 非记录模式（裁决/打分）：保持逐条渲染 -->
                     <template v-else>
-                      <view v-for="(eitem, eindex) in item.historyVoList" :key="eindex" class="judge-row">
+                      <view v-for="(eitem, eindex) in item.historyVoList" :key="eindex" :class="['judge-row', getRowCampClass(eitem)]">
                         <view class="spacer-cell"></view> <!-- 左侧空白 -->
                         <view class="judge-cell round-cell">第{{ key }}回合</view>
                         <view class="judge-cell stage-cell">{{ item.roundPeriod | roundPeriodFormatter }}</view>
@@ -407,6 +407,14 @@ export default {
         };
       }
     },
+    redCampId: {
+      type: [String, Number],
+      default: undefined
+    },
+    blueCampId: {
+      type: [String, Number],
+      default: undefined
+    },
     stageOptions: {
       type: Array,
       default() {
@@ -470,6 +478,42 @@ export default {
   mounted() {
   },
   methods: {
+    getGroupCampClass(list = []) {
+      if (!Array.isArray(list) || list.length === 0) return '';
+      const first = list[0];
+      const unitClass = this.getCampClassByUnit(this.extractUnit(first));
+      if (unitClass) return unitClass;
+      return this.getCampClassByCampId(this.extractCampId(first));
+    },
+    getRowCampClass(eitem) {
+      const unitClass = this.getCampClassByUnit(this.extractUnit(eitem));
+      if (unitClass) return unitClass;
+      return this.getCampClassByCampId(this.extractCampId(eitem));
+    },
+    getCampClassByCampId(campId) {
+      if (campId === this.redCampId) return 'camp-red';
+      if (campId === this.blueCampId) return 'camp-blue';
+      return '';
+    },
+    getCampClassByUnit(unitStr) {
+      if (!unitStr) return '';
+      const s = String(unitStr).trim();
+      if (!s) return '';
+      const lower = s.toLowerCase();
+      if (s.includes('红军') || s.startsWith('红')) return 'camp-red';
+      if (s.includes('蓝军') || s.startsWith('蓝')) return 'camp-blue';
+      if (lower.startsWith('r')) return 'camp-red';
+      if (lower.startsWith('b')) return 'camp-blue';
+      return '';
+    },
+    extractCampId(obj) {
+      if (!obj) return undefined;
+      return obj.campId !== undefined ? obj.campId : obj.chessPiecesCampId;
+    },
+    extractUnit(obj) {
+      if (!obj) return '';
+      return obj.chessPiecesNumber != null ? String(obj.chessPiecesNumber) : '';
+    },
     // 将传入值标准化为列表：
     // - 如果是数组，直接返回
     // - 如果是字符串，按换行/中文逗号/英文逗号/分号进行拆分
@@ -1138,6 +1182,10 @@ export default {
   box-sizing: border-box;
   overflow: visible; /* 确保单元格内容不被裁剪，由外层控制滚动 */
 }
+
+/* 阵营底色：红方与蓝方（单位/前缀判断优先，campId 兜底） */
+.camp-red .judge-cell { background: rgba(183, 28, 28, 0.35); border-color: rgba(244, 67, 54, 0.35); }
+.camp-blue .judge-cell { background: rgba(13, 71, 161, 0.35); border-color: rgba(33, 150, 243, 0.35); }
 
 /* 空白占位单元格 */
 .spacer-cell {
