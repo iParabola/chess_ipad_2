@@ -85,6 +85,13 @@
               <text class="close-icon">✕</text>
             </button>
           </view>
+          
+          <!-- 左上角跳过裁决按钮 -->
+          <view v-if="showInfo.userType === 'admin'" class="skip-judge-button-container">
+            <button class="skip-judge-button" @click="stepJudge">
+              <text class="skip-judge-icon">⏭</text>
+            </button>
+          </view>
 
           <view class="panel-header">
             <view class="panel-title" v-if="showInfo.userType === 'admin'">导演打分裁决表</view>
@@ -238,9 +245,6 @@
           </view>
 
           <view class="panel-footer">
-            <button v-if="Object.keys(recordMap).length === 0 && showInfo.userType === 'judge'" class="sci-fi-button secondary" @click="stepJudge">
-              <text class="button-icon">⏭</text> 跳过
-            </button>
           </view>
         </view>
       </view>
@@ -1838,6 +1842,48 @@ export default {
   font-size: 20px;
   line-height: 1;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================== 跳过裁决按钮样式 ==================== */
+.skip-judge-button-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.skip-judge-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: #999999;
+  font-size: 20px;
+  font-weight: normal;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.skip-judge-button:hover {
+  background: rgba(153, 153, 153, 0.1);
+  color: #666666;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.skip-judge-button:active {
+  transform: scale(0.95);
+  background: rgba(153, 153, 153, 0.2);
+}
+
+.skip-judge-icon {
+  font-size: 18px;
+  line-height: 1;
 }
 
 /* ==================== 固定表头和滚动区域样式 ==================== */
