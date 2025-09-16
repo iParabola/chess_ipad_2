@@ -25,8 +25,14 @@
 			<view class="btnView" @click="getFinalSummary">推演汇总</view>
 		</view>
 		<view class="middleBtn">
-			<view class="btnView" v-if="isMove" @click="moveStop">移动结束</view>
-			<view class="btnView" v-if="nextStageFlag" @click="nextStage">{{ nextBtnText }}</view>
+			<view class="btnView enhanced-btn" v-if="isMove" @click="moveStop">
+				<view class="btn-icon">⏹</view>
+				<view class="btn-text">移动结束</view>
+			</view>
+			<view class="btnView enhanced-btn primary-btn" v-if="nextStageFlag" @click="nextStage">
+				<view class="btn-icon">▶</view>
+				<view class="btn-text">{{ nextBtnText }}</view>
+			</view>
 		</view>
 
     <view class="top">
@@ -62,7 +68,7 @@
                     @click="endRoundFuncAndSetRoundActionPoint()">
                  结束走棋
               </view>
-              <view v-if="userType === 'admin' && roundEnd"
+              <view v-if="userType === 'admin'"
                   @click="judge()">
                 打分裁决
               </view>
@@ -2493,16 +2499,28 @@ export default {
         verdictRecordId: this.verdictRecordId,
         chessRound: this.roundActive,
         roundPeriod: this.stageActive + 1,
-        campId: this.campId,
       }
-      let res = stepJudge(data);
-      console.log(res)
-      sendMsg(
-          JSON.stringify({
-            action: 'takeAction',
-            verdictRecordId: this.verdictRecordId
-          })
-      );
+      
+      // 调用后端 stepJudge API
+      stepJudge(data).then((res) => {
+        console.log('stepJudge API 调用成功:', res);
+        // API 调用成功后发送 WebSocket 消息
+        sendMsg(
+            JSON.stringify({
+              action: 'takeAction',
+              verdictRecordId: this.verdictRecordId
+            })
+        );
+      }).catch((error) => {
+        console.error('stepJudge API 调用失败:', error);
+        // 即使 API 调用失败，也发送 WebSocket 消息（保证实时性）
+        sendMsg(
+            JSON.stringify({
+              action: 'takeAction',
+              verdictRecordId: this.verdictRecordId
+            })
+        );
+      });
     },
     nextStage() {
       if (this.nextBtnText === '游戏结束'){
@@ -2583,23 +2601,69 @@ export default {
 .middleBtn {
   position: fixed;
   bottom: 100px;
-  width: 100px;
-  left: calc(50vw - 50px);
+  width: 160px;
+  left: calc(50vw - 80px);
   z-index: 1000;
 
   .btnView {
-    background-color: rgba(87, 64, 50, 0.8);
-    color: white;
+    background: rgba(0, 170, 0, 0.85);
+    color: #ffffff;
     text-align: center;
-    font-size: 20px;
-    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 4px;
     align-items: center;
-    padding: 10px 5px 10px 5px;
-    border-radius: 5px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 204, 0, 0.4);
+    box-shadow: 0 2px 10px rgba(0, 170, 0, 0.25);
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+    position: relative;
   }
 
-  .btnView:hover{
-    color: #4cf5e3;
+  .enhanced-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+  }
+
+  .btn-icon {
+    font-size: 14px;
+    margin-right: 6px;
+    opacity: 0.9;
+  }
+
+  .btn-text {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .primary-btn {
+    background: rgba(0, 153, 0, 0.95);
+    color: #ffffff;
+    border: 1px solid rgba(0, 204, 0, 0.6);
+    box-shadow: 0 2px 12px rgba(0, 153, 0, 0.4);
+  }
+
+  .btnView:hover {
+    background: rgba(0, 187, 0, 0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 170, 0, 0.4);
+    border-color: rgba(0, 221, 0, 0.6);
+  }
+
+  .primary-btn:hover {
+    background: rgba(0, 170, 0, 0.98);
+    box-shadow: 0 4px 18px rgba(0, 153, 0, 0.5);
+    border-color: rgba(0, 221, 0, 0.8);
+  }
+
+  .btnView:active {
+    transform: translateY(0px);
+    box-shadow: 0 1px 5px rgba(0, 170, 0, 0.3);
   }
 }
 

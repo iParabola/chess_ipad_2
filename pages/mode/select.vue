@@ -29,8 +29,6 @@
             <view class="popup_view">
                 <view>请选择阵营：</view>
                 <uni-data-select v-model="campId" :localdata="campList"></uni-data-select>
-                <view>请选择角色：</view>
-                <uni-data-select v-model="userType" :localdata="typeList"></uni-data-select>
             </view>
         </uv-modal>
 <!--        <uv-modal style="background-color: pink" width="300" ref="product" @confirm="chooseProduct()">-->
@@ -69,17 +67,7 @@ export default {
             productList: [], //兵棋产品
             productId: '',
             verdictRecordId: '',
-            userType: 0,
-            typeList: [
-                {
-                    text: '操作员',
-                    value: 1
-                },
-                {
-                    text: '裁决员',
-                    value: 2
-                }
-            ],
+            userType: 1, // 固定为操作员
             type: ''
         };
     },
