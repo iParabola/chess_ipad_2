@@ -155,7 +155,7 @@
 
                         <view class="judge-cell result-cell">
                           <view class="list-cell">
-                            <view v-for="(txt, i) in pluckList(item.historyVoList, 'attackResult')" :key="'res'+i" class="list-item">{{ txt }}</view>
+                            <view v-for="(txt, i) in pluckList(item.historyVoList, 'attackResult')" :key="'res'+i" class="list-item">{{ formatAttackResult(txt) }}</view>
                           </view>
                         </view>
                         <view class="judge-cell score-cell">
@@ -209,7 +209,7 @@
                         </view>
                         <view v-else-if="showInfo.userType === 'admin'" class="judge-cell judge-action-cell">
                           <button @click="judgeOneByOne(eitem, key, index, eindex, 'judge')" class="judge-button">
-                            {{ eitem.attackResult || '裁决' }}
+                            {{ eitem.attackResult ? formatAttackResult(eitem.attackResult) : '裁决' }}
                           </button>
                         </view>
                         <view v-else-if="showInfo.type === 'judge'" class="judge-cell judge-action-cell">
@@ -319,7 +319,7 @@
             </view>
             <view class="info-row" v-if="actionInfo.attackResult">
               <text class="label">裁决结果：</text>
-              <text class="value">{{ actionInfo.attackResult }}</text>
+              <text class="value">{{ formatAttackResult(actionInfo.attackResult) }}</text>
             </view>
             <view class="info-row" v-if="actionInfo.attackScore">
               <text class="label">当前分数：</text>
@@ -478,6 +478,29 @@ export default {
   mounted() {
   },
   methods: {
+    // 格式化裁决结果：在原值后追加括号说明（正则匹配）
+    formatAttackResult(val) {
+      if (val === null || val === undefined) return '';
+      const raw = String(val).trim();
+      if (!raw) return '';
+      // 映射：K→歼灭，Kf→失火，Km→丧失机动能力，.→无效
+      // 规则：匹配以 Kf/Km/K 或单个 '.' 的结果（大小写不敏感），不重复追加已有括号说明
+      const map = {
+        kf: '失火',
+        km: '丧失机动能力',
+        k: '歼灭',
+        '.': '无效'
+      };
+      // 提取首个标志（例如 "Kf", "Km", "K" 或 "."）
+      const m = raw.match(/^(kf|km|k|\.)/i);
+      if (!m) return raw; // 非目标缩写，原样返回
+      const key = m[1].toLowerCase();
+      const note = map[key];
+      if (!note) return raw;
+      // 若已包含括号说明，则不重复
+      if (/\(.*?\)/.test(raw)) return raw;
+      return `${raw}(${note})`;
+    },
     getGroupCampClass(list = []) {
       if (!Array.isArray(list) || list.length === 0) return '';
       const first = list[0];
