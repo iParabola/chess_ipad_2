@@ -481,14 +481,14 @@ export default {
       if (val === null || val === undefined) return '';
       const raw = String(val).trim();
       if (!raw) return '';
-      const map = { kf: '失火', km: '失动', k: '歼灭', '.': '无效' };
-      const m = raw.match(/^(kf|km|k|\.)/i);
+      const map = { kf: '失火', km: '失动', k: '歼灭', '.': '无效', '·': '无效' };
+      const m = raw.match(/^(kf|km|k|\.|·)/i);
       if (!m) return raw;
       const key = m[1].toLowerCase();
       const note = map[key];
       if (!note) return raw;
-      const normalizedCode = key === 'kf' ? 'Kf' : key === 'km' ? 'Km' : key === 'k' ? 'K' : '.';
-      const replaced = raw.replace(/^(kf|km|k|\.)/i, normalizedCode);
+      const normalizedCode = key === 'kf' ? 'Kf' : key === 'km' ? 'Km' : key === 'k' ? 'K' : '·';
+      const replaced = raw.replace(/^(kf|km|k|\.|·)/i, normalizedCode);
       if (/\(.*?\)/.test(replaced)) return replaced;
       return `${replaced}(${note})`;
     },
