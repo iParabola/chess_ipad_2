@@ -271,9 +271,7 @@
               placeholder="请输入裁决结果或点击下方按钮选择"
               class="judge-input-field"
             />
-            <view class="input-tip">
-              <text class="tip-text">💡 提示：可以多次提交不同的裁决结果</text>
-            </view>
+            
           </view>
 
           <!-- 裁决规则表按钮 -->
@@ -483,23 +481,16 @@ export default {
       if (val === null || val === undefined) return '';
       const raw = String(val).trim();
       if (!raw) return '';
-      // 映射：K→歼灭，Kf→失火，Km→丧失机动能力，.→无效
-      // 规则：匹配以 Kf/Km/K 或单个 '.' 的结果（大小写不敏感），不重复追加已有括号说明
-      const map = {
-        kf: '失火',
-        km: '丧失机动能力',
-        k: '歼灭',
-        '.': '无效'
-      };
-      // 提取首个标志（例如 "Kf", "Km", "K" 或 "."）
+      const map = { kf: '失火', km: '失动', k: '歼灭', '.': '无效' };
       const m = raw.match(/^(kf|km|k|\.)/i);
-      if (!m) return raw; // 非目标缩写，原样返回
+      if (!m) return raw;
       const key = m[1].toLowerCase();
       const note = map[key];
       if (!note) return raw;
-      // 若已包含括号说明，则不重复
-      if (/\(.*?\)/.test(raw)) return raw;
-      return `${raw}(${note})`;
+      const normalizedCode = key === 'kf' ? 'Kf' : key === 'km' ? 'Km' : key === 'k' ? 'K' : '.';
+      const replaced = raw.replace(/^(kf|km|k|\.)/i, normalizedCode);
+      if (/\(.*?\)/.test(replaced)) return replaced;
+      return `${replaced}(${note})`;
     },
     getGroupCampClass(list = []) {
       if (!Array.isArray(list) || list.length === 0) return '';
@@ -623,16 +614,16 @@ export default {
     },
 
     submitJudge() {
-      // 导演端可以同时设置裁决结果和评分
+      // 导演端可以同时设置裁决结果和评分（提交带解释的文本，和表格显示一致）
       if (this.showInfo.userType === 'admin') {
         if (this.judge_score) {
           this.actionInfo.attackScore = this.judge_score;
         }
         if (this.judge_result) {
-          this.actionInfo.attackResult = this.judge_result;
+          this.actionInfo.attackResult = this.formatAttackResult(this.judge_result);
         }
       } else {
-        this.actionInfo.attackResult = this.judge_result;
+        this.actionInfo.attackResult = this.formatAttackResult(this.judge_result);
       }
 
       confirmJudge(this.actionInfo).then((res) => {
@@ -681,9 +672,9 @@ export default {
           }
           this.$refs.scorePopup.open();
         } else if (actionType === 'judge') {
-          // 打开裁决弹窗时，如果已有裁决结果则显示
+          // 打开裁决弹窗时，如果已有裁决结果则显示（代号+解释）
           if (eitem.attackResult) {
-            this.judgeResult = eitem.attackResult;
+            this.judgeResult = this.formatAttackResult(eitem.attackResult);
           }
           this.$refs.judgePopup.open();
         } else {
@@ -825,10 +816,11 @@ export default {
       if (result) {
         if (typeof result === 'object') {
           // 如果是对象，尝试获取有用的信息
-          this.judgeResult = result.value || result.text || result.result || JSON.stringify(result);
+          const raw = result.value || result.text || result.result || JSON.stringify(result);
+          this.judgeResult = this.formatAttackResult(raw);
         } else {
-          // 如果是字符串或数字，直接使用
-          this.judgeResult = String(result);
+          // 如果是字符串或数字，直接使用（代号+解释）
+          this.judgeResult = this.formatAttackResult(String(result));
         }
         this.showCustomToast('裁决结果已自动填入');
 
