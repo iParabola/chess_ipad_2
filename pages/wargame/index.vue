@@ -1001,7 +1001,7 @@ export default {
 				this.stageActive = 2;
 			}
 			if (this.game.roundPeriod == 4) {
-				this.game.roundDesc = '间射击阶段';
+				this.game.roundDesc = '间瞄射击阶段';
 				this.stageActive = 3;
 			}
 			this.queryPromptFunc();
@@ -1035,14 +1035,14 @@ export default {
 			console.log('this.game.firstUserId: ', this.game.firstUserId);
 			console.log('this.game.secondUserId: ', this.game.secondUserId);
 		},
-		async isOwnRoundFunc() {
-			let data = {
-				id: this.verdictRecordId,
-				userId: this.user.id
-			};
-			let res = await isOwnRound(data);
-			this.game.isOwn = res.data.data;
-		},
+		// async isOwnRoundFunc() {
+		// 	let data = {
+		// 		id: this.verdictRecordId,
+		// 		userId: this.user.id
+		// 	};
+		// 	let res = await isOwnRound(data);
+		// 	this.game.isOwn = res.data.data;
+		// },
 		async queryUsChessPiecesInfoFunc() {
 			let data = {
 				verdictRecordId: this.verdictRecordId,
