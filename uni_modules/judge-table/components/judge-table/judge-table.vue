@@ -219,12 +219,12 @@
                             {{ eitem.attackResult || '裁决' }}
                           </button>
                         </view>
-                        <view v-else-if="showInfo.type === 'judge'" class="judge-cell judge-action-cell">
-                          <button @click="judgeOneByOne(eitem, key, index, eindex, 'judge')"
-                                  :class="['judge-button', eitem.status === 2 ? 'judged' : '']">
-                            {{ eitem.status !== 2 ? '裁决' : '重新裁决' }}
-                          </button>
-                        </view>
+<!--                        <view v-else-if="showInfo.type === 'judge'" class="judge-cell judge-action-cell">-->
+<!--                          <button @click="judgeOneByOne(eitem, key, index, eindex, 'judge')"-->
+<!--                                  :class="['judge-button', eitem.status === 2 ? 'judged' : '']">-->
+<!--                            {{ eitem.status !== 2 ? '裁决' : '重新裁决' }}-->
+<!--                          </button>-->
+<!--                        </view>-->
 
                         <view v-if="showInfo.type === 'record'" class="judge-cell score-cell">
                           {{ eitem.attackScore }}
@@ -542,6 +542,8 @@ export default {
       return seq.join('、');
     },
 
+
+
     // 扁平化动作列表：把每条历史的动作描述拆分后拼在一起，逐条展示
     flattenActionList(list = []) {
       const out = [];
@@ -553,8 +555,17 @@ export default {
     },
 
     // 抽取字段列表（用于结果/得分列）
+    // pluckList(list = [], field) {
+    //   return list.map(it => it && it[field]).filter(v => v !== undefined && v !== null && String(v).trim() !== '').map(String);
+    // },
     pluckList(list = [], field) {
-      return list.map(it => it && it[field]).filter(v => v !== undefined && v !== null && String(v).trim() !== '').map(String);
+      const seen = new Set();
+      return list.filter(it => {
+        const key = `${it.chessRound}_${it.roundPeriod}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return it && it[field] !== undefined && it[field] !== null && String(it[field]).trim() !== '';
+      }).map(it => String(it[field]));
     },
 
     showCustomToast(message) {
@@ -618,6 +629,7 @@ export default {
       confirmJudge(this.actionInfo).then((res) => {
         if (res.data.code === 200) {
           this.showCustomToast("裁决提交成功，可继续裁决");
+          this.getRoundTree(this.showInfo); // 刷新记录
           this.confirmJudge(res.data.data);
 
           // 清空输入框，但不关闭弹窗，允许继续裁决
@@ -716,6 +728,7 @@ export default {
             duration: 1500
           });
 
+          this.getRoundTree(this.showInfo); // 刷新记录
           // 更新记录状态和分数
           this.recordMap[this.key][this.index].historyVoList[this.eindex].attackScore = this.judge_score;
 
@@ -1076,7 +1089,8 @@ export default {
 /* ==================== 裁决表样式 ==================== */
 .judge-container {
   display: block;
-  height: 85vh; /* 缩小页面高度到85%视窗高度 */
+  height: 90vh; /* 增加到90%视窗高度 */
+  max-height: 90vh; /* 添加最大高度限制 */
   background: #1a2e1a;
   padding: 0;
   overflow: hidden;
@@ -1089,28 +1103,32 @@ export default {
   box-shadow: none;
   width: 100%;
   max-width: 100%;
-  padding: 0 0 50px 0; /* 底部增加50px内边距，防止内容被遮挡 */
+  padding: 0 0 20px 0; /* 减少底部内边距到20px */
   position: relative;
-  min-height: 100vh; /* 确保面板至少占满视窗高度 */
+  height: 100%; /* 确保面板占满容器高度 */
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column; /* 使用flex布局 */
 }
 
 /* 统一滚动容器 */
 .judge-scroll-container {
   width: 100%;
-  max-height: calc(100vh - 200px); /* 为标题和底部按钮留出空间 */
-  overflow-x: auto; /* 水平滚动 */
+  flex: 1; /* 占据剩余空间 */
+  overflow-x: hidden; /* 隐藏水平滚动条，取消左右滚轮 */
   overflow-y: auto; /* 垂直滚动 */
   border: 2px solid rgba(76, 175, 80, 0.4); /* 边框 */
   border-radius: 8px; /* 圆角 */
   background: rgba(26, 46, 26, 0.3); /* 背景色 */
+  margin-bottom: 10px; /* 与底部保持间距 */
 }
 
 .judge-content {
   margin: 0;
   width: 100%;
-  padding-bottom: 20px; /* 底部内边距 */
+  padding: 10px; /* 适当的内边距 */
   overflow: visible; /* 内容区域不再控制滚动 */
+  min-height: auto; /* 让内容自然展开 */
 }
 
 .judge-table {
@@ -1689,9 +1707,10 @@ export default {
 }
 
 .panel-footer {
+  flex-shrink: 0; /* 底部按钮区域不收缩 */
   display: flex;
   justify-content: center;
-  margin-top: 24px;
+  margin-top: auto; /* 推到底部 */
   padding: 16px;
   background: linear-gradient(90deg, transparent 0%, rgba(76, 175, 80, 0.1) 50%, transparent 100%);
   border-top: 2px solid rgba(76, 175, 80, 0.4);

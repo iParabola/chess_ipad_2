@@ -20,6 +20,7 @@
 <!--			<view class="btnView" @click="getRealTimeScore">实时得分</view>-->
 			<view v-if="userType === 'user'" class="btnView" @click="getJudgeTable">指令录入</view>
 			<view class="btnView" @click="getJudgeResult">裁决结果</view>
+      <view class="btnView" @click="endGameConfirm">游戏结束</view>
       <view v-if="game.status === 50 && userType === 'user'" class="btnView" @click="getScore">最后得分</view>
 <!--			<view v-if="userType === 'admin'" class="btnView" @click="getTableScoreFinal">推演得分</view>-->
 			<view class="btnView" @click="getFinalSummary">推演汇总</view>
@@ -138,6 +139,15 @@
         title="确认"
         width="200rpx"
         content="是否移动到该位置"
+    ></uv-modal>
+    <uv-modal
+        :showCancelButton="true"
+        ref="endGameConfirm"
+        @cancel="endGameCancel"
+        @confirm="endGameFunc"
+        title="游戏结束确认"
+        content="确定要结束当前游戏吗？游戏结束后将无法继续进行。"
+        width="300rpx"
     ></uv-modal>
     <uni-drawer ref="showActionDesc" mode="right" :width="400">
       <view class="scroll-view" style="padding-right: 30px">
@@ -505,6 +515,7 @@ import {
   setScore,
   getScoreByCampId, getSummaryScoreNew
 } from '@/api/verdictRecord';
+import {endGame} from '@/api/room.js';
 import {sendMsg} from '@/api/websocket.js';
 import NjustScorePopup from "@/uni_modules/njust-score-popup/njust-score-popup.vue";
 
@@ -1695,7 +1706,6 @@ export default {
     //   //       verdictRecordId: this.verdictRecordId
     //   //     })
     //   // );
-    //
     // },
     move() {
       this.isAttack = false;
@@ -2265,6 +2275,68 @@ export default {
       //TODO 导演打分
 
     },
+    // 游戏结束确认方法
+    endGameConfirm() {
+      this.$refs.endGameConfirm.open();
+    },
+    // 取消游戏结束
+    endGameCancel() {
+      this.$refs.endGameConfirm.close();
+    },
+    // 执行游戏结束
+    async endGameFunc() {
+      try {
+        uni.showLoading({
+          title: '正在结束游戏...'
+        });
+
+        let data = {
+          id: this.verdictRecordId
+        };
+
+        let res = await endGame(data);
+
+        if (res.data.code === 200) {
+          uni.hideLoading();
+          uni.showToast({
+            title: '游戏已结束',
+            icon: 'success',
+            duration: 2000
+          });
+
+          // 发送websocket消息通知所有用户游戏结束
+          sendMsg(
+            JSON.stringify({
+              action: 'takeAction',
+              verdictRecordId: this.verdictRecordId
+            })
+          );
+
+          this.$refs.endGameConfirm.close();
+
+          // 延迟刷新页面状态
+          setTimeout(() => {
+            this.queryAllFunc();
+          }, 1000);
+
+        } else {
+          uni.hideLoading();
+          uni.showToast({
+            title: '结束游戏失败',
+            icon: 'error',
+            duration: 2000
+          });
+        }
+      } catch (error) {
+        uni.hideLoading();
+        console.error('endGame error:', error);
+        uni.showToast({
+          title: '结束游戏失败',
+          icon: 'error',
+          duration: 2000
+        });
+      }
+    },
 
     changeChessStatus_(status){
       this.showChessButtonInfo.visible = false;
@@ -2504,7 +2576,7 @@ export default {
       // 调用后端 stepJudge API
       stepJudge(data).then((res) => {
         console.log('stepJudge API 调用成功:', res);
-        // API 调用成功后发送 WebSocket 消息
+        // API 调用成功后发送 WebSocket 消消息
         sendMsg(
             JSON.stringify({
               action: 'takeAction',
@@ -2685,7 +2757,7 @@ export default {
     height: 40px;
     margin: 16px 12px;
     border-radius: 14px; /* 圆润外观 */
-    background-color: rgba(82, 120, 42, 0.78); /* 更高透明度，贴近顶部导航的磨砂风格 */
+    background-color: rgba(82,120,42,0.78); /* 更高透明度，贴近顶部导航的磨砂风格 */
     border: 1px solid rgba(255,255,255,0.26);
     /* 主阴影 + 轻微赛博感外发光 */
     box-shadow: 0 12px 26px rgba(0,0,0,0.22), 0 0 12px rgba(76,245,227,0.18), inset 0 1px 0 rgba(255,255,255,0.08);
