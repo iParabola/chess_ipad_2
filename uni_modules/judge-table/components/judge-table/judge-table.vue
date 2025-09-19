@@ -333,24 +333,91 @@
 
           <!-- 打分结果输入框 -->
           <view class="score-input-section">
-            <text class="input-label">打分结果：</text>
-            <input
-              type="number"
-              v-model="scoreValue"
-              placeholder="请输入分数"
-              class="score-input-field"
-            />
-            <view class="input-tip">
-              <text class="tip-text">💡 提示：可以多次提交不同的打分结果</text>
-            </view>
-          </view>
-
-          <!-- 打分表按钮 -->
-          <view class="score-table-section">
-            <text class="group-title">查看打分表：</text>
-            <button class="table-button" @click="openScoreTablePage">
-              <text class="button-text">打开打分表</text>
-            </button>
+            <text class="input-label">分项评分：</text>
+            
+            <!-- 第0回合：只有两个输入框 -->
+            <template v-if="key == 0">
+              <!-- 符合规则得分 -->
+              <view class="score-item">
+                <text class="score-label">符合规则得分 (权重50%)：</text>
+                <input
+                  type="number"
+                  v-model="ruleScore"
+                  placeholder="请输入分数"
+                  class="score-input-field"
+                  @input="calculateTotalScore"
+                />
+              </view>
+              
+              <!-- 实战要求得分 -->
+              <view class="score-item">
+                <text class="score-label">实战要求得分 (权重50%)：</text>
+                <input
+                  type="number"
+                  v-model="practicalScore"
+                  placeholder="请输入分数"
+                  class="score-input-field"
+                  @input="calculateTotalScore"
+                />
+              </view>
+              
+              <!-- 计算结果显示（第0回合） -->
+              <view v-if="ruleScore || practicalScore" class="total-score-display">
+                <text class="total-score-label">加权总分：</text>
+                <text class="total-score-value">{{ calculatedScore }}分</text>
+                <text class="calculation-detail">
+                  ({{ ruleScore || 0 }} × 50% + {{ practicalScore || 0 }} × 50%)
+                </text>
+              </view>
+            </template>
+            
+            <!-- 其他回合：三个输入框 -->
+            <template v-else>
+              <!-- 符合规则得分 -->
+              <view class="score-item">
+                <text class="score-label">符合规则得分 (权重10%)：</text>
+                <input
+                  type="number"
+                  v-model="ruleScore"
+                  placeholder="请输入分数"
+                  class="score-input-field"
+                  @input="calculateTotalScore"
+                />
+              </view>
+              
+              <!-- 实战要求得分 -->
+              <view class="score-item">
+                <text class="score-label">实战要求得分 (权重30%)：</text>
+                <input
+                  type="number"
+                  v-model="practicalScore"
+                  placeholder="请输入分数"
+                  class="score-input-field"
+                  @input="calculateTotalScore"
+                />
+              </view>
+              
+              <!-- 指挥效果得分 -->
+              <view class="score-item">
+                <text class="score-label">指挥效果得分 (权重60%)：</text>
+                <input
+                  type="number"
+                  v-model="commandScore"
+                  placeholder="请输入分数"
+                  class="score-input-field"
+                  @input="calculateTotalScore"
+                />
+              </view>
+              
+              <!-- 计算结果显示（其他回合） -->
+              <view v-if="ruleScore || practicalScore || commandScore" class="total-score-display">
+                <text class="total-score-label">加权总分：</text>
+                <text class="total-score-value">{{ calculatedScore }}分</text>
+                <text class="calculation-detail">
+                  ({{ ruleScore || 0 }} × 10% + {{ practicalScore || 0 }} × 30% + {{ commandScore || 0 }} × 60%)
+                </text>
+              </view>
+            </template>
           </view>
         </view>
 
@@ -462,7 +529,12 @@ export default {
       judgeResult: '',
       messageHandler: null,
       tableWindow: null,
-      scoreValue: '' // 打分值
+      scoreValue: '', // 打分值（用于向后兼容）
+      // 新增的分项评分
+      ruleScore: '', // 符合规则得分
+      practicalScore: '', // 实战要求得分
+      commandScore: '', // 指挥效果得分
+      calculatedScore: 0 // 计算出的加权总分
     };
   },
   filters: {
@@ -656,9 +728,13 @@ export default {
       // 如果是导演端，根据actionType决定打开哪个弹窗
       if (this.showInfo.userType === 'admin') {
         if (actionType === 'score') {
-          // 打开打分弹窗时，如果已有分数则显示
+          // 打开打分弹窗时，处理现有分数
           if (eitem.attackScore) {
-            this.scoreValue = eitem.attackScore;
+            // 如果已有分数，尝试反推分项评分
+            this.parseScoreFromTotal(eitem.attackScore);
+          } else {
+            // 如果没有分数，重置所有评分
+            this.resetScores();
           }
           this.$refs.scorePopup.open();
         } else if (actionType === 'judge') {
@@ -669,6 +745,7 @@ export default {
           this.$refs.judgePopup.open();
         } else {
           // 默认打开评分弹窗（保持向后兼容）
+          this.resetScores();
           this.$refs.scorePopup.open();
         }
       } else {
@@ -692,15 +769,43 @@ export default {
 
     // 打分相关方法
     confirmScoreAction() {
-      if (!this.scoreValue) {
+      // 根据回合数检查必填项
+      if (this.key == 0) {
+        // 第0回合：检查符合规则得分和实战要求得分
+        if (!this.ruleScore || !this.practicalScore) {
+          uni.showToast({
+            title: '请填写符合规则得分和实战要求得分',
+            icon: 'none',
+            duration: 1500
+          });
+          return;
+        }
+      } else {
+        // 其他回合：检查所有三项评分
+        if (!this.ruleScore || !this.practicalScore || !this.commandScore) {
+          uni.showToast({
+            title: '请填写所有分项评分',
+            icon: 'none',
+            duration: 1500
+          });
+          return;
+        }
+      }
+
+      // 确保计算总分
+      this.calculateTotalScore();
+      
+      if (!this.calculatedScore && this.calculatedScore !== 0) {
         uni.showToast({
-          title: '请输入打分结果',
+          title: '评分计算错误，请重新输入',
           icon: 'none',
           duration: 1500
         });
         return;
       }
-      this.judge_score = this.scoreValue;
+
+      // 使用计算出的总分
+      this.judge_score = this.calculatedScore;
       this.submitScore();
     },
 
@@ -743,7 +848,7 @@ export default {
     closeScore() {
       this.$refs.scorePopup.close();
       this.judge_score = '';
-      this.scoreValue = '';
+      this.resetScores(); // 重置所有评分
     },
 
     // 打开打分表页面（新窗口）
@@ -949,6 +1054,54 @@ export default {
         this.fileList = [];
         this.instructionText = '';
         this.$refs.popup.close();
+      }
+    },
+
+    // 计算加权总分
+    calculateTotalScore() {
+      const rule = parseFloat(this.ruleScore) || 0;
+      const practical = parseFloat(this.practicalScore) || 0;
+      const command = parseFloat(this.commandScore) || 0;
+      
+      let weighted = 0;
+      
+      // 根据回合数使用不同的权重计算
+      if (this.key == 0) {
+        // 第0回合：符合规则50% + 实战要求50%
+        weighted = rule * 0.5 + practical * 0.5;
+      } else {
+        // 其他回合：符合规则10% + 实战要求30% + 指挥效果60%
+        weighted = rule * 0.1 + practical * 0.3 + command * 0.6;
+      }
+      
+      // 取整
+      this.calculatedScore = Math.round(weighted);
+      
+      // 同步更新scoreValue用于向后兼容
+      this.scoreValue = this.calculatedScore;
+    },
+
+    // 重置所有评分
+    resetScores() {
+      this.ruleScore = '';
+      this.practicalScore = '';
+      this.commandScore = '';
+      this.calculatedScore = 0;
+      this.scoreValue = '';
+    },
+
+    // 从总分反推分项评分（编辑时使用）
+    parseScoreFromTotal(totalScore) {
+      if (totalScore) {
+        // 编辑现有分数时，不反推细分，只显示总分
+        this.calculatedScore = parseFloat(totalScore);
+        this.scoreValue = this.calculatedScore;
+        // 保持细分输入框为空，让用户重新输入
+        this.ruleScore = '';
+        this.practicalScore = '';
+        this.commandScore = '';
+      } else {
+        this.resetScores();
       }
     }
   },
@@ -1607,7 +1760,7 @@ export default {
 }
 
 .score-input-field {
-  width: 90%;
+  width: 80%;
   background: linear-gradient(135deg, rgba(26, 46, 26, 0.8) 0%, rgba(45, 69, 45, 0.8) 100%);
   border: 2px solid #4caf50;
   color: #e8f5e8;
@@ -1639,6 +1792,63 @@ export default {
 
 .score-button.scored:hover {
   background: linear-gradient(135deg, #64b5f6 0%, #2196f3 100%);
+}
+
+/* ==================== 分项评分样式 ==================== */
+.score-item {
+  margin-bottom: 16px;
+  padding: 12px;
+  background: rgba(45, 69, 45, 0.2);
+  border-radius: 6px;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.score-label {
+  display: block;
+  color: #a5d6a7;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-family: 'Microsoft YaHei', sans-serif;
+}
+
+.score-item .score-input-field {
+  width: 90%;
+  margin-top: 4px;
+  font-size: 18px;
+  padding: 8px 12px;
+}
+
+.total-score-display {
+  margin-top: 20px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(139, 195, 74, 0.15) 100%);
+  border-radius: 8px;
+  border: 2px solid rgba(76, 175, 80, 0.4);
+  text-align: center;
+}
+
+.total-score-label {
+  color: #a5d6a7;
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.total-score-value {
+  color: #4caf50;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.calculation-detail {
+  display: block;
+  color: rgba(165, 214, 167, 0.8);
+  font-size: 12px;
+  margin-top: 8px;
+  font-style: italic;
 }
 
 /* ==================== 打分表按钮样式 ==================== */
