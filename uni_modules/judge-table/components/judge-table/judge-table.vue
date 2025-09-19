@@ -207,7 +207,7 @@
                         </view>
                         <view class="judge-cell action-cell">
                           <view class="list-cell">
-                            <view v-for="(txt, i) in normalizeList(eitem.actionDesc || (eitem.chessPiecesNumber === '未操作' ? '无' : ''))" :key="'a'+i" class="list-item">{{ txt }}</view>
+                            <view v-for="(txt, i) in normalizeList(eitem.actionDesc)" :key="'a'+i" class="list-item">{{ txt }}</view>
                           </view>
                         </view>
 
@@ -262,7 +262,7 @@
           <view class="action-info">
             <view class="info-row">
               <text class="label">部队行动：</text>
-              <text class="value">{{ actionInfo.actionDesc || (actionInfo.chessPiecesNumber === '未操作' ? '无' : '当前行动') }}</text>
+              <text class="value">{{ actionInfo.actionDesc }}</text>
             </view>
           </view>
 
@@ -319,7 +319,7 @@
           <view class="action-info">
             <view class="info-row">
               <text class="label">部队行动：</text>
-              <text class="value">{{ actionInfo.actionDesc || (actionInfo.chessPiecesNumber === '未操作' ? '无' : '当前行动') }}</text>
+              <text class="value">{{ actionInfo.actionDesc || '当前行动' }}</text>
             </view>
             <view class="info-row" v-if="actionInfo.attackResult">
               <text class="label">裁决结果：</text>
@@ -618,8 +618,7 @@ export default {
     flattenActionList(list = []) {
       const out = [];
       list.forEach(it => {
-        const actionDesc = it && (it.actionDesc || (it.chessPiecesNumber === '未操作' ? '无' : ''));
-        const parts = this.normalizeList(actionDesc);
+        const parts = this.normalizeList(it && it.actionDesc);
         parts.forEach(p => out.push(p));
       });
       return out;
@@ -933,10 +932,7 @@ export default {
       let res = await getHistoryTreeByRound(item);
       let resArray = res.data.data;
       resArray = resArray.filter((item) => {
-        item.historyVoList = item.historyVoList.filter((historyItem) => {
-          // 保留有actionDesc的记录，或者是未操作记录（chessPiecesNumber为"未操作"）
-          return historyItem.actionDesc || historyItem.chessPiecesNumber === '未操作';
-        });
+        item.historyVoList = item.historyVoList.filter((item) => item.actionDesc);
         return item.historyVoList.length > 0;
       });
       if (resArray.length === 0) {

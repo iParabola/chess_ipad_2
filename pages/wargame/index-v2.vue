@@ -81,59 +81,6 @@
       </view>
     </view>
 
-<!--		<view class="top__view">-->
-<!--			<xinyi-steps-->
-<!--				:options="stageOptions"-->
-<!--				:active="stageActive"-->
-<!--				arrowRight-->
-<!--				:canClick="true"-->
-<!--				:clickType="'stage'"-->
-<!--				:statusDesc="statusDesc"-->
-<!--				:isAdmin="userType === 'admin'"-->
-<!--				:statusIndex="statusIndex"-->
-<!--			></xinyi-steps>-->
-<!--			<view class="dice-toolbar__veiw">-->
-<!--				<button-->
-<!--					class="stage-over__btn"-->
-<!--					type="primary"-->
-<!--					v-if="game.nowRound === 0 && game.isDeplaoy && userType === 'user'"-->
-<!--					@click="endDeployFunc()"-->
-<!--				>-->
-<!--					结束部署-->
-<!--				</button>-->
-<!--				<button-->
-<!--					class="stage-over__btn"-->
-<!--					type="primary"-->
-<!--					v-if="userType === 'user' && game.nowRound !== 0 && userStageNotSubmit"-->
-<!--					@click="endRoundFunc()"-->
-<!--				>-->
-<!--					提交-->
-<!--				</button>-->
-<!--				<button class="stage-over__btn" type="primary" v-if="userType === 'judge' && roundEnd" @click="judge()">-->
-<!--					裁决-->
-<!--				</button>-->
-<!--        <button-->
-<!--            class="stage-over__btn"-->
-<!--            type="primary"-->
-<!--            v-if="userType === 'user' && game.nowRound !== 0 && userModify"-->
-<!--            @click="endRoundFuncAndSetRoundActionPoint()"-->
-<!--        >-->
-<!--          修正-->
-<!--        </button>-->
-<!--        <button-->
-<!--            class="stage-over__btn"-->
-<!--            type="primary"-->
-<!--            v-if="userType === 'admin'"-->
-<!--            @click="judge()"-->
-<!--        >-->
-<!--          打分-->
-<!--        </button>-->
-<!--			</view>-->
-<!--			<view class="avatar-view">-->
-<!--				<uv-avatar :text="avatarText" size="60" fontSize="20" bg-color="#7f7f00" color="#ffffff"></uv-avatar>-->
-<!--				<view>{{ avatarDesc }}</view>-->
-<!--			</view>-->
-<!--		</view>-->
 
     <NjustScorePopup ref="njustScore" :user-type="userType" :game="game" :camp-id="campId" :verdict-record-id="verdictRecordId" @setFinalScore="setFinalScore"></NjustScorePopup>
 
@@ -359,7 +306,7 @@
           @click="attack()"
         ></uv-text> -->
         <uv-text
-            v-if="game.roundPeriod==2&&this.selCellInfo.roundActionPoint=='1'&&this.selCellInfo.status!='PRESS'"
+            v-if="game.roundPeriod==2&&this.selCellInfo.status!='PRESS'"
             prefixIcon="empty-history"
             iconStyle="font-size: 19px"
             :text="'机动'"
@@ -387,7 +334,7 @@
         <!--					@click="communication()"-->
         <!--				></uv-text>-->
         <uv-text
-            v-if="game.roundPeriod==1&&this.selCellInfo.roundActionPoint=='1'&&this.selCellInfo.status!='PRESS'&&this.selCellInfo.status!='FIRE'"
+            v-if="game.roundPeriod==1&&this.selCellInfo.status!='PRESS'&&this.selCellInfo.status!='FIRE'"
             prefixIcon="empty-history"
             iconStyle="font-size: 19px"
             :text="'直瞄打击'"
@@ -397,7 +344,7 @@
             @click="attack()"
         ></uv-text>
         <uv-text
-            v-if="game.roundPeriod==3&&this.selCellInfo.roundActionPoint=='1'&&this.selCellInfo.status=='PRESS'"
+            v-if="game.roundPeriod==3&&this.selCellInfo.status=='PRESS'"
             prefixIcon="empty-history"
             iconStyle="font-size: 19px"
             :text="'解除压制'"
@@ -407,7 +354,7 @@
             @click="releasePress()"
         ></uv-text>
         <uv-text
-            v-if="game.roundPeriod==4&&this.selCellInfo.roundActionPoint=='1'&&this.selCellInfo.status!='PRESS'&&this.selCellInfo.status!='FIRE'"
+            v-if="game.roundPeriod==4&&this.selCellInfo.status!='PRESS'&&this.selCellInfo.status!='FIRE'"
             prefixIcon="empty-history"
             iconStyle="font-size: 19px"
             :text="'间瞄射击'"
@@ -416,66 +363,6 @@
             :iconStyle="{ color: '#ffffff', size: 30}"
             @click="attack()"
         ></uv-text>
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'轻损'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('ATTACK_MID')"-->
-<!--        ></uv-text>-->
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'中损'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('ATTACK_MODERATE')"-->
-<!--        ></uv-text>-->
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'重损'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('ATTACK_SEVERE')"-->
-<!--        ></uv-text>-->
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'轻微干扰'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('REACTANCE_MID')"-->
-<!--        ></uv-text>-->
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'中度干扰'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('REACTANCE_MODERATE')"-->
-<!--        ></uv-text>-->
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'重度干扰'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('REACTANCE_SEVERE')"-->
-<!--        ></uv-text>-->
         <uv-text
             v-if="statusIndex === 2&&this.selCellInfo.status!='PRESS'"
             prefixIcon="empty-history"
@@ -506,16 +393,6 @@
             :iconStyle="{ color: '#ffffff', size: 18 }"
             @click="changeChessStatus_('FIRE')"
         ></uv-text>
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2&&game.roundPeriod==3&&this.selCellInfo.roundActionPoint=='1'&&this.selCellInfo.status=='PRESS'"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'解除压制'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="releasePress()"-->
-<!--        ></uv-text>-->
       </view>
     </view>
     <view
@@ -1679,7 +1556,7 @@ export default {
         roundPeriod: this.stageActive + 1,
         moveInfo: JSON.stringify(source.moveInfo),
         attackResult: source.attackResult,
-        roundActionPoint:false
+        roundActionPoint: true
       };
       isHide && (data.actionMode = 30);
       console.log(data)
@@ -1739,19 +1616,12 @@ export default {
               duration: 1500
             });
           }
-          else if(this.selCellInfo.roundActionPoint=='0'){
-            uni.showToast({
-              title: '该棋子在本回合已无行动能力！',
-              icon: 'none',
-              duration: 1500
-            });
-          }
+          // 已移除基于roundActionPoint=='0'的操作限制检查
           if(this.selCellInfo.status=="PRESS"){
             //todo 棋子状态被压制
 
           }else if(this.selCellInfo.status=="FIRE"){
             //todo 棋子失火
-
           }
           if(this.selCellInfo.status=="KILL"){
             // todo 棋子被毁
@@ -1808,10 +1678,7 @@ export default {
     //   //   selfCoordinate: this.selCellInfo.coordinate,
     //   //   selfOffset: this.selCellInfo.offset,
     //   //   userId: this.user.id,
-    //   //   verdictRecordId: this.verdictRecordId,
-    //   //   chessRound: this.roundActive,
-    //   //   roundPeriod: this.stageActive + 1,
-    //   //   status: "",
+    //   //   verdictRecordId: this.verdictRecordId
     //   // };
     //   // this.periodActionChessList.push(this.selCellInfo);
     //   // const tmp = this.mapChessArray.find(function (ttt) {
@@ -2495,41 +2362,22 @@ export default {
       await this.queryPromptFunc();
     },
     async endRoundFuncAndSetRoundActionPoint(){
-      // 检查用户是否在当前阶段进行了任何操作
-      if (this.periodActionChessList.length === 0) {
-        console.log(`用户在第${this.game.chessRound}回合第${this.game.roundPeriod}阶段（修正）没有进行任何操作，创建未操作记录`);
-        await this.createNoActionRecord();
-      } else {
-        console.log(`用户在第${this.game.chessRound}回合第${this.game.roundPeriod}阶段（修正）进行了${this.periodActionChessList.length}个操作`);
-      }
 
-      let data={
-        // id:this.periodActionChessList[i].id,
-        verdictRecordId:this.verdictRecordId,
-        roundPeriod:this.game.roundPeriod,
-        chessRound:this.game.chessRound,
-        userId: this.user.id,
-        campId:this.campId,
-      }
-      await changePiecesActionPoint(data);
+      // 移除changePiecesActionPoint调用，避免棋子变灰
+      // let data={
+      //   verdictRecordId:this.verdictRecordId,
+      //   roundPeriod:this.game.roundPeriod,
+      //   chessRound:this.game.chessRound,
+      //   userId: this.user.id,
+      //   campId:this.campId,
+      // }
+      // await changePiecesActionPoint(data);
       // console.log("this.periodActionChessList[i].id",this.periodActionChessList[i].id)
-
-      // 调用endRoundFunc，但跳过未操作检查（因为已经在上面处理了）
-      await this.endRoundFuncInternal(true);
+      await this.endRoundFunc();
 
     },
     async endRoundFunc() {
-      await this.endRoundFuncInternal(false);
-    },
-
-    async endRoundFuncInternal(skipNoActionCheck = false) {
-      // 检查用户是否在当前阶段进行了任何操作（除非明确跳过检查）
-      if (!skipNoActionCheck && this.periodActionChessList.length === 0) {
-        console.log(`用户在第${this.roundActive}回合第${this.stageActive + 1}阶段没有进行任何操作，创建未操作记录`);
-        await this.createNoActionRecord();
-      } else if (!skipNoActionCheck) {
-        console.log(`用户在第${this.roundActive}回合第${this.stageActive + 1}阶段进行了${this.periodActionChessList.length}个操作`);
-      }
+      // this.showCustomToast("修正成功")
 
       let data = {
         id: this.verdictRecordId,
@@ -2553,48 +2401,6 @@ export default {
           })
       );
     },
-
-    // 创建未操作记录
-    async createNoActionRecord() {
-      try {
-        // 构造未操作记录的数据，参考正常棋子操作的数据结构
-        const noActionData = {
-          actionMode: 0, // 使用0表示未操作
-          campId: this.campId,
-          chessPiecesNumber: '未操作', // 单位字段设为"未操作"
-          selfCoordinate: '', // 空坐标
-          selfOffset: '', // 空偏移
-          targetCoordinate: '', // 空目标坐标
-          targetOffset: '', // 空目标偏移
-          userId: this.user.id,
-          verdictRecordId: this.verdictRecordId,
-          targetChessPiecesNumber: '', // 空目标棋子编号
-          chessRound: this.roundActive,
-          roundPeriod: this.stageActive + 1,
-          moveInfo: JSON.stringify([]), // 空的移动信息
-          attackResult: '', // 空的攻击结果
-          roundActionPoint: false
-        };
-
-        console.log('创建未操作记录:', noActionData);
-
-        // 调用棋子操作API来创建记录
-        await chessPiecesActionNew(noActionData);
-
-        console.log('未操作记录创建成功');
-
-        // 刷新历史记录，确保biz_verdict_record_history表中的记录也被更新
-        await this.queryPromptFunc();
-
-        // 显示提示信息
-        this.showCustomToast('已记录：当前阶段无操作');
-
-      } catch (error) {
-        console.error('创建未操作记录失败:', error);
-        // 即使创建失败也不阻止正常的结束流程
-      }
-    },
-
     async judge() {
       if (this.userType === 'admin') {
         this.judgeTableShowInfo = {
