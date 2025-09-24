@@ -48,3 +48,12 @@ export const startGame = (data) => {
 		data
 	});
 }
+
+// 结束游戏
+export const endGame = (data) => {
+	return http.request({
+		url: 'armory/endGame',
+		method: 'POST',
+		data
+	});
+}

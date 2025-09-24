@@ -20,13 +20,20 @@
 <!--			<view class="btnView" @click="getRealTimeScore">实时得分</view>-->
 			<view v-if="userType === 'user'" class="btnView" @click="getJudgeTable">指令录入</view>
 			<view class="btnView" @click="getJudgeResult">裁决结果</view>
+      <view class="btnView" @click="endGameConfirm">游戏结束</view>
       <view v-if="game.status === 50 && userType === 'user'" class="btnView" @click="getScore">最后得分</view>
 <!--			<view v-if="userType === 'admin'" class="btnView" @click="getTableScoreFinal">推演得分</view>-->
 			<view class="btnView" @click="getFinalSummary">推演汇总</view>
 		</view>
 		<view class="middleBtn">
-			<view class="btnView" v-if="isMove" @click="moveStop">移动结束</view>
-			<view class="btnView" v-if="nextStageFlag" @click="nextStage">{{ nextBtnText }}</view>
+			<view class="btnView enhanced-btn" v-if="isMove" @click="moveStop">
+				<view class="btn-icon">⏹</view>
+				<view class="btn-text">移动结束</view>
+			</view>
+			<view class="btnView enhanced-btn primary-btn" v-if="nextStageFlag" @click="nextStage">
+				<view class="btn-icon">▶</view>
+				<view class="btn-text">{{ nextBtnText }}</view>
+			</view>
 		</view>
 
     <view class="top">
@@ -62,7 +69,7 @@
                     @click="endRoundFuncAndSetRoundActionPoint()">
                  结束走棋
               </view>
-              <view v-if="userType === 'admin' && roundEnd"
+              <view v-if="userType === 'admin'"
                   @click="judge()">
                 打分裁决
               </view>
@@ -75,59 +82,6 @@
       </view>
     </view>
 
-<!--		<view class="top__view">-->
-<!--			<xinyi-steps-->
-<!--				:options="stageOptions"-->
-<!--				:active="stageActive"-->
-<!--				arrowRight-->
-<!--				:canClick="true"-->
-<!--				:clickType="'stage'"-->
-<!--				:statusDesc="statusDesc"-->
-<!--				:isAdmin="userType === 'admin'"-->
-<!--				:statusIndex="statusIndex"-->
-<!--			></xinyi-steps>-->
-<!--			<view class="dice-toolbar__veiw">-->
-<!--				<button-->
-<!--					class="stage-over__btn"-->
-<!--					type="primary"-->
-<!--					v-if="game.nowRound === 0 && game.isDeplaoy && userType === 'user'"-->
-<!--					@click="endDeployFunc()"-->
-<!--				>-->
-<!--					结束部署-->
-<!--				</button>-->
-<!--				<button-->
-<!--					class="stage-over__btn"-->
-<!--					type="primary"-->
-<!--					v-if="userType === 'user' && game.nowRound !== 0 && userStageNotSubmit"-->
-<!--					@click="endRoundFunc()"-->
-<!--				>-->
-<!--					提交-->
-<!--				</button>-->
-<!--				<button class="stage-over__btn" type="primary" v-if="userType === 'judge' && roundEnd" @click="judge()">-->
-<!--					裁决-->
-<!--				</button>-->
-<!--        <button-->
-<!--            class="stage-over__btn"-->
-<!--            type="primary"-->
-<!--            v-if="userType === 'user' && game.nowRound !== 0 && userModify"-->
-<!--            @click="endRoundFuncAndSetRoundActionPoint()"-->
-<!--        >-->
-<!--          修正-->
-<!--        </button>-->
-<!--        <button-->
-<!--            class="stage-over__btn"-->
-<!--            type="primary"-->
-<!--            v-if="userType === 'admin'"-->
-<!--            @click="judge()"-->
-<!--        >-->
-<!--          打分-->
-<!--        </button>-->
-<!--			</view>-->
-<!--			<view class="avatar-view">-->
-<!--				<uv-avatar :text="avatarText" size="60" fontSize="20" bg-color="#7f7f00" color="#ffffff"></uv-avatar>-->
-<!--				<view>{{ avatarDesc }}</view>-->
-<!--			</view>-->
-<!--		</view>-->
 
     <NjustScorePopup ref="njustScore" :user-type="userType" :game="game" :camp-id="campId" :verdict-record-id="verdictRecordId" @setFinalScore="setFinalScore"></NjustScorePopup>
 
@@ -185,6 +139,15 @@
         title="确认"
         width="200rpx"
         content="是否移动到该位置"
+    ></uv-modal>
+    <uv-modal
+        :showCancelButton="true"
+        ref="endGameConfirm"
+        @cancel="endGameCancel"
+        @confirm="endGameFunc"
+        title="游戏结束确认"
+        content="确定要结束当前游戏吗？游戏结束后将无法继续进行。"
+        width="300rpx"
     ></uv-modal>
     <uni-drawer ref="showActionDesc" mode="right" :width="400">
       <view class="scroll-view" style="padding-right: 30px">
@@ -353,7 +316,7 @@
           @click="attack()"
         ></uv-text> -->
         <uv-text
-            v-if="game.roundPeriod==2&&this.selCellInfo.roundActionPoint=='1'&&this.selCellInfo.status!='PRESS'"
+            v-if="game.roundPeriod==2&&this.selCellInfo.status!='PRESS'"
             prefixIcon="empty-history"
             iconStyle="font-size: 19px"
             :text="'机动'"
@@ -381,7 +344,7 @@
         <!--					@click="communication()"-->
         <!--				></uv-text>-->
         <uv-text
-            v-if="game.roundPeriod==1&&this.selCellInfo.roundActionPoint=='1'&&this.selCellInfo.status!='PRESS'&&this.selCellInfo.status!='FIRE'"
+            v-if="game.roundPeriod==1&&this.selCellInfo.status!='PRESS'&&this.selCellInfo.status!='FIRE'"
             prefixIcon="empty-history"
             iconStyle="font-size: 19px"
             :text="'直瞄打击'"
@@ -391,7 +354,7 @@
             @click="attack()"
         ></uv-text>
         <uv-text
-            v-if="game.roundPeriod==3&&this.selCellInfo.roundActionPoint=='1'&&this.selCellInfo.status=='PRESS'"
+            v-if="game.roundPeriod==3&&this.selCellInfo.status=='PRESS'"
             prefixIcon="empty-history"
             iconStyle="font-size: 19px"
             :text="'解除压制'"
@@ -401,7 +364,7 @@
             @click="releasePress()"
         ></uv-text>
         <uv-text
-            v-if="game.roundPeriod==4&&this.selCellInfo.roundActionPoint=='1'&&this.selCellInfo.status!='PRESS'&&this.selCellInfo.status!='FIRE'"
+            v-if="game.roundPeriod==4&&this.selCellInfo.status!='PRESS'&&this.selCellInfo.status!='FIRE'"
             prefixIcon="empty-history"
             iconStyle="font-size: 19px"
             :text="'间瞄射击'"
@@ -410,66 +373,6 @@
             :iconStyle="{ color: '#ffffff', size: 30}"
             @click="attack()"
         ></uv-text>
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'轻损'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('ATTACK_MID')"-->
-<!--        ></uv-text>-->
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'中损'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('ATTACK_MODERATE')"-->
-<!--        ></uv-text>-->
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'重损'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('ATTACK_SEVERE')"-->
-<!--        ></uv-text>-->
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'轻微干扰'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('REACTANCE_MID')"-->
-<!--        ></uv-text>-->
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'中度干扰'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('REACTANCE_MODERATE')"-->
-<!--        ></uv-text>-->
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'重度干扰'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="changeChessStatus_('REACTANCE_SEVERE')"-->
-<!--        ></uv-text>-->
         <uv-text
             v-if="statusIndex === 2&&this.selCellInfo.status!='PRESS'"
             prefixIcon="empty-history"
@@ -500,16 +403,6 @@
             :iconStyle="{ color: '#ffffff', size: 18 }"
             @click="changeChessStatus_('FIRE')"
         ></uv-text>
-<!--        <uv-text-->
-<!--            v-if="statusIndex === 2&&game.roundPeriod==3&&this.selCellInfo.roundActionPoint=='1'&&this.selCellInfo.status=='PRESS'"-->
-<!--            prefixIcon="empty-history"-->
-<!--            iconStyle="font-size: 19px"-->
-<!--            :text="'解除压制'"-->
-<!--            color="#ffffff"-->
-<!--            :size="18"-->
-<!--            :iconStyle="{ color: '#ffffff', size: 18 }"-->
-<!--            @click="releasePress()"-->
-<!--        ></uv-text>-->
       </view>
     </view>
     <view
@@ -622,6 +515,7 @@ import {
   setScore,
   getScoreByCampId, getSummaryScoreNew
 } from '@/api/verdictRecord';
+import {endGame} from '@/api/room.js';
 import {sendMsg} from '@/api/websocket.js';
 import NjustScorePopup from "@/uni_modules/njust-score-popup/njust-score-popup.vue";
 
@@ -1673,7 +1567,7 @@ export default {
         roundPeriod: this.stageActive + 1,
         moveInfo: JSON.stringify(source.moveInfo),
         attackResult: source.attackResult,
-        roundActionPoint:false
+        roundActionPoint: true
       };
       isHide && (data.actionMode = 30);
       console.log(data)
@@ -1733,19 +1627,12 @@ export default {
               duration: 1500
             });
           }
-          else if(this.selCellInfo.roundActionPoint=='0'){
-            uni.showToast({
-              title: '该棋子在本回合已无行动能力！',
-              icon: 'none',
-              duration: 1500
-            });
-          }
+          // 已移除基于roundActionPoint=='0'的操作限制检查
           if(this.selCellInfo.status=="PRESS"){
             //todo 棋子状态被压制
 
           }else if(this.selCellInfo.status=="FIRE"){
             //todo 棋子失火
-
           }
           if(this.selCellInfo.status=="KILL"){
             // todo 棋子被毁
@@ -1802,10 +1689,7 @@ export default {
     //   //   selfCoordinate: this.selCellInfo.coordinate,
     //   //   selfOffset: this.selCellInfo.offset,
     //   //   userId: this.user.id,
-    //   //   verdictRecordId: this.verdictRecordId,
-    //   //   chessRound: this.roundActive,
-    //   //   roundPeriod: this.stageActive + 1,
-    //   //   status: "",
+    //   //   verdictRecordId: this.verdictRecordId
     //   // };
     //   // this.periodActionChessList.push(this.selCellInfo);
     //   // const tmp = this.mapChessArray.find(function (ttt) {
@@ -1822,7 +1706,6 @@ export default {
     //   //       verdictRecordId: this.verdictRecordId
     //   //     })
     //   // );
-    //
     // },
     move() {
       this.isAttack = false;
@@ -2392,6 +2275,68 @@ export default {
       //TODO 导演打分
 
     },
+    // 游戏结束确认方法
+    endGameConfirm() {
+      this.$refs.endGameConfirm.open();
+    },
+    // 取消游戏结束
+    endGameCancel() {
+      this.$refs.endGameConfirm.close();
+    },
+    // 执行游戏结束
+    async endGameFunc() {
+      try {
+        uni.showLoading({
+          title: '正在结束游戏...'
+        });
+
+        let data = {
+          id: this.verdictRecordId
+        };
+
+        let res = await endGame(data);
+
+        if (res.data.code === 200) {
+          uni.hideLoading();
+          uni.showToast({
+            title: '游戏已结束',
+            icon: 'success',
+            duration: 2000
+          });
+
+          // 发送websocket消息通知所有用户游戏结束
+          sendMsg(
+            JSON.stringify({
+              action: 'takeAction',
+              verdictRecordId: this.verdictRecordId
+            })
+          );
+
+          this.$refs.endGameConfirm.close();
+
+          // 延迟刷新页面状态
+          setTimeout(() => {
+            this.queryAllFunc();
+          }, 1000);
+
+        } else {
+          uni.hideLoading();
+          uni.showToast({
+            title: '结束游戏失败',
+            icon: 'error',
+            duration: 2000
+          });
+        }
+      } catch (error) {
+        uni.hideLoading();
+        console.error('endGame error:', error);
+        uni.showToast({
+          title: '结束游戏失败',
+          icon: 'error',
+          duration: 2000
+        });
+      }
+    },
 
     changeChessStatus_(status){
       this.showChessButtonInfo.visible = false;
@@ -2489,41 +2434,22 @@ export default {
       await this.queryPromptFunc();
     },
     async endRoundFuncAndSetRoundActionPoint(){
-      // 检查用户是否在当前阶段进行了任何操作
-      if (this.periodActionChessList.length === 0) {
-        console.log(`用户在第${this.game.chessRound}回合第${this.game.roundPeriod}阶段（修正）没有进行任何操作，创建未操作记录`);
-        await this.createNoActionRecord();
-      } else {
-        console.log(`用户在第${this.game.chessRound}回合第${this.game.roundPeriod}阶段（修正）进行了${this.periodActionChessList.length}个操作`);
-      }
 
-      let data={
-        // id:this.periodActionChessList[i].id,
-        verdictRecordId:this.verdictRecordId,
-        roundPeriod:this.game.roundPeriod,
-        chessRound:this.game.chessRound,
-        userId: this.user.id,
-        campId:this.campId,
-      }
-      await changePiecesActionPoint(data);
+      // 移除changePiecesActionPoint调用，避免棋子变灰
+      // let data={
+      //   verdictRecordId:this.verdictRecordId,
+      //   roundPeriod:this.game.roundPeriod,
+      //   chessRound:this.game.chessRound,
+      //   userId: this.user.id,
+      //   campId:this.campId,
+      // }
+      // await changePiecesActionPoint(data);
       // console.log("this.periodActionChessList[i].id",this.periodActionChessList[i].id)
-
-      // 调用endRoundFunc，但跳过未操作检查（因为已经在上面处理了）
-      await this.endRoundFuncInternal(true);
+      await this.endRoundFunc();
 
     },
     async endRoundFunc() {
-      await this.endRoundFuncInternal(false);
-    },
-
-    async endRoundFuncInternal(skipNoActionCheck = false) {
-      // 检查用户是否在当前阶段进行了任何操作（除非明确跳过检查）
-      if (!skipNoActionCheck && this.periodActionChessList.length === 0) {
-        console.log(`用户在第${this.roundActive}回合第${this.stageActive + 1}阶段没有进行任何操作，创建未操作记录`);
-        await this.createNoActionRecord();
-      } else if (!skipNoActionCheck) {
-        console.log(`用户在第${this.roundActive}回合第${this.stageActive + 1}阶段进行了${this.periodActionChessList.length}个操作`);
-      }
+      // this.showCustomToast("修正成功")
 
       let data = {
         id: this.verdictRecordId,
@@ -2547,48 +2473,6 @@ export default {
           })
       );
     },
-
-    // 创建未操作记录
-    async createNoActionRecord() {
-      try {
-        // 构造未操作记录的数据，参考正常棋子操作的数据结构
-        const noActionData = {
-          actionMode: 0, // 使用0表示未操作
-          campId: this.campId,
-          chessPiecesNumber: '未操作', // 单位字段设为"未操作"
-          selfCoordinate: '', // 空坐标
-          selfOffset: '', // 空偏移
-          targetCoordinate: '', // 空目标坐标
-          targetOffset: '', // 空目标偏移
-          userId: this.user.id,
-          verdictRecordId: this.verdictRecordId,
-          targetChessPiecesNumber: '', // 空目标棋子编号
-          chessRound: this.roundActive,
-          roundPeriod: this.stageActive + 1,
-          moveInfo: JSON.stringify([]), // 空的移动信息
-          attackResult: '', // 空的攻击结果
-          roundActionPoint: false
-        };
-
-        console.log('创建未操作记录:', noActionData);
-
-        // 调用棋子操作API来创建记录
-        await chessPiecesActionNew(noActionData);
-
-        console.log('未操作记录创建成功');
-
-        // 刷新历史记录，确保biz_verdict_record_history表中的记录也被更新
-        await this.queryPromptFunc();
-
-        // 显示提示信息
-        this.showCustomToast('已记录：当前阶段无操作');
-
-      } catch (error) {
-        console.error('创建未操作记录失败:', error);
-        // 即使创建失败也不阻止正常的结束流程
-      }
-    },
-
     async judge() {
       if (this.userType === 'admin') {
         this.judgeTableShowInfo = {
@@ -2687,16 +2571,28 @@ export default {
         verdictRecordId: this.verdictRecordId,
         chessRound: this.roundActive,
         roundPeriod: this.stageActive + 1,
-        campId: this.campId,
       }
-      let res = stepJudge(data);
-      console.log(res)
-      sendMsg(
-          JSON.stringify({
-            action: 'takeAction',
-            verdictRecordId: this.verdictRecordId
-          })
-      );
+      
+      // 调用后端 stepJudge API
+      stepJudge(data).then((res) => {
+        console.log('stepJudge API 调用成功:', res);
+        // API 调用成功后发送 WebSocket 消消息
+        sendMsg(
+            JSON.stringify({
+              action: 'takeAction',
+              verdictRecordId: this.verdictRecordId
+            })
+        );
+      }).catch((error) => {
+        console.error('stepJudge API 调用失败:', error);
+        // 即使 API 调用失败，也发送 WebSocket 消息（保证实时性）
+        sendMsg(
+            JSON.stringify({
+              action: 'takeAction',
+              verdictRecordId: this.verdictRecordId
+            })
+        );
+      });
     },
     nextStage() {
       if (this.nextBtnText === '游戏结束'){
@@ -2777,23 +2673,69 @@ export default {
 .middleBtn {
   position: fixed;
   bottom: 100px;
-  width: 100px;
-  left: calc(50vw - 50px);
+  width: 160px;
+  left: calc(50vw - 80px);
   z-index: 1000;
 
   .btnView {
-    background-color: rgba(87, 64, 50, 0.8);
-    color: white;
+    background: rgba(0, 170, 0, 0.85);
+    color: #ffffff;
     text-align: center;
-    font-size: 20px;
-    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 4px;
     align-items: center;
-    padding: 10px 5px 10px 5px;
-    border-radius: 5px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 204, 0, 0.4);
+    box-shadow: 0 2px 10px rgba(0, 170, 0, 0.25);
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+    position: relative;
   }
 
-  .btnView:hover{
-    color: #4cf5e3;
+  .enhanced-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+  }
+
+  .btn-icon {
+    font-size: 14px;
+    margin-right: 6px;
+    opacity: 0.9;
+  }
+
+  .btn-text {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .primary-btn {
+    background: rgba(0, 153, 0, 0.95);
+    color: #ffffff;
+    border: 1px solid rgba(0, 204, 0, 0.6);
+    box-shadow: 0 2px 12px rgba(0, 153, 0, 0.4);
+  }
+
+  .btnView:hover {
+    background: rgba(0, 187, 0, 0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 170, 0, 0.4);
+    border-color: rgba(0, 221, 0, 0.6);
+  }
+
+  .primary-btn:hover {
+    background: rgba(0, 170, 0, 0.98);
+    box-shadow: 0 4px 18px rgba(0, 153, 0, 0.5);
+    border-color: rgba(0, 221, 0, 0.8);
+  }
+
+  .btnView:active {
+    transform: translateY(0px);
+    box-shadow: 0 1px 5px rgba(0, 170, 0, 0.3);
   }
 }
 
@@ -2815,7 +2757,7 @@ export default {
     height: 40px;
     margin: 16px 12px;
     border-radius: 14px; /* 圆润外观 */
-    background-color: rgba(82, 120, 42, 0.78); /* 更高透明度，贴近顶部导航的磨砂风格 */
+    background-color: rgba(82,120,42,0.78); /* 更高透明度，贴近顶部导航的磨砂风格 */
     border: 1px solid rgba(255,255,255,0.26);
     /* 主阴影 + 轻微赛博感外发光 */
     box-shadow: 0 12px 26px rgba(0,0,0,0.22), 0 0 12px rgba(76,245,227,0.18), inset 0 1px 0 rgba(255,255,255,0.08);
