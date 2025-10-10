@@ -1,3 +1,34 @@
+</style>
+/* macOS风格跳过裁决按钮 */
+.skip-judge-button-macos {
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.12);
+  border: none;
+  border-radius: 18px;
+  padding: 0;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+  z-index: 100;
+}
+.skip-judge-button-macos:hover {
+  box-shadow: 0 8px 32px rgba(76,175,80,0.25);
+  transform: scale(1.08);
+}
+.skip-judge-icon-macos {
+  font-size: 2.2em;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(76,175,80,0.25), 0 0 8px #4caf50;
+  font-weight: bold;
+  letter-spacing: 2px;
+  user-select: none;
+}
 <template>
   <view>
     <uni-popup ref="popup" :mask-click="false">
@@ -88,8 +119,8 @@
           
           <!-- 左上角跳过裁决按钮 -->
           <view v-if="showInfo.userType === 'admin'" class="skip-judge-button-container">
-            <button class="skip-judge-button" @click="stepJudge">
-              <text class="skip-judge-icon">⏭</text>
+            <button class="skip-judge-button-macos" @click="stepJudge">
+              <text class="skip-judge-icon-macos">⏭</text>
             </button>
           </view>
 
