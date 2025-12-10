@@ -58,6 +58,20 @@
       }
     },
     {
+      "path": "pages/chess-pieces/mapView",
+      "style": {
+        "navigationBarTitleText": "地图查看",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/chess-pieces/mapEdit",
+      "style": {
+        "navigationBarTitleText": "地图编辑",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
       "path": "pages/verdict/record",
       "style": {
         "navigationBarTitleText": "裁决记录",

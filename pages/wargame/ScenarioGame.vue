@@ -185,50 +185,20 @@ import {
   Image as ImageLayer
 } from 'ol/layer.js';
 import {defaults as defaultControls} from 'ol/control';
-import Projection from 'ol/proj/Projection.js';
-import Static from 'ol/source/ImageStatic.js';
-import Overlay from 'ol/Overlay.js';
-import Polygon from 'ol/geom/Polygon.js';
-import Point from 'ol/geom/Point.js';
 import LineString from 'ol/geom/LineString.js';
-import Icon from 'ol/style/Icon.js';
-import WebGLVectorLayerRenderer from 'ol/renderer/webgl/VectorLayer.js';
 import {getOssById} from '@/api/system.js';
 import {delScenarioChessPiece, getMapCoordinateC, queryAllChessPiecesInfoC} from '@/api/scenarioCreate';
 import {getMapChessImageC} from '@/api/scenarioCreate';
 import {
-  getMapCoordinate,
-  queryGameStatus,
-  queryChessRound,
   queryPrompt,
-  queryVerdictResult,
-  queryActionEffect,
-  isOwnRound,
-  queryAllChessPiecesInfo,
-  endDeploy,
-  chessPiecesAction,
-  deployChessPieces,
-  undeployChessPieces,
-  endRound,
   chessPiecesActionNew,
-  changePiecesActionPoint,
-  getRuleList,
   getBlowEffectList,
-  chessPiecesActionContinue,
   submitScore,
-  queryScoreList,
-  getRealTimeScore,
-  getSummaryScore,
-  getRoundStatus,
-  judge,
-  getMapChessImage,
-  nextStage, resetPiecesActionPoint,
-  changeChessStatus, getMap
 } from '@/api/verdictRecord';
 import {sendMsg} from '@/api/websocket.js';
 import {getMapC} from "@/api/scenarioCreate";
 import { deployScenarioChessPieces}from "@/api/scenarioCreate";
-import {delScenarioChessPieces}from "@/api/scenarioCreate";
+
 export default {
   data() {
     return {

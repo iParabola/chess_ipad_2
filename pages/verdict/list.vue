@@ -4,6 +4,7 @@
   <view class="create-new" v-if="isAdmin">
    <button class="create-new-button" @click="createOne" v-if="isAdmin">创建新的推演</button>
       <button class="create-new-button2" @click="toEdit">查看想定</button>
+      <button class="create-new-button2" @click="toMapView">查看地图</button>
   </view>
 
   <view class="product-list__view">
@@ -185,6 +186,12 @@ export default {
         url: '/pages/chess-pieces/scenarioEdit?productId=' + this.queryParams.productId
       });
     },
+    toMapView()
+    {
+      uni.navigateTo({
+        url: '/pages/chess-pieces/mapView?productId=' + this.queryParams.productId
+      });
+    },
 
   pageChange(e) {
    console.log('e: ', e);
@@ -299,32 +306,34 @@ export default {
   position: absolute;
   height: 10vh;
   line-height: 10vh;
-  width: 100%;
+  width: auto;
   display: flex;
-  justify-content: space-around;
-  margin-left: -10%;
+  justify-content: flex-start;
+  margin-left: 50%;
+  gap: 10px;
+  z-index: 999;
 }
 .create-new-button{
-  width: 15%;
-  margin-left: 62%;
+  width: auto;
+  padding: 0 20px;
   height: 6vh;
   line-height: 6vh;
   margin-top: 2vh;
-  background-color: #4cf5e3;;
+  background-color: #4cf5e3;
   font-size: 24px;
   color: #141829;
-  z-index: 999;
+  white-space: nowrap;
 }
 .create-new-button2{
-  width: 10%;
+  width: auto;
+  padding: 0 20px;
   height: 6vh;
   line-height: 6vh;
   margin-top: 2vh;
-  margin-left: -15vh;
-  background-color: #4cf5e3;;
+  background-color: #4cf5e3;
   font-size: 24px;
   color: #141829;
-  z-index: 999;
+  white-space: nowrap;
 }
 .create-new-button2:hover{
   color: white;

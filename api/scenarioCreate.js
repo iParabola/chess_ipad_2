@@ -83,3 +83,11 @@ export const delScenario = (data) => {
         data: data
     })
 }
+
+export const updateMapTerrain = (data) => {
+    return http.request({
+        url: 'armory/updateMapTerrain',
+        method: 'POST',
+        data: data
+    })
+}
